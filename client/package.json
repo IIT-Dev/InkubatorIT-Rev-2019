@@ -41,7 +41,8 @@
     "husky": "^3.0.8",
     "lint-staged": "^9.4.2",
     "prettier": "^1.18.2",
-    "typescript": "^3.6.4"
+    "typescript": "^3.6.4",
+    "yarnhook": "^0.4.3"
   },
   "keywords": [
     "gatsby"
@@ -62,12 +63,15 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "post-checkout": "yarnhook",
+      "post-merge": "yarnhook",
+      "post-rewrite": "yarnhook"
     }
   },
   "lint-staged": {
     "*.{tsx,ts,js,scss,md,json}": [
-      "yarn fix",
+      "npm run fix",
       "git add"
     ]
   },

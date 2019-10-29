@@ -34,3 +34,26 @@
     }
   }
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .home {
+    .header {
+      &_text {
+        max-width: 75%;
+
+        h1 {
+          font-size: 48px;
+          white-space: nowrap;
+        }
+
+        .p_welcome {
+          font-size: 20px;
+        }
+
+        .p_short-desc {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

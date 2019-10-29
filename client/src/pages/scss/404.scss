@@ -10,6 +10,7 @@
   .h1_title {
     font-size: 36px;
     margin-bottom: 48px;
+    text-align: center;
   }
 
   .btn_back-to-home {
@@ -27,7 +28,7 @@
     &:hover {
       background-color: var(--secondary);
       color: #fff;
-      transform: translateY(-2.5px);
+      transform: translateY(-5px);
       backface-visibility: hidden;
     }
   }

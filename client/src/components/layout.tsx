@@ -8,11 +8,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './layout.scss';
+import Navbar from './Navbar';
+
+import './scss/layout.scss';
 
 const Layout = ({ children }) => {
   return (
     <>
+      <Navbar />
       <main>{children}</main>
     </>
   );

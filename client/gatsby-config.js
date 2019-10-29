@@ -24,7 +24,7 @@ module.exports = {
         background_color: `#03878f`,
         theme_color: `#f2b531`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/iit-logo-cropped.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-typescript`,

@@ -18,10 +18,18 @@ const Footer = () => {
         </div>
       </div>
       <div className="icons">
-        <FontAwesomeIcon icon={faTwitter} size="2x" className="icon" />
-        <FontAwesomeIcon icon={faInstagram} size="2x" className="icon" />
-        <FontAwesomeIcon icon={faLine} size="2x" className="icon" />
-        <FontAwesomeIcon icon={faFacebookF} size="2x" className="icon" />
+        <a href="https://twitter.com/inkubatorIT" target="_blank">
+          <FontAwesomeIcon icon={faTwitter} size="2x" className="icon" />
+        </a>
+        <a href="https://www.instagram.com/inkubatorit/" target="_blank">
+          <FontAwesomeIcon icon={faInstagram} size="2x" className="icon" />
+        </a>
+        <a href="https://line.me/ti/p/~@coq4661e" target="_blank">
+          <FontAwesomeIcon icon={faLine} size="2x" className="icon" />
+        </a>
+        <a href="https://facebook.com/inkubatorithmif/" target="_blank">
+          <FontAwesomeIcon icon={faFacebookF} size="2x" className="icon" />
+        </a>
       </div>
     </footer>
   );

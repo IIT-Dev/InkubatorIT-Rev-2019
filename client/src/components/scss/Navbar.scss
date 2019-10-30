@@ -16,6 +16,7 @@
     height: 100%;
     padding-left: 25px;
     cursor: pointer;
+    text-decoration: none;
 
     display: flex;
     justify-content: space-between;
@@ -62,13 +63,13 @@
       &:hover {
         background-color: darken(#f2b531, 25%);
       }
+    }
 
-      &:last-of-type {
-        background-color: lighten(#03878f, 10%);
+    .request-btn {
+      background-color: lighten(#03878f, 10%);
 
-        &:hover {
-          background-color: var(--secondary);
-        }
+      &:hover {
+        background-color: var(--secondary);
       }
     }
   }

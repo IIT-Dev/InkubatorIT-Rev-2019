@@ -45,7 +45,7 @@ const IndexPage = () => {
           <h1>
             Kami Melayani Pembuatan Aplikasi Berbasis <span className="projects"></span>
           </h1>
-          <Link to="/portfolio">
+          <Link to="/portofolio">
             <button>Lihat Portofolio Kami</button>
           </Link>
         </div>

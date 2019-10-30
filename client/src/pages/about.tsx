@@ -15,7 +15,7 @@ const misi = [
 ];
 
 const AboutPage = () => {
-  const whatIsIIT = () => (
+  const whatIsIIT = (
     <div className="section">
       <h1>
         <span>Apa itu Inkubator IT?</span>

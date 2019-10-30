@@ -17,16 +17,16 @@ const Footer = () => {
         </p>
       </div>
       <div className="icons">
-        <a href="https://twitter.com/inkubatorIT" target="_blank">
+        <a href="https://twitter.com/inkubatorIT" target="_blank" rel="noopener">
           <FontAwesomeIcon icon={faTwitter} size="2x" className="icon" />
         </a>
-        <a href="https://www.instagram.com/inkubatorit/" target="_blank">
+        <a href="https://www.instagram.com/inkubatorit/" target="_blank" rel="noopener">
           <FontAwesomeIcon icon={faInstagram} size="2x" className="icon" />
         </a>
-        <a href="https://line.me/ti/p/~@coq4661e" target="_blank">
+        <a href="https://line.me/ti/p/~@coq4661e" target="_blank" rel="noopener">
           <FontAwesomeIcon icon={faLine} size="2x" className="icon" />
         </a>
-        <a href="https://facebook.com/inkubatorithmif/" target="_blank">
+        <a href="https://facebook.com/inkubatorithmif/" target="_blank" rel="noopener">
           <FontAwesomeIcon icon={faFacebookF} size="2x" className="icon" />
         </a>
       </div>

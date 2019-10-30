@@ -58,6 +58,19 @@ const AboutPage = () => {
           <h1>
             <span>Hubungi Kami</span>
           </h1>
+          <div className="contact">
+            <div>
+              <p className="title">Email: </p>
+              <p>admin@inkubatorit.com</p>
+            </div>
+            <div>
+              <p className="title">Kami bertempat di:</p>
+              <p>
+                Sekretariat HMIF Gedung Benny Subianto(Labtek V), Institut Teknologi Bandung, Jalan Ganesha No. 10,
+                40132
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </Layout>

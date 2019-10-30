@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './scss/about.scss';
+
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
@@ -22,6 +23,14 @@ const AboutPage = () => {
           <h1>
             <span>Apa itu Inkubator IT?</span>
           </h1>
+          <div className="desc">
+            <p>
+              Inkubator IT merupakan sebuah gerakan keprofesian yang diusung saat kepengurusan Lyco Adhi Purwoko sebagai
+              ketua HMIF pada 2011/2012. Hal ini terbuka bagi seluruh massa HMIF dan dijalankan sesuai dengan keinginan
+              massa HMIF. Dengan kata lain, Inkubator IT merupakan suatu bentuk keprofesian HMIF dimana mengedepankan
+              keterlibatan anggota himpunan sebagai individu yang dapat berkembang dalam dunia keinformatikaan.
+            </p>
+          </div>
         </div>
         <div className="what">
           <h1>

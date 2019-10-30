@@ -10,7 +10,10 @@ const Footer = () => {
     <footer className="footer">
       <div className="text">
         <p>
-          <FontAwesomeIcon icon={faCopyright} color="white" size="1x" /> &nbsp;Inkubator IT HMIF 2019
+          <span>
+            <FontAwesomeIcon icon={faCopyright} color="white" size="1x" /> &nbsp;Inkubator IT HMIF 2019.
+          </span>
+          <span> All rights reserved.</span>
         </p>
       </div>
       <div className="icons">

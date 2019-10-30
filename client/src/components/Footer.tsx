@@ -12,7 +12,7 @@ const Footer = () => {
         <p>
           <FontAwesomeIcon icon={faCopyright} color="white" size="1x" /> Inkubator IT HMIF 2019.
         </p>
-        <div>
+        <div className="address">
           <p>Sekretariat HMIF Gedung Benny Subianto.</p>
           <p>Institut Teknologi Bandung, Jalan Ganesha No.10, Bandung.</p>
         </div>

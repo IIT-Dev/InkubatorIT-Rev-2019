@@ -4,6 +4,15 @@ import './scss/about.scss';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
+const visi = 'Terbentuknya komunitas IT sebagai wadah aktualisasi keprofesian massa HMIF';
+
+const misi = [
+  'Membentuk dan mengembangkan komunitas berbasis keilmuan informatika',
+  'Menyalurkan dan mengembangkan potensi anggota Inkubator IT melalui pembelajaran dan aktualisasi diri',
+  'Memotivasi minat anggota untuk berinovasi sebagai bentukpengembangan keilmuan informatika',
+  'Mendukung keberjalanan HMIF dengan mendapatkan sumber dana dari pengerjaan proyek',
+];
+
 const AboutPage = () => {
   return (
     <Layout>
@@ -18,6 +27,18 @@ const AboutPage = () => {
           <h1>
             <span>Visi dan Misi</span>
           </h1>
+          <div className="vision">
+            <h2>Visi</h2>
+            <p>{visi}</p>
+          </div>
+          <div className="mission">
+            <h2>Misi</h2>
+            <ul>
+              {misi.map((m, index) => (
+                <li key={index}>{m}</li>
+              ))}
+            </ul>
+          </div>
         </div>
         <div className="what">
           <h1>

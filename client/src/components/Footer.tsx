@@ -10,12 +10,8 @@ const Footer = () => {
     <footer className="footer">
       <div className="text">
         <p>
-          <FontAwesomeIcon icon={faCopyright} color="white" size="1x" /> Inkubator IT HMIF 2019.
+          <FontAwesomeIcon icon={faCopyright} color="white" size="1x" /> &nbsp;Inkubator IT HMIF 2019
         </p>
-        <div className="address">
-          <p>Sekretariat HMIF Gedung Benny Subianto.</p>
-          <p>Institut Teknologi Bandung, Jalan Ganesha No.10, Bandung.</p>
-        </div>
       </div>
       <div className="icons">
         <a href="https://twitter.com/inkubatorIT" target="_blank">

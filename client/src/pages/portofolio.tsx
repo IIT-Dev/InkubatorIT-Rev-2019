@@ -10,9 +10,13 @@ const Portfolio = () => {
     <Layout>
       <SEO title="Portofolio" />
       <section className="portofolio">
-        <h1>
+        <h1 className="section">
           <span>Hasil Karya Kami</span>
         </h1>
+        <div className="section">
+          <h2>Ingin ide kamu direalisasikan juga?</h2>
+          <button>Request Disini</button>
+        </div>
       </section>
     </Layout>
   );

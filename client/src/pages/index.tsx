@@ -41,8 +41,9 @@ const IndexPage = () => {
   const works = (
     <div className="works">
       <div className="works-wrapper">
+        <h1>Kami Melayani Pembuatan</h1>
         <h1>
-          Kami Melayani Pembuatan Aplikasi Berbasis <span className="projects"></span>
+          Aplikasi Berbasis <span className="projects"></span>
         </h1>
         <Link to="/portofolio">
           <button>Lihat Portofolio</button>

@@ -1,6 +1,7 @@
 .request {
   min-height: 100vh;
   padding-top: 60px;
+  color: var(--tertiary);
 
   .title {
     padding: 50px 150px;
@@ -16,6 +17,53 @@
         transparent 17.5px,
         transparent 100%
       );
+    }
+  }
+
+  .question {
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
+    margin: auto;
+    margin-bottom: 25vh;
+
+    label {
+      font-size: 20px;
+    }
+
+    input {
+      height: 36px;
+      font-size: 36px;
+      border: none;
+      outline: none;
+      margin-top: 15px;
+    }
+
+    button {
+      margin-top: 25px;
+      width: 100px;
+      background-color: var(--primary);
+      color: white;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 2.5px;
+      transition: all 0.5s ease 0s;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+      outline: none;
+      cursor: pointer;
+      margin-right: 10px;
+
+      &:hover {
+        background-color: var(--secondary);
+        color: #fff;
+      }
+    }
+
+    span {
+      .enter {
+        font-weight: bold;
+      }
     }
   }
 }

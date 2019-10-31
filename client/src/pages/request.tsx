@@ -58,6 +58,16 @@ const questions = [
     type: 'radio',
     options: ['Sudah', 'Belum'],
   },
+  {
+    label: 'Catatan untuk proyek ini',
+    id: 'description',
+    type: 'textarea',
+  },
+  {
+    label: 'Apa Anda memiliki pertanyaan?',
+    id: 'question',
+    type: 'textarea',
+  },
 ];
 
 const Request = () => {
@@ -115,7 +125,7 @@ const Request = () => {
           <InputField key={index} {...question} focus={index === 0} />
         ))}
         <div className="submit-btn">
-          <button>Submit</button>
+          <button>SUBMIT</button>
         </div>
       </section>
     </Layout>

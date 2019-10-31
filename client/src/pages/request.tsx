@@ -1,4 +1,5 @@
 import React from 'react';
+import MaskedInput from 'react-text-mask';
 
 import './scss/request.scss';
 
@@ -77,6 +78,11 @@ const questions = [
     type: 'text',
   },
   {
+    label: 'Kapan deadline Anda untuk proyek ini?',
+    id: 'deadline',
+    type: 'date',
+  },
+  {
     label: 'Apa Anda sudah memiliki desain untuk proyek ini?',
     id: 'isDesignExist',
     type: 'radio',
@@ -119,6 +125,16 @@ const Request = () => {
           return <input type="text" id={id} placeholder="Ketik jawaban disini..." autoFocus={focus} />;
         case 'textarea':
           return <textarea id={id} placeholder="Ketik jawaban disini..." autoFocus={focus} rows={5} />;
+        case 'date':
+          return (
+            <MaskedInput
+              mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
+              type="text"
+              id={id}
+              placeholder="Ketik jawaban disini..."
+              autoFocus={focus}
+            />
+          );
         case 'radio': {
           return (
             <div className={`options ${options.length > 2 && 'multiline'}`}>

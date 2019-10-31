@@ -37,6 +37,7 @@
       border: none;
       outline: none;
       margin-top: 15px;
+      padding-bottom: 5px;
     }
 
     input {
@@ -132,6 +133,14 @@
 
       textarea {
         font-size: 26px;
+      }
+    }
+
+    .submit-btn {
+      max-width: 80%;
+
+      button {
+        width: 100%;
       }
     }
   }

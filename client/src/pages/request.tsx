@@ -1,5 +1,6 @@
 import React from 'react';
 import MaskedInput from 'react-text-mask';
+import emailMask from 'text-mask-addons/dist/emailMask';
 
 import './scss/request.scss';
 
@@ -36,7 +37,7 @@ const questions = [
   {
     label: 'Apa alamat email Anda?',
     id: 'email',
-    type: 'text',
+    type: 'email',
   },
   {
     label: 'Apa nomor WhatsApp Anda?',
@@ -122,17 +123,49 @@ const Request = () => {
     const getField = () => {
       switch (type) {
         case 'text':
-          return <input type="text" id={id} placeholder="Ketik jawaban disini..." autoFocus={focus} />;
+          return (
+            <input
+              type="text"
+              id={id}
+              name={id}
+              placeholder="Ketik jawaban disini..."
+              autoFocus={focus}
+              autoComplete="off"
+            />
+          );
         case 'textarea':
-          return <textarea id={id} placeholder="Ketik jawaban disini..." autoFocus={focus} rows={5} />;
+          return (
+            <textarea
+              id={id}
+              name={id}
+              placeholder="Ketik jawaban disini..."
+              autoFocus={focus}
+              rows={5}
+              autoComplete="off"
+            />
+          );
         case 'date':
           return (
             <MaskedInput
               mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
               type="text"
               id={id}
-              placeholder="Ketik jawaban disini..."
+              name={id}
+              placeholder="dd/mm/yyyy"
               autoFocus={focus}
+              autoComplete="off"
+            />
+          );
+        case 'email':
+          return (
+            <MaskedInput
+              mask={emailMask}
+              type="text"
+              id={id}
+              name={id}
+              placeholder="example@gmail.com"
+              autoFocus={focus}
+              autoComplete="off"
             />
           );
         case 'radio': {
@@ -152,7 +185,7 @@ const Request = () => {
 
       return (
         <div>
-          <button>OK</button>
+          <button type="button">OK</button>
           <span>
             atau tekan <span className="enter">ENTER</span>
           </span>
@@ -172,7 +205,7 @@ const Request = () => {
   return (
     <Layout>
       <SEO title="Request a Project" />
-      <section className="request">
+      <form className="request" autoComplete="off" autoCorrect="off">
         <h1 className="title">
           <span>Formulir Pengajuan Proyek</span>
         </h1>
@@ -182,7 +215,7 @@ const Request = () => {
         <div className="submit-btn">
           <button>SUBMIT</button>
         </div>
-      </section>
+      </form>
     </Layout>
   );
 };

@@ -17,6 +17,12 @@ const questions = [
     type: 'text',
   },
   {
+    label: 'Apa Anda seorang mahasiswa?',
+    id: 'isStudent',
+    type: 'radio',
+    options: ['Ya', 'Tidak'],
+  },
+  {
     label: 'Apa jurusan Anda?',
     id: 'major',
     type: 'text',
@@ -46,11 +52,17 @@ const questions = [
     id: 'expectation',
     type: 'text',
   },
+  {
+    label: 'Apa Anda sudah memiliki desain untuk proyek ini?',
+    id: 'isDesignExist',
+    type: 'radio',
+    options: ['Sudah', 'Belum'],
+  },
 ];
 
 const Request = () => {
   const InputField = props => {
-    const { label, id, type, focus } = props;
+    const { label, id, type, options, focus } = props;
 
     const getField = () => {
       switch (type) {
@@ -58,19 +70,36 @@ const Request = () => {
           return <input type="text" id={id} placeholder="Ketik jawaban disini..." autoFocus={focus} />;
         case 'textarea':
           return <textarea id={id} placeholder="Ketik jawaban disini..." autoFocus={focus} rows={5} />;
+        case 'radio': {
+          return (
+            <div className="options">
+              {options.map((option, index) => (
+                <button key={index}>{option}</button>
+              ))}
+            </div>
+          );
+        }
       }
     };
 
-    return (
-      <div className="question">
-        <label htmlFor={id}>{label}</label>
-        {getField()}
+    const getButton = () => {
+      if (type === 'radio') return;
+
+      return (
         <div>
           <button>OK</button>
           <span>
             atau tekan <span className="enter">ENTER</span>
           </span>
         </div>
+      );
+    };
+
+    return (
+      <div className="question">
+        <label htmlFor={id}>{label}</label>
+        {getField()}
+        {getButton()}
       </div>
     );
   };

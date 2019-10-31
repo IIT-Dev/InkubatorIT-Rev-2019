@@ -9,41 +9,62 @@ const questions = [
   {
     label: 'Siapa nama Anda?',
     id: 'name',
+    type: 'text',
   },
   {
     label: 'Dari instansi mana Anda berasal?',
     id: 'instance',
+    type: 'text',
   },
   {
     label: 'Apa jurusan Anda?',
     id: 'major',
+    type: 'text',
   },
   {
     label: 'Anda angkatan berapa?',
     id: 'classOf',
+    type: 'text',
   },
   {
     label: 'Apa nomor WhatsApp Anda?',
     id: 'whatsapp',
+    type: 'text',
   },
   {
     label: 'Apa ID Line Anda?',
     id: 'line',
+    type: 'text',
+  },
+  {
+    label: 'Deskripsi proyek',
+    id: 'description',
+    type: 'textarea',
   },
   {
     label: 'Berapa ekspektasi biaya Anda untuk proyek ini?',
     id: 'expectation',
+    type: 'text',
   },
 ];
 
 const Request = () => {
   const InputField = props => {
-    const { label, id } = props;
+    const { label, id, type } = props;
+
+    const getField = () => {
+      switch (type) {
+        case 'text':
+          return <input type="text" id={id} placeholder="Ketik jawaban disini..." autoFocus />;
+        case 'textarea':
+          return <textarea id={id} placeholder="Ketik jawaban disini..." autoFocus rows={5} />;
+      }
+    };
 
     return (
       <div className="question">
         <label htmlFor={id}>{label}</label>
-        <input type="text" id={id} placeholder="Ketik jawaban disini..." autoFocus />
+        {getField()}
         <div>
           <button>OK</button>
           <span>

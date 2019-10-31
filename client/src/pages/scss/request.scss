@@ -31,12 +31,20 @@
       font-size: 20px;
     }
 
-    input {
-      height: 36px;
-      font-size: 36px;
+    input,
+    textarea {
       border: none;
       outline: none;
       margin-top: 15px;
+    }
+
+    input {
+      height: 36px;
+      font-size: 36px;
+    }
+
+    textarea {
+      font-size: 30px;
     }
 
     button {

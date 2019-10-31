@@ -50,14 +50,14 @@ const questions = [
 
 const Request = () => {
   const InputField = props => {
-    const { label, id, type } = props;
+    const { label, id, type, focus } = props;
 
     const getField = () => {
       switch (type) {
         case 'text':
-          return <input type="text" id={id} placeholder="Ketik jawaban disini..." autoFocus />;
+          return <input type="text" id={id} placeholder="Ketik jawaban disini..." autoFocus={focus} />;
         case 'textarea':
-          return <textarea id={id} placeholder="Ketik jawaban disini..." autoFocus rows={5} />;
+          return <textarea id={id} placeholder="Ketik jawaban disini..." autoFocus={focus} rows={5} />;
       }
     };
 
@@ -83,7 +83,7 @@ const Request = () => {
           <span>Formulir Pengajuan Proyek</span>
         </h1>
         {questions.map((question, index) => (
-          <InputField key={index} {...question} />
+          <InputField key={index} {...question} focus={index === 0} />
         ))}
         <div className="submit-btn">
           <button>Submit</button>

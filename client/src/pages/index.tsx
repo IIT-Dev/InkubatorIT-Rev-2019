@@ -8,7 +8,7 @@ import SEO from '../components/seo';
 import './scss/index.scss';
 
 const IndexPage = () => {
-  const renderHeader = () => (
+  const header = (
     <div className="header">
       <div className="header_wrapper">
         <p className="p_welcome">Selamat Datang di</p>
@@ -38,27 +38,37 @@ const IndexPage = () => {
     return () => typed.destroy();
   });
 
-  const renderWorks = () => {
-    return (
-      <div className="works">
-        <div className="works-wrapper">
-          <h1>
-            Kami Melayani Pembuatan Aplikasi Berbasis <span className="projects"></span>
-          </h1>
-          <Link to="/portofolio">
-            <button>Lihat Portofolio Kami</button>
-          </Link>
-        </div>
+  const works = (
+    <div className="works">
+      <div className="works-wrapper">
+        <h1>
+          Kami Melayani Pembuatan Aplikasi Berbasis <span className="projects"></span>
+        </h1>
+        <Link to="/portofolio">
+          <button>Lihat Portofolio</button>
+        </Link>
       </div>
-    );
-  };
+    </div>
+  );
+
+  const timeline = (
+    <div className="timeline">
+      <div className="offer">
+        <h2>Tertarik menggunakan jasa kami?</h2>
+        <Link to="/request">
+          <button>Request Disini</button>
+        </Link>
+      </div>
+    </div>
+  );
 
   return (
     <Layout>
       <SEO title="Home" />
       <section className="home">
-        {renderHeader()}
-        {renderWorks()}
+        {header}
+        {works}
+        {timeline}
       </section>
     </Layout>
   );

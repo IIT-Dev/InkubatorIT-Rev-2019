@@ -1,12 +1,13 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChrome } from '@fortawesome/free-brands-svg-icons';
+import { faDesktop, faMobileAlt } from '@fortawesome/free-solid-svg-icons';
 
 import './scss/portofolio.scss';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChrome } from '@fortawesome/free-brands-svg-icons';
-import { faDesktop, faMobileAlt } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'gatsby';
 
 const dummyProjects = [
   { name: 'Aplikasi Web', url: 'https://via.placeholder.com/750x500', type: 'web' },
@@ -55,7 +56,9 @@ const Portfolio = () => {
   const offer = (
     <div className="section offer">
       <h2>Ingin ide kamu direalisasikan juga?</h2>
-      <button>Request Disini</button>
+      <Link to="/request">
+        <button>Request Disini</button>
+      </Link>
     </div>
   );
 

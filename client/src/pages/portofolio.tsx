@@ -35,8 +35,8 @@ const Portfolio = () => {
 
     return (
       <div className="section projects">
-        {dummyProjects.map(project => (
-          <div className="project">
+        {dummyProjects.map((project, index) => (
+          <div className="project" key={index}>
             <div className="title">
               <h3>{project.name}</h3>
               <div>

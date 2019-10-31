@@ -8,35 +8,42 @@ import SEO from '../components/seo';
 const questions = [
   {
     label: 'Siapa nama Anda?',
+    id: 'name',
   },
   {
     label: 'Dari instansi mana Anda berasal?',
+    id: 'instance',
   },
   {
     label: 'Apa jurusan Anda?',
+    id: 'major',
   },
   {
     label: 'Anda angkatan berapa?',
+    id: 'classOf',
   },
   {
     label: 'Apa nomor WhatsApp Anda?',
+    id: 'whatsapp',
   },
   {
     label: 'Apa ID Line Anda?',
+    id: 'line',
   },
   {
     label: 'Berapa ekspektasi biaya Anda untuk proyek ini?',
+    id: 'expectation',
   },
 ];
 
 const Request = () => {
   const InputField = props => {
-    const { label } = props;
+    const { label, id } = props;
 
     return (
       <div className="question">
-        <label htmlFor="name">{label}</label>
-        <input type="text" id="name" placeholder="Ketik jawaban disini..." autoFocus />
+        <label htmlFor={id}>{label}</label>
+        <input type="text" id={id} placeholder="Ketik jawaban disini..." autoFocus />
         <div>
           <button>OK</button>
           <span>

@@ -85,6 +85,9 @@ const Request = () => {
         {questions.map((question, index) => (
           <InputField key={index} {...question} />
         ))}
+        <div className="submit-btn">
+          <button>Submit</button>
+        </div>
       </section>
     </Layout>
   );

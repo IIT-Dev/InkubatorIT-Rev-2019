@@ -33,6 +33,11 @@ const questions = [
     type: 'text',
   },
   {
+    label: 'Apa alamat email Anda?',
+    id: 'email',
+    type: 'text',
+  },
+  {
     label: 'Apa nomor WhatsApp Anda?',
     id: 'whatsapp',
     type: 'text',
@@ -41,6 +46,25 @@ const questions = [
     label: 'Apa ID Line Anda?',
     id: 'line',
     type: 'text',
+  },
+  {
+    label: 'Jenis Proyek',
+    id: 'type',
+    type: 'radio',
+    options: ['Website', 'Aplikasi Android', 'Aplikasi iOS', 'Game', 'Prototype', 'Mockup'],
+  },
+  {
+    label: 'Tujuan pembuatan proyek',
+    id: 'motive',
+    type: 'radio',
+    options: [
+      'Menyelesaikan Tugas Kuliah',
+      'Menyelesaikan Skripsi',
+      'Menyelesaikan Thesis',
+      'Membuat Startup',
+      'Memenuhi keperluan perusahaan',
+      'Memenuhi keperluan acara, misalnya lomba',
+    ],
   },
   {
     label: 'Deskripsi proyek',
@@ -56,7 +80,22 @@ const questions = [
     label: 'Apa Anda sudah memiliki desain untuk proyek ini?',
     id: 'isDesignExist',
     type: 'radio',
-    options: ['Sudah', 'Belum'],
+    options: [
+      'Sudah',
+      'Belum, namun akan dibuat segera dari pihak client sepenuhnya',
+      'Belum dan membutuhkan bantuan berunding dengan pihak pembuat proyek',
+      'Belum dan dibebaskan kepada pihak pembuat proyek',
+    ],
+  },
+  {
+    label: 'Dalam bentuk apa desain yang Anda miliki?',
+    id: 'design',
+    type: 'radio',
+    options: [
+      'Mockup Digital (marvelapp, balsamiq, dsb.)',
+      'File Gambar Digital (Photoshop, Ai, Sketch, dsb.)',
+      'Design manual di kertas',
+    ],
   },
   {
     label: 'Catatan untuk proyek ini',
@@ -82,7 +121,7 @@ const Request = () => {
           return <textarea id={id} placeholder="Ketik jawaban disini..." autoFocus={focus} rows={5} />;
         case 'radio': {
           return (
-            <div className="options">
+            <div className={`options ${options.length > 2 && 'multiline'}`}>
               {options.map((option, index) => (
                 <button key={index}>{option}</button>
               ))}

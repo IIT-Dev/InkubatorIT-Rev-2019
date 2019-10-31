@@ -48,6 +48,15 @@
       font-size: 30px;
     }
 
+    .options.multiline {
+      display: flex;
+      flex-direction: column;
+
+      button {
+        width: 100%;
+      }
+    }
+
     button {
       margin-top: 25px;
       width: 100px;

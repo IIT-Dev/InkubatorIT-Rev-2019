@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'gatsby';
 
 import './scss/admin.scss';
@@ -9,25 +9,29 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLaptop, faUserTie, faPlus } from '@fortawesome/free-solid-svg-icons';
 import Project from '../components/Project';
 
-const AdminNavbar = () => (
-  <nav className="navbar">
-    <Link to="/" className="logo">
-      <img src={require('../images/iit-logo-cropped.png')} alt="IIT Logo" />
-      <div>
-        <p className="title">Inkubator IT</p>
-        <p className="subtitle">your IT-based solution</p>
+const AdminNavbar = props => {
+  const { setMode } = props;
+
+  return (
+    <nav className="navbar">
+      <Link to="/" className="logo">
+        <img src={require('../images/iit-logo-cropped.png')} alt="IIT Logo" />
+        <div>
+          <p className="title">Inkubator IT</p>
+          <p className="subtitle">your IT-based solution</p>
+        </div>
+      </Link>
+      <div className="buttons">
+        <button onClick={() => setMode('portofolio')}>
+          <FontAwesomeIcon icon={faLaptop} /> &nbsp; Manage Portfolio
+        </button>
+        <button onClick={() => setMode('people')}>
+          <FontAwesomeIcon icon={faUserTie} /> &nbsp; Manage People
+        </button>
       </div>
-    </Link>
-    <div className="buttons">
-      <button>
-        <FontAwesomeIcon icon={faLaptop} /> &nbsp; Manage Portfolio
-      </button>
-      <button>
-        <FontAwesomeIcon icon={faUserTie} /> &nbsp; Manage People
-      </button>
-    </div>
-  </nav>
-);
+    </nav>
+  );
+};
 
 const PortofolioManagement = () => {
   const dummyProjects = [
@@ -48,13 +52,20 @@ const PortofolioManagement = () => {
   );
 };
 
+const PeopleManagement = () => {
+  return <div className="people-management">people</div>;
+};
+
 const AdminPage = () => {
+  const [mode, setMode] = useState('portofolio');
+
   return (
     <>
       <SEO title="Admin" />
       <section className="admin">
-        <AdminNavbar />
-        <PortofolioManagement />
+        <AdminNavbar setMode={setMode} />
+        {mode === 'portofolio' && <PortofolioManagement />}
+        {mode === 'people' && <PeopleManagement />}
       </section>
       <Footer />
     </>

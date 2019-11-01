@@ -50,3 +50,27 @@
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   }
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .project {
+    width: 100%;
+
+    .title {
+      h3 {
+        font-size: 20px;
+      }
+
+      div {
+        .icon {
+          font-size: 1.5em;
+        }
+      }
+    }
+
+    .edit-btn {
+      font-size: 1em;
+      width: 40px;
+      height: 40px;
+    }
+  }
+}

@@ -36,3 +36,18 @@
     }
   }
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .admin {
+    .portofolio-management {
+      padding: 40px 50px 50px;
+
+      .add-portofolio-btn {
+        width: 100%;
+
+        position: static;
+        border-radius: 2.5px;
+      }
+    }
+  }
+}

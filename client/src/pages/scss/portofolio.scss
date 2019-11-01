@@ -71,24 +71,6 @@
   .portofolio {
     .section {
       padding: 40px 50px 50px;
-
-      &.projects {
-        .project {
-          width: 100%;
-
-          .title {
-            h3 {
-              font-size: 20px;
-            }
-
-            div {
-              .icon {
-                font-size: 1.5em;
-              }
-            }
-          }
-        }
-      }
     }
   }
 }

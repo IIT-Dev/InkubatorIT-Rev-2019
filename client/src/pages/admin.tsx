@@ -5,6 +5,8 @@ import './scss/admin.scss';
 
 import SEO from '../components/seo';
 import Footer from '../components/Footer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLaptop, faUserTie } from '@fortawesome/free-solid-svg-icons';
 
 const AdminPage = () => {
   const Navbar = (
@@ -17,8 +19,12 @@ const AdminPage = () => {
         </div>
       </Link>
       <div className="buttons">
-        <button>Manage Portfolio</button>
-        <button>Manage Committee</button>
+        <button>
+          <FontAwesomeIcon icon={faLaptop} /> &nbsp; Manage Portfolio
+        </button>
+        <button>
+          <FontAwesomeIcon icon={faUserTie} /> &nbsp; Manage People
+        </button>
       </div>
     </nav>
   );

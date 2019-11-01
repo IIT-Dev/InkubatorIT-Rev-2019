@@ -1,12 +1,12 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChrome } from '@fortawesome/free-brands-svg-icons';
-import { faDesktop, faMobileAlt } from '@fortawesome/free-solid-svg-icons';
+import { faDesktop, faMobileAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 import './scss/Project.scss';
 
 const Project = props => {
-  const { name, type, url } = props;
+  const { name, type, url, admin } = props;
 
   const renderIcon = type => {
     switch (type) {
@@ -17,6 +17,16 @@ const Project = props => {
       case 'mobile':
         return faMobileAlt;
     }
+  };
+
+  const renderEditButton = () => {
+    if (!admin) return;
+
+    return (
+      <button className="edit-btn">
+        <FontAwesomeIcon icon={faEdit} />
+      </button>
+    );
   };
 
   return (
@@ -30,6 +40,7 @@ const Project = props => {
       <div className="image">
         <img src={url} alt={name} />
       </div>
+      {renderEditButton()}
     </div>
   );
 };

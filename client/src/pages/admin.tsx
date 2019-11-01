@@ -39,7 +39,7 @@ const PortofolioManagement = () => {
   return (
     <div className="portofolio-management">
       {dummyProjects.map((project, index) => (
-        <Project {...project} key={index} />
+        <Project {...project} key={index} admin />
       ))}
       <button className="add-portofolio-btn">
         <FontAwesomeIcon icon={faPlus} size="1x" />

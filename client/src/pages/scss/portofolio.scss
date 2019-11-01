@@ -59,40 +59,6 @@
       justify-content: space-between;
       padding-top: 0;
       padding-bottom: 0;
-
-      .project {
-        border: 5px solid var(--primary);
-        border-radius: 5px;
-        cursor: pointer;
-        width: 40%;
-        margin-bottom: 50px;
-
-        .title {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 10px;
-
-          h3 {
-            font-size: 24px;
-            padding-right: 5px;
-          }
-
-          div {
-            .icon {
-              color: var(--tertiary);
-            }
-          }
-        }
-
-        .image {
-          display: flex;
-
-          img {
-            width: 100%;
-          }
-        }
-      }
     }
 
     &.offer {

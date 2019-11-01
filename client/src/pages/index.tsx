@@ -17,8 +17,8 @@ const IndexPage = () => {
           Badan usaha khusus dibawah naungan <span>HMIF ITB</span> yang melayani pembuatan berbagai produk berbasis IT
           dan telah melayani puluhan klien selama 7 tahun lebih.
         </p>
-        <Link to="/about">
-          <button>Lebih Lanjut</button>
+        <Link to="/request">
+          <button>Request Proyek</button>
         </Link>
       </div>
     </div>
@@ -38,15 +38,24 @@ const IndexPage = () => {
     return () => typed.destroy();
   });
 
-  const works = (
-    <div className="works">
-      <div className="works-wrapper">
+  const promotes = (
+    <div className="promotes">
+      <div className="promotes-wrapper left">
         <h1>Kami Melayani Pembuatan</h1>
         <h1>
           Aplikasi Berbasis <span className="projects"></span>
         </h1>
         <Link to="/portofolio">
           <button>Lihat Portofolio</button>
+        </Link>
+      </div>
+      <div className="promotes-wrapper right">
+        <h1>Kami Menerima Permintaan dari</h1>
+        <h1>
+          <span className="highlight">Dalam</span> dan <span className="highlight">Luar</span> Kampus ITB
+        </h1>
+        <Link to="/about">
+          <button>Tentang Kami</button>
         </Link>
       </div>
     </div>
@@ -68,7 +77,7 @@ const IndexPage = () => {
       <SEO title="Home" />
       <section className="home">
         {header}
-        {works}
+        {promotes}
         {timeline}
       </section>
     </Layout>

@@ -6,11 +6,13 @@
 
   .title {
     padding: 50px 150px;
-    margin-bottom: 15vh;
-    font-size: 36px;
-    cursor: pointer;
+    margin-bottom: 10vh;
 
     span {
+      font-size: 36px;
+      cursor: pointer;
+      font-weight: bold;
+
       background-image: linear-gradient(
         0deg,
         var(--primary) 17.5px,
@@ -18,6 +20,11 @@
         transparent 17.5px,
         transparent 100%
       );
+    }
+
+    h3 {
+      font-size: 20px;
+      margin: 25px 0;
     }
   }
 

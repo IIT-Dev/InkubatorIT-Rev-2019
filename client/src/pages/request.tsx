@@ -116,6 +116,11 @@ const questions = [
   },
 ];
 
+const notices = [
+  'Pertimbangkan deadline & biaya dengan kompleksitas proyek. Proyek yang kami prioritaskan adalah proyek dengan deadline & biaya yang sesuai dengan kompleksitas proyek',
+  'Proyek yang sudah memiliki rancangan tampilan & desain akan dapat diproses dengan lebih cepat.',
+];
+
 const Request = () => {
   const InputField = props => {
     const { label, id, type, options, focus } = props;
@@ -206,9 +211,12 @@ const Request = () => {
     <Layout>
       <SEO title="Request a Project" />
       <form className="request" autoComplete="off" autoCorrect="off">
-        <h1 className="title">
+        <div className="title">
           <span>Formulir Pengajuan Proyek</span>
-        </h1>
+          {notices.map((notice, index) => (
+            <h3 key={index}>{notice}</h3>
+          ))}
+        </div>
         {questions.map((question, index) => (
           <InputField key={index} {...question} focus={index === 0} />
         ))}

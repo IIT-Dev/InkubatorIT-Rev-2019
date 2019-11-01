@@ -61,14 +61,14 @@ const IndexPage = () => {
     </div>
   );
 
-  const timeline = (
-    <div className="timeline">
-      <div className="offer">
-        <h2>Tertarik menggunakan jasa kami?</h2>
-        <Link to="/request">
-          <button>Request Disini</button>
-        </Link>
-      </div>
+  const timeline = <div className="timeline"></div>;
+
+  const offer = (
+    <div className="offer">
+      <h2>Tertarik menggunakan jasa kami?</h2>
+      <Link to="/request">
+        <button>Request Disini</button>
+      </Link>
     </div>
   );
 
@@ -79,6 +79,7 @@ const IndexPage = () => {
         {header}
         {promotes}
         {timeline}
+        {offer}
       </section>
     </Layout>
   );

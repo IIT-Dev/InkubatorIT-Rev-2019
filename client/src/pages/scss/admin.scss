@@ -9,23 +9,23 @@
     }
   }
 
-  .portofolio-management {
-    h1 {
-      padding: 50px 150px;
-      font-size: 36px;
-      cursor: pointer;
+  h1 {
+    padding: 50px 150px;
+    font-size: 36px;
+    cursor: pointer;
 
-      span {
-        background-image: linear-gradient(
-          0deg,
-          var(--primary) 17.5px,
-          var(--primary) 17.5px,
-          transparent 17.5px,
-          transparent 100%
-        );
-      }
+    span {
+      background-image: linear-gradient(
+        0deg,
+        var(--primary) 17.5px,
+        var(--primary) 17.5px,
+        transparent 17.5px,
+        transparent 100%
+      );
     }
+  }
 
+  .portofolio-management {
     .projects {
       padding: 50px 150px;
 
@@ -57,11 +57,11 @@
 
 @media (min-width: 320px) and (max-width: 480px) {
   .admin {
-    .portofolio-management {
-      h1 {
-        padding: 40px 50px 50px;
-      }
+    h1 {
+      padding: 40px 50px 50px;
+    }
 
+    .portofolio-management {
       .projects {
         padding: 0 50px 50px;
 

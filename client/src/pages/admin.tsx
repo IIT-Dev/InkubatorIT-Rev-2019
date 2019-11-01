@@ -60,7 +60,13 @@ const PortofolioManagement = () => {
 };
 
 const PeopleManagement = () => {
-  return <div className="people-management">people</div>;
+  return (
+    <div className="people-management">
+      <h1>
+        <span>Pengurus</span>
+      </h1>
+    </div>
+  );
 };
 
 const AdminPage = () => {

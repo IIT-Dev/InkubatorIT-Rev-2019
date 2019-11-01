@@ -3,6 +3,7 @@ import React from 'react';
 import './scss/login.scss';
 
 import SEO from '../components/seo';
+import Footer from '../components/Footer';
 
 const Login = () => {
   return (
@@ -19,6 +20,7 @@ const Login = () => {
           <button>Login</button>
         </form>
       </section>
+      <Footer />
     </>
   );
 };

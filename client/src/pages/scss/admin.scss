@@ -1,0 +1,13 @@
+.admin {
+  min-height: 100vh;
+
+  .navbar {
+    button {
+      width: 200px;
+    }
+  }
+
+  .card {
+    border: 5px solid var(--primary);
+  }
+}

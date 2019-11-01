@@ -43,13 +43,18 @@ const PortofolioManagement = () => {
 
   return (
     <div className="portofolio-management">
-      {dummyProjects.map((project, index) => (
-        <Project {...project} key={index} admin />
-      ))}
-      <button className="add-portofolio-btn" data-tip="Tambah portofolio" data-for="portofolio-add">
-        <FontAwesomeIcon icon={faPlus} size="1x" />
-      </button>
-      <ReactTooltip place="left" type="dark" effect="solid" id="portofolio-add" />
+      <h1>
+        <span>Portofolio</span>
+      </h1>
+      <div className="projects">
+        {dummyProjects.map((project, index) => (
+          <Project {...project} key={index} admin />
+        ))}
+        <button className="add-portofolio-btn" data-tip="Tambah portofolio" data-for="portofolio-add">
+          <FontAwesomeIcon icon={faPlus} size="1x" />
+        </button>
+        <ReactTooltip place="left" type="dark" effect="solid" id="portofolio-add" />
+      </div>
     </div>
   );
 };

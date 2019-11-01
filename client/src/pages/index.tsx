@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faLaptop,
   faCheck,
-  faUsers,
   faHandshake,
   faFileAlt,
   faUserFriends,
@@ -80,10 +79,14 @@ const IndexPage = () => {
       <VerticalTimeline>
         <VerticalTimelineElement
           className="vertical-timeline-element--work"
-          contentStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-          contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
-          iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-          icon={<FontAwesomeIcon icon={faUserFriends} />}
+          contentStyle={{
+            background: 'var(--secondary)',
+            color: '#fff',
+            boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.25)',
+          }}
+          contentArrowStyle={{ borderRight: '7px solid  var(--secondary)' }}
+          iconStyle={{ background: 'var(--secondary)', color: '#fff', boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.25)' }}
+          icon={<FontAwesomeIcon icon={faFileAlt} style={{ fontSize: '1.75em' }} />}
         >
           <h3 className="vertical-timeline-element-title">Mengisi Form Pengajuan Proyek</h3>
           <p>
@@ -95,48 +98,61 @@ const IndexPage = () => {
         </VerticalTimelineElement>
         <VerticalTimelineElement
           className="vertical-timeline-element--work"
-          iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-          icon={<FontAwesomeIcon icon={faLaptop} />}
+          contentStyle={{ borderTop: '5px solid var(--tertiary)', boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.25)' }}
+          iconStyle={{ background: 'var(--tertiary)', color: '#fff', boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.25)' }}
+          icon={<FontAwesomeIcon icon={faUserFriends} style={{ fontSize: '1.25em' }} />}
         >
           <h3 className="vertical-timeline-element-title">Diskusi dengan Klien</h3>
           <p>Tatap muka langsung antara manajer proyek dengan klien untuk diskusi seputar proyek yang diajukan</p>
         </VerticalTimelineElement>
         <VerticalTimelineElement
           className="vertical-timeline-element--work"
-          iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-          icon={<FontAwesomeIcon icon={faSearch} />}
+          contentStyle={{ borderTop: '5px solid var(--tertiary)', boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.25)' }}
+          iconStyle={{ background: 'var(--tertiary)', color: '#fff', boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.25)' }}
+          icon={<FontAwesomeIcon icon={faSearch} style={{ fontSize: '1.25em' }} />}
         >
           <h3 className="vertical-timeline-element-title">Evaluasi Kelayakan Proyek</h3>
           <p>Akan dipertimbangkan apakah proyek tersebut akan diterima atau tidak</p>
         </VerticalTimelineElement>
         <VerticalTimelineElement
           className="vertical-timeline-element--work"
-          iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-          icon={<FontAwesomeIcon icon={faUserSecret} />}
+          contentStyle={{ borderTop: '5px solid var(--tertiary)', boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.25)' }}
+          iconStyle={{ background: 'var(--tertiary)', color: '#fff', boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.25)' }}
+          icon={<FontAwesomeIcon icon={faUserSecret} style={{ fontSize: '1.75em' }} />}
         >
           <h3 className="vertical-timeline-element-title">Mencari Developer</h3>
           <p>Mencari developer yang akan mengerjakan dan merupakan mahasiswa HMIF ITB</p>
         </VerticalTimelineElement>
         <VerticalTimelineElement
           className="vertical-timeline-element--education"
-          iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
-          icon={<FontAwesomeIcon icon={faHandshake} />}
+          contentStyle={{ borderTop: '5px solid var(--tertiary)', boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.25)' }}
+          iconStyle={{ background: 'var(--tertiary)', color: '#fff', boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.25)' }}
+          icon={<FontAwesomeIcon icon={faHandshake} style={{ fontSize: '1.25em' }} />}
         >
           <h3 className="vertical-timeline-element-title">Pengesahan MoU</h3>
           <p>Penandatanganan spesifikasi proyek final dari klient</p>
         </VerticalTimelineElement>
         <VerticalTimelineElement
           className="vertical-timeline-element--education"
-          iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
-          icon={<FontAwesomeIcon icon={faLaptop} />}
+          contentStyle={{ borderTop: '5px solid var(--tertiary)', boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.25)' }}
+          iconStyle={{ background: 'var(--tertiary)', color: '#fff', boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.25)' }}
+          icon={<FontAwesomeIcon icon={faLaptop} style={{ fontSize: '1.125em' }} />}
         >
           <h3 className="vertical-timeline-element-title">Pengerjaan Proyek</h3>
           <p>Proyek dikerjakan oleh developer handal dan dikontrol oleh manajer proyek</p>
         </VerticalTimelineElement>
         <VerticalTimelineElement
           className="vertical-timeline-element--education"
-          contentStyle={{ background: 'rgb(16, 204, 82)', color: '#fff' }}
-          iconStyle={{ background: 'rgb(16, 204, 82)', color: '#fff' }}
+          contentStyle={{
+            background: 'var(--secondary)',
+            color: '#fff',
+            boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.25)',
+          }}
+          iconStyle={{
+            background: 'var(--secondary)',
+            color: '#fff',
+            boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.25)',
+          }}
           icon={<FontAwesomeIcon icon={faCheck} style={{ fontSize: '1.5em' }} />}
         >
           <h3 className="vertical-timeline-element-title">Selesai</h3>

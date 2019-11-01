@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChrome } from '@fortawesome/free-brands-svg-icons';
 import { faDesktop, faMobileAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
+import ReactTooltip from 'react-tooltip';
 
 import './scss/Project.scss';
 
@@ -23,9 +24,12 @@ const Project = props => {
     if (!admin) return;
 
     return (
-      <button className="edit-btn">
-        <FontAwesomeIcon icon={faEdit} />
-      </button>
+      <>
+        <button className="edit-btn" data-tip="Edit portofolio" data-for="portofolio-edit">
+          <FontAwesomeIcon icon={faEdit} />
+        </button>
+        <ReactTooltip place="top" type="dark" effect="solid" id="portofolio-edit" />
+      </>
     );
   };
 

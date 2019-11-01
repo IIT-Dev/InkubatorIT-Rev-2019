@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
+import ReactTooltip from 'react-tooltip';
 
 import './scss/admin.scss';
 
@@ -45,9 +46,10 @@ const PortofolioManagement = () => {
       {dummyProjects.map((project, index) => (
         <Project {...project} key={index} admin />
       ))}
-      <button className="add-portofolio-btn">
+      <button className="add-portofolio-btn" data-tip="Tambah portofolio" data-for="portofolio-add">
         <FontAwesomeIcon icon={faPlus} size="1x" />
       </button>
+      <ReactTooltip place="left" type="dark" effect="solid" id="portofolio-add" />
     </div>
   );
 };

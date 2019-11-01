@@ -78,6 +78,7 @@ const IndexPage = () => {
       <h2>Bagaimana cara kerjanya?</h2>
       <VerticalTimeline>
         <VerticalTimelineElement
+          visibilitySensorProps={{ offset: { bottom: 200 } }}
           className="vertical-timeline-element--work"
           contentStyle={{
             background: 'var(--secondary)',
@@ -97,6 +98,7 @@ const IndexPage = () => {
           </p>
         </VerticalTimelineElement>
         <VerticalTimelineElement
+          visibilitySensorProps={{ offset: { bottom: 200 } }}
           className="vertical-timeline-element--work"
           contentStyle={{ borderTop: '5px solid var(--tertiary)', boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.25)' }}
           iconStyle={{ background: 'var(--tertiary)', color: '#fff', boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.25)' }}
@@ -106,6 +108,7 @@ const IndexPage = () => {
           <p>Tatap muka langsung antara manajer proyek dengan klien untuk diskusi seputar proyek yang diajukan</p>
         </VerticalTimelineElement>
         <VerticalTimelineElement
+          visibilitySensorProps={{ offset: { bottom: 200 } }}
           className="vertical-timeline-element--work"
           contentStyle={{ borderTop: '5px solid var(--tertiary)', boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.25)' }}
           iconStyle={{ background: 'var(--tertiary)', color: '#fff', boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.25)' }}
@@ -115,6 +118,7 @@ const IndexPage = () => {
           <p>Akan dipertimbangkan apakah proyek tersebut akan diterima atau tidak</p>
         </VerticalTimelineElement>
         <VerticalTimelineElement
+          visibilitySensorProps={{ offset: { bottom: 200 } }}
           className="vertical-timeline-element--work"
           contentStyle={{ borderTop: '5px solid var(--tertiary)', boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.25)' }}
           iconStyle={{ background: 'var(--tertiary)', color: '#fff', boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.25)' }}
@@ -124,6 +128,7 @@ const IndexPage = () => {
           <p>Mencari developer yang akan mengerjakan dan merupakan mahasiswa HMIF ITB</p>
         </VerticalTimelineElement>
         <VerticalTimelineElement
+          visibilitySensorProps={{ offset: { bottom: 200 } }}
           className="vertical-timeline-element--education"
           contentStyle={{ borderTop: '5px solid var(--tertiary)', boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.25)' }}
           iconStyle={{ background: 'var(--tertiary)', color: '#fff', boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.25)' }}
@@ -133,6 +138,7 @@ const IndexPage = () => {
           <p>Penandatanganan spesifikasi proyek final dari klient</p>
         </VerticalTimelineElement>
         <VerticalTimelineElement
+          visibilitySensorProps={{ offset: { bottom: 200 } }}
           className="vertical-timeline-element--education"
           contentStyle={{ borderTop: '5px solid var(--tertiary)', boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.25)' }}
           iconStyle={{ background: 'var(--tertiary)', color: '#fff', boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.25)' }}
@@ -142,6 +148,7 @@ const IndexPage = () => {
           <p>Proyek dikerjakan oleh developer handal dan dikontrol oleh manajer proyek</p>
         </VerticalTimelineElement>
         <VerticalTimelineElement
+          visibilitySensorProps={{ offset: { bottom: 200 } }}
           className="vertical-timeline-element--education"
           contentStyle={{
             background: 'var(--secondary)',

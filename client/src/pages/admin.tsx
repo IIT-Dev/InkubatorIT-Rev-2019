@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import ReactTooltip from 'react-tooltip';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLaptop, faUserTie, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import './scss/admin.scss';
 
 import SEO from '../components/seo';
 import Footer from '../components/Footer';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLaptop, faUserTie, faPlus } from '@fortawesome/free-solid-svg-icons';
+
 import Project from '../components/Project';
+
+const Alert = withReactContent(Swal);
 
 const AdminNavbar = props => {
   const { setMode } = props;
@@ -41,6 +46,27 @@ const PortofolioManagement = () => {
     { name: 'Aplikasi Desktop', url: 'https://via.placeholder.com/750x500', type: 'desktop' },
   ];
 
+  const actionOpenAddPortofolioAlert = () => {
+    Alert.fire({
+      title: <p>Tambah Portofolio</p>,
+      html: (
+        <div className="add-portofolio-form">
+          <input type="text" placeholder="Nama proyek" />
+          <input type="text" placeholder="Deskripsi Singkat" />
+          <div className="types">
+            <button>Web</button>
+            <button>Mobile</button>
+            <button>Desktop</button>
+          </div>
+          <div className="img">
+            <img src="https://via.placeholder.com/750x500" alt="Nama proyek" />
+          </div>
+        </div>
+      ),
+      confirmButtonColor: 'var(--tertiary)',
+    });
+  };
+
   return (
     <div className="portofolio-management">
       <h1>
@@ -50,7 +76,12 @@ const PortofolioManagement = () => {
         {dummyProjects.map((project, index) => (
           <Project {...project} key={index} admin />
         ))}
-        <button className="add-portofolio-btn" data-tip="Tambah portofolio" data-for="portofolio-add">
+        <button
+          className="add-portofolio-btn"
+          data-tip="Tambah portofolio"
+          data-for="portofolio-add"
+          onClick={actionOpenAddPortofolioAlert}
+        >
           <FontAwesomeIcon icon={faPlus} size="1x" />
         </button>
         <ReactTooltip place="left" type="dark" effect="solid" id="portofolio-add" />

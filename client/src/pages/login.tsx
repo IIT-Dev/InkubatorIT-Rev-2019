@@ -15,7 +15,7 @@ const Login = () => {
             <input type="text" placeholder="username" autoFocus />
           </div>
           <div className="field">
-            <input type="text" placeholder="password" />
+            <input type="password" placeholder="password" />
           </div>
           <button>Login</button>
         </form>

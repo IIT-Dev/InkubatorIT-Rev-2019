@@ -96,6 +96,11 @@ const PeopleManagement = () => {
       <h1>
         <span>Pengurus</span>
       </h1>
+      <div className="people">
+        <input type="text" className="people-name" placeholder="Nama" />
+        <input type="text" className="people-position" placeholder="Jabatan" />
+        <img src="https://via.placeholder.com/750x500" alt="Wildan Dicky Alnatara" />
+      </div>
     </div>
   );
 };

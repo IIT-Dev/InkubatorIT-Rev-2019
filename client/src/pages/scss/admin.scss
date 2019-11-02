@@ -53,6 +53,44 @@
       }
     }
   }
+
+  .people-management {
+    padding-bottom: 15vh;
+
+    .people {
+      margin: 25px 150px;
+
+      height: 400px;
+      position: relative;
+      text-align: right;
+
+      input {
+        position: absolute;
+      }
+
+      input {
+        top: 0;
+        left: 0;
+        font-weight: lighter;
+
+        border: none;
+        border-bottom: 2.5px solid var(--primary);
+        outline: none;
+        padding-bottom: 10px;
+        height: 50px;
+        font-size: 20px;
+
+        &:last-of-type {
+          top: 75px;
+          font-size: 20px;
+        }
+      }
+
+      img {
+        height: 100%;
+      }
+    }
+  }
 }
 
 .add-portofolio-form {

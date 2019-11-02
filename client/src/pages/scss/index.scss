@@ -30,8 +30,10 @@
         span {
           background-color: var(--primary);
           padding: 2.5px 5px;
+          border-radius: 2.5px;
           color: white;
           cursor: pointer;
+          white-space: nowrap;
         }
       }
     }
@@ -146,6 +148,7 @@
       background-color: white;
       padding: 2.5px 5px;
       border-radius: 2.5px;
+      white-space: nowrap;
     }
   }
 

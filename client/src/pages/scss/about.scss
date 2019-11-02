@@ -47,7 +47,7 @@
     .contact {
       line-height: 1.5;
       letter-spacing: 1.5px;
-      margin-bottom: 50px;
+      margin-bottom: 75px;
 
       div {
         margin-bottom: 10px;
@@ -55,6 +55,15 @@
 
       .title {
         font-size: 24px;
+      }
+
+      .link {
+        text-decoration: none;
+        background-color: var(--primary);
+        padding: 2.5px 5px;
+        border-radius: 2.5px;
+        color: white;
+        cursor: pointer;
       }
     }
   }

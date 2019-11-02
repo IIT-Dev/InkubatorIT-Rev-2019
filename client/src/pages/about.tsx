@@ -4,6 +4,7 @@ import './scss/about.scss';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import { Link } from 'gatsby';
 
 const visi = 'Terbentuknya komunitas IT sebagai wadah aktualisasi keprofesian massa HMIF';
 
@@ -70,9 +71,17 @@ const AboutPage = () => {
           <p>admin@inkubatorit.com</p>
         </div>
         <div>
-          <p className="title">Kami bertempat di:</p>
+          <p className="title">Lokasi:</p>
           <p>
             Sekretariat HMIF Gedung Benny Subianto(Labtek V), Institut Teknologi Bandung, Jalan Ganesha No. 10, 40132
+          </p>
+        </div>
+        <div>
+          <p>
+            Untuk permintaan pengerjaan proyek silakan isi di{' '}
+            <Link to="/request" className="link">
+              <span>laman ini</span>
+            </Link>
           </p>
         </div>
       </div>

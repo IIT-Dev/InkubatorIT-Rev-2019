@@ -44,6 +44,33 @@
       }
     }
 
+    .people {
+      height: 400px;
+      position: relative;
+      text-align: right;
+      margin-top: 50px;
+
+      h4,
+      p {
+        position: absolute;
+      }
+
+      h4 {
+        font-size: 28px;
+        font-weight: 400;
+      }
+
+      p {
+        top: 40px;
+        font-size: 20px;
+        font-weight: lighter;
+      }
+
+      img {
+        height: 100%;
+      }
+    }
+
     .contact {
       line-height: 1.5;
       letter-spacing: 1.5px;

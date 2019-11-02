@@ -52,11 +52,16 @@ const AboutPage = () => {
     </div>
   );
 
-  const management = (
+  const people = (
     <div className="section">
       <h1>
         <span>Pengurus Inti</span>
       </h1>
+      <div className="people">
+        <h4>Wildan Dicky Alnatara</h4>
+        <p>Ketua Divisi Marketing</p>
+        <img src="https://via.placeholder.com/750x500" alt="Wildan Dicky Alnatara" />
+      </div>
     </div>
   );
 
@@ -94,7 +99,7 @@ const AboutPage = () => {
       <section className="about">
         {whatIsIIT}
         {visionMission}
-        {management}
+        {people}
         {contact}
       </section>
     </Layout>

@@ -11,32 +11,14 @@ import { notices, questions } from '../data/request';
 
 const Request = () => {
   const InputField = props => {
-    const { label, id, type, options, focus } = props;
+    const { label, id, type, options } = props;
 
     const getField = () => {
       switch (type) {
         case 'text':
-          return (
-            <input
-              type="text"
-              id={id}
-              name={id}
-              placeholder="Ketik jawaban disini..."
-              autoFocus={focus}
-              autoComplete="off"
-            />
-          );
+          return <input type="text" id={id} name={id} placeholder="Ketik jawaban disini..." autoComplete="off" />;
         case 'textarea':
-          return (
-            <textarea
-              id={id}
-              name={id}
-              placeholder="Ketik jawaban disini..."
-              autoFocus={focus}
-              rows={5}
-              autoComplete="off"
-            />
-          );
+          return <textarea id={id} name={id} placeholder="Ketik jawaban disini..." rows={5} autoComplete="off" />;
         case 'date':
           return (
             <MaskedInput
@@ -45,7 +27,6 @@ const Request = () => {
               id={id}
               name={id}
               placeholder="dd/mm/yyyy"
-              autoFocus={focus}
               autoComplete="off"
             />
           );
@@ -57,7 +38,6 @@ const Request = () => {
               id={id}
               name={id}
               placeholder="example@gmail.com"
-              autoFocus={focus}
               autoComplete="off"
             />
           );
@@ -106,7 +86,7 @@ const Request = () => {
           ))}
         </div>
         {questions.map((question, index) => (
-          <InputField key={index} {...question} focus={index === 0} />
+          <InputField key={index} {...question} />
         ))}
         <div className="submit-btn">
           <button>SUBMIT</button>

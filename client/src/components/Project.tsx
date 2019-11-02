@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChrome } from '@fortawesome/free-brands-svg-icons';
-import { faDesktop, faMobileAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faDesktop, faMobileAlt, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import ReactTooltip from 'react-tooltip';
 
 import './scss/Project.scss';
@@ -24,12 +24,16 @@ const Project = props => {
     if (!admin) return;
 
     return (
-      <>
+      <div className="buttons">
         <button className="edit-btn" data-tip="Edit portofolio" data-for="portofolio-edit">
           <FontAwesomeIcon icon={faEdit} />
         </button>
         <ReactTooltip place="top" type="dark" effect="solid" id="portofolio-edit" />
-      </>
+        <button className="edit-btn" data-tip="Hapus portofolio" data-for="portofolio-remove">
+          <FontAwesomeIcon icon={faTrash} />
+        </button>
+        <ReactTooltip place="top" type="dark" effect="solid" id="portofolio-remove" />
+      </div>
     );
   };
 

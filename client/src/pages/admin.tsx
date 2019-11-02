@@ -99,14 +99,16 @@ const PeopleManagement = () => {
       <div className="people">
         <input type="text" className="people-name" placeholder="Nama" />
         <input type="text" className="people-position" placeholder="Jabatan" />
-        <img src="https://via.placeholder.com/750x500" alt="Wildan Dicky Alnatara" />
+        <div className="img">
+          <img src="https://via.placeholder.com/750x500" alt="Wildan Dicky Alnatara" />
+        </div>
       </div>
     </div>
   );
 };
 
 const AdminPage = () => {
-  const [mode, setMode] = useState('portofolio');
+  const [mode, setMode] = useState('people');
 
   return (
     <>

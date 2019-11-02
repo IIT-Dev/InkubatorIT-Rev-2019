@@ -56,6 +56,7 @@
       }
 
       h4 {
+        top: 0;
         font-size: 28px;
         font-weight: 400;
       }
@@ -100,6 +101,25 @@
   .about {
     .section {
       padding: 50px;
+
+      .people {
+        padding-top: 75px;
+        height: unset;
+
+        h4 {
+          font-size: 20px;
+        }
+
+        p {
+          top: 30px;
+          font-size: 16px;
+        }
+
+        img {
+          height: 200px;
+          max-width: 100%;
+        }
+      }
     }
   }
 }

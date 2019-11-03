@@ -66,9 +66,6 @@
 
       input {
         position: absolute;
-      }
-
-      input {
         top: 0;
         left: 0;
         font-weight: lighter;
@@ -92,6 +89,42 @@
 
       img {
         height: 100%;
+      }
+
+      .btn-group {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+
+        button {
+          margin-top: 25px;
+          width: 100px;
+          background-color: var(--primary);
+          color: white;
+          padding: 10px;
+          font-size: 16px;
+          border: none;
+          border-radius: 2.5px;
+          transition: all 0.3s ease 0s;
+          box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+          outline: none;
+          cursor: pointer;
+
+          &:nth-of-type(2) {
+            margin: 25px 10px 0;
+          }
+
+          &:hover {
+            background-color: var(--secondary);
+            color: #fff;
+            transform: translateY(-2.5px);
+            backface-visibility: hidden;
+          }
+        }
+
+        .btn-remove {
+          background-color: #c70d3a;
+        }
       }
     }
   }

@@ -24,7 +24,7 @@ const Navbar = () => {
           <button>Portofolio</button>
         </Link>
         <Link to="/request">
-          <button className="request-btn">Request</button>
+          <button>Request</button>
         </Link>
       </div>
     </nav>

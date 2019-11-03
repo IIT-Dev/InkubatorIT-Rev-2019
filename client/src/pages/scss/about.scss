@@ -1,0 +1,126 @@
+.about {
+  min-height: 100vh;
+  padding-top: 60px;
+
+  .section {
+    padding: 50px 150px;
+
+    h1 {
+      font-size: 36px;
+      cursor: pointer;
+      color: var(--tertiary);
+      margin-bottom: 20px;
+
+      span {
+        background-image: linear-gradient(
+          0deg,
+          var(--primary) 17.5px,
+          var(--primary) 17.5px,
+          transparent 17.5px,
+          transparent 100%
+        );
+      }
+    }
+
+    .desc {
+      line-height: 1.5;
+      letter-spacing: 1.5px;
+    }
+
+    .vision,
+    .mission {
+      line-height: 1.5;
+      letter-spacing: 1.5px;
+      margin-bottom: 25px;
+
+      h2 {
+        font-size: 32px;
+      }
+    }
+
+    .mission {
+      li {
+        list-style-position: inside;
+      }
+    }
+
+    .people {
+      height: 400px;
+      position: relative;
+      text-align: right;
+      margin-top: 50px;
+
+      h4,
+      p {
+        position: absolute;
+      }
+
+      h4 {
+        top: 0;
+        font-size: 28px;
+        font-weight: 400;
+      }
+
+      p {
+        top: 40px;
+        font-size: 20px;
+        font-weight: lighter;
+      }
+
+      img {
+        height: 100%;
+      }
+    }
+
+    .contact {
+      line-height: 1.5;
+      letter-spacing: 1.5px;
+      margin-bottom: 75px;
+
+      div {
+        margin-bottom: 10px;
+      }
+
+      .title {
+        font-size: 24px;
+      }
+
+      .link {
+        text-decoration: none;
+        background-color: var(--primary);
+        padding: 2.5px 5px;
+        border-radius: 2.5px;
+        color: white;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .about {
+    .section {
+      padding: 50px;
+
+      .people {
+        padding-top: 75px;
+        height: unset;
+
+        h4 {
+          font-size: 20px;
+        }
+
+        p {
+          top: 30px;
+          font-size: 16px;
+        }
+
+        img {
+          height: 200px;
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}

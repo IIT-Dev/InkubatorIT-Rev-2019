@@ -1,0 +1,78 @@
+.portofolio {
+  min-height: 100vh;
+  width: 100%;
+  color: var(--tertiary);
+
+  padding-top: 60px;
+
+  h1 {
+    font-size: 36px;
+    cursor: pointer;
+
+    span {
+      background-image: linear-gradient(
+        0deg,
+        var(--primary) 17.5px,
+        var(--primary) 17.5px,
+        transparent 17.5px,
+        transparent 100%
+      );
+    }
+  }
+
+  .section {
+    padding: 50px 150px;
+
+    h2 {
+      font-size: 30px;
+      margin-bottom: 25px;
+    }
+
+    button {
+      background-color: var(--primary);
+      color: white;
+      height: 50px;
+      width: 200px;
+      padding: 10px;
+      font-size: 18px;
+      border: none;
+      border-radius: 2.5px;
+      transition: all 0.25s ease 0s;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+      outline: none;
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--secondary);
+        color: #fff;
+        transform: translateY(-5px);
+        backface-visibility: hidden;
+      }
+
+      &:active {
+        transform: translateY(5px);
+        background-color: var(--primary);
+      }
+    }
+
+    &.projects {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    &.offer {
+      margin-bottom: 50px;
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .portofolio {
+    .section {
+      padding: 40px 50px 50px;
+    }
+  }
+}

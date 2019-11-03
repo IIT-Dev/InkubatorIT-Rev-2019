@@ -1,0 +1,82 @@
+.project {
+  border: 5px solid var(--primary);
+  border-radius: 5px;
+  cursor: pointer;
+  width: 40%;
+  margin-bottom: 50px;
+  position: relative;
+
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
+    h3 {
+      font-size: 24px;
+      padding-right: 5px;
+    }
+
+    div {
+      .icon {
+        color: var(--tertiary);
+      }
+    }
+  }
+
+  .image {
+    display: flex;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .buttons {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+
+    display: flex;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 2.5px solid var(--primary);
+  }
+
+  .edit-btn {
+    width: 50px;
+    height: 50px;
+
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+    background-color: white;
+    font-size: 1.5em;
+    color: var(--primary);
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .project {
+    width: 100%;
+
+    .title {
+      h3 {
+        font-size: 20px;
+      }
+
+      div {
+        .icon {
+          font-size: 1.5em;
+        }
+      }
+    }
+
+    .edit-btn {
+      font-size: 1em;
+      width: 40px;
+      height: 40px;
+    }
+  }
+}

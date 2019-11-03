@@ -1,0 +1,155 @@
+.request {
+  min-height: 100vh;
+  width: 100%;
+  padding-top: 60px;
+  color: var(--tertiary);
+
+  .title {
+    padding: 50px 150px;
+    margin-bottom: 10vh;
+
+    span {
+      font-size: 36px;
+      cursor: pointer;
+      font-weight: bold;
+
+      background-image: linear-gradient(
+        0deg,
+        var(--primary) 17.5px,
+        var(--primary) 17.5px,
+        transparent 17.5px,
+        transparent 100%
+      );
+    }
+
+    h3 {
+      font-size: 20px;
+      margin: 25px 0;
+    }
+  }
+
+  .question {
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
+    margin: auto;
+    margin-bottom: 25vh;
+
+    label {
+      font-size: 20px;
+    }
+
+    input,
+    textarea {
+      border: none;
+      outline: none;
+      margin-top: 15px;
+      padding-bottom: 5px;
+    }
+
+    input {
+      height: 36px;
+      font-size: 36px;
+    }
+
+    textarea {
+      font-size: 30px;
+    }
+
+    .options.multiline {
+      display: flex;
+      flex-direction: column;
+
+      button {
+        width: 100%;
+      }
+    }
+
+    button {
+      margin-top: 25px;
+      width: 100px;
+      background-color: var(--primary);
+      color: white;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 2.5px;
+      transition: all 0.5s ease 0s;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+      outline: none;
+      cursor: pointer;
+      margin-right: 10px;
+
+      &:hover {
+        background-color: var(--secondary);
+        color: #fff;
+      }
+    }
+
+    span {
+      .enter {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .submit-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    max-width: 50%;
+    margin: auto;
+    margin-bottom: 25vh;
+
+    button {
+      width: 200px;
+      height: 50px;
+      background-color: var(--primary);
+      color: white;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 2.5px;
+      transition: all 0.5s ease 0s;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+      outline: none;
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--secondary);
+        color: #fff;
+      }
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .request {
+    .title {
+      padding: 50px 0;
+      max-width: 80%;
+      margin: 0 auto;
+      margin-bottom: 5vh;
+    }
+
+    .question {
+      max-width: 80%;
+
+      input {
+        font-size: 26px;
+      }
+
+      textarea {
+        font-size: 26px;
+      }
+    }
+
+    .submit-btn {
+      max-width: 80%;
+
+      button {
+        width: 100%;
+      }
+    }
+  }
+}

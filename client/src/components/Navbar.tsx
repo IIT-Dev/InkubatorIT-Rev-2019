@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'gatsby';
 
 import './scss/Navbar.scss';
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <nav className="navbar">
       <Link to="/" className="logo">
@@ -27,6 +29,15 @@ const Navbar = () => {
           <button>Request</button>
         </Link>
       </div>
+      <button
+        className={`hamburger hamburger--spin ${isMenuOpen && 'is-active'}`}
+        type="button"
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+      >
+        <span className="hamburger-box">
+          <span className="hamburger-inner"></span>
+        </span>
+      </button>
     </nav>
   );
 };

@@ -40,17 +40,17 @@ const Project = props => {
     }
   };
 
-  const renderEditButton = () => {
+  const renderAdminButton = () => {
     if (!admin) return;
 
     return (
       <div className="buttons">
-        <button className="edit-btn" data-tip="Edit portofolio" data-for="portofolio-edit">
-          <FontAwesomeIcon icon={faEdit} />
+        <button className="btn edit-btn" data-tip="Sunting portofolio" data-for="portofolio-edit">
+          <FontAwesomeIcon icon={faEdit} color="var(--secondary)" />
         </button>
         <ReactTooltip place="top" type="dark" effect="solid" id="portofolio-edit" />
-        <button className="edit-btn" data-tip="Hapus portofolio" data-for="portofolio-remove">
-          <FontAwesomeIcon icon={faTrash} />
+        <button className="btn remove-btn" data-tip="Hapus portofolio" data-for="portofolio-remove">
+          <FontAwesomeIcon icon={faTrash} color="var(--quartenary)" />
         </button>
         <ReactTooltip place="top" type="dark" effect="solid" id="portofolio-remove" />
       </div>
@@ -68,7 +68,7 @@ const Project = props => {
       <div className="image">
         <img src={url} alt={name} />
       </div>
-      {renderEditButton()}
+      {renderAdminButton()}
     </div>
   );
 };

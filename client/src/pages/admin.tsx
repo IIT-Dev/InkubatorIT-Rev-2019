@@ -10,7 +10,6 @@ import './scss/admin.scss';
 
 import SEO from '../components/seo';
 import Footer from '../components/Footer';
-
 import Project from '../components/Project';
 
 import { dummyProjects } from '../data/portofolio';

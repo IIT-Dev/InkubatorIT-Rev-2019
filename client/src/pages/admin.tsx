@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'gatsby';
 import ReactTooltip from 'react-tooltip';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
@@ -13,6 +12,7 @@ import Footer from '../components/Footer';
 import Project from '../components/Project';
 
 import { dummyProjects } from '../data/portofolio';
+import Navbar from '../components/Navbar';
 
 const Alert = withReactContent(Swal);
 
@@ -20,23 +20,16 @@ const AdminNavbar = props => {
   const { setMode } = props;
 
   return (
-    <nav className="navbar">
-      <Link to="/" className="logo">
-        <img src={require('../images/iit-logo-cropped.png')} alt="IIT Logo" />
-        <div>
-          <p className="title">Inkubator IT</p>
-          <p className="subtitle">your IT-based solution</p>
-        </div>
-      </Link>
-      <div className="buttons">
-        <button onClick={() => setMode('portofolio')}>
-          <FontAwesomeIcon icon={faLaptop} /> &nbsp; Manage Portfolio
-        </button>
-        <button onClick={() => setMode('people')}>
-          <FontAwesomeIcon icon={faUserTie} /> &nbsp; Manage People
-        </button>
-      </div>
-    </nav>
+    <Navbar>
+      <button className="manage-btn" onClick={() => setMode('portofolio')}>
+        <FontAwesomeIcon icon={faLaptop} />
+        <span>Manage Portofolio</span>
+      </button>
+      <button className="manage-btn" onClick={() => setMode('people')}>
+        <FontAwesomeIcon icon={faUserTie} />
+        <span>Manage People</span>
+      </button>
+    </Navbar>
   );
 };
 

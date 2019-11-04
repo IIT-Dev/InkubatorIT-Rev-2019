@@ -3,7 +3,8 @@ import { Link } from 'gatsby';
 
 import './scss/Navbar.scss';
 
-const Navbar = () => {
+const Navbar = props => {
+  const { children } = props;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -15,23 +16,10 @@ const Navbar = () => {
           <p className="subtitle">your IT-based solution</p>
         </div>
       </Link>
-      <div className={`buttons ${isMenuOpen ? 'is-active' : ''}`}>
-        <Link to="/">
-          <button>Home</button>
-        </Link>
-        <Link to="/about">
-          <button>About</button>
-        </Link>
-        <Link to="/portofolio">
-          <button>Portofolio</button>
-        </Link>
-        <Link to="/request">
-          <button>Request</button>
-        </Link>
-      </div>
+      <div className={`buttons ${isMenuOpen ? 'is-active' : ''}`}>{children}</div>
       <button
-        className={`hamburger hamburger--spin ${isMenuOpen ? 'is-active' : ''}`}
         type="button"
+        className={`hamburger hamburger--spin ${isMenuOpen ? 'is-active' : ''}`}
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
         <span className="hamburger-box">
@@ -41,5 +29,22 @@ const Navbar = () => {
     </nav>
   );
 };
+
+export const VisitorNavbar = () => (
+  <Navbar>
+    <Link to="/">
+      <button>Home</button>
+    </Link>
+    <Link to="/about">
+      <button>About</button>
+    </Link>
+    <Link to="/portofolio">
+      <button>Portofolio</button>
+    </Link>
+    <Link to="/request">
+      <button>Request</button>
+    </Link>
+  </Navbar>
+);
 
 export default Navbar;

@@ -4,8 +4,12 @@
   padding-top: 60px;
 
   .navbar {
-    button {
+    .manage-btn {
       width: 200px;
+
+      span {
+        margin-left: 10px;
+      }
     }
   }
 
@@ -120,10 +124,10 @@
             transform: translateY(-2.5px);
             backface-visibility: hidden;
           }
-        }
 
-        .btn-remove {
-          background-color: var(--quartenary);
+          &.btn-remove {
+            background-color: var(--quartenary);
+          }
         }
       }
     }
@@ -189,6 +193,26 @@
 
 @media (min-width: 320px) and (max-width: 480px) {
   .admin {
+    .navbar {
+      button.manage-btn {
+        display: flex;
+        height: unset;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 0;
+
+        svg {
+          font-size: 0.75em;
+        }
+
+        span {
+          font-size: 24px;
+        }
+      }
+    }
+
     h1 {
       padding: 40px 50px 50px;
     }

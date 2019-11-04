@@ -108,6 +108,7 @@ export const questions = [
 ];
 
 export const notices = [
-  'Pertimbangkan deadline & biaya dengan kompleksitas proyek. Proyek yang kami prioritaskan adalah proyek dengan deadline & biaya yang sesuai dengan kompleksitas proyek',
+  'Pertimbangkan deadline & biaya dengan kompleksitas proyek.',
+  'Proyek yang kami prioritaskan adalah proyek dengan deadline & biaya yang sesuai dengan kompleksitas proyek',
   'Proyek yang sudah memiliki rancangan tampilan & desain akan dapat diproses dengan lebih cepat.',
 ];

@@ -11,6 +11,7 @@ const Login = () => {
       <SEO title="Login" />
       <section className="login">
         <form>
+          <h4>Login</h4>
           <div className="field">
             <input type="text" placeholder="username" autoFocus />
           </div>

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'gatsby';
 import Typed from 'typed.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faFileAlt } from '@fortawesome/free-solid-svg-icons';
+import { faFileAlt } from '@fortawesome/free-solid-svg-icons';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 
 import 'react-vertical-timeline-component/style.min.css';
@@ -39,7 +39,6 @@ const IndexPage = () => {
       startDelay: 2000,
       backDelay: 1000,
       loop: true,
-      smartBackspace: true, // Default value
     });
 
     return () => typed.destroy();

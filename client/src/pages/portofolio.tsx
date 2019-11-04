@@ -33,7 +33,7 @@ const Portfolio = () => {
   const [data, setData] = useState(dummyProjects);
 
   useEffect(() => {
-    if (filters.length === 0) setData(dummyProjects);
+    if (!filters || filters.length === 0) setData(dummyProjects);
     else setData(dummyProjects.filter(project => filters.map(filter => filter.value).includes(project.type)));
   }, [filters]);
 

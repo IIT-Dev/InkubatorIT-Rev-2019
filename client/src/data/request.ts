@@ -45,6 +45,7 @@ export const questions = [
     id: 'type',
     type: 'radio',
     options: ['Website', 'Aplikasi Android', 'Aplikasi iOS', 'Game', 'Prototype', 'Mockup'],
+    hasCustomInput: true,
   },
   {
     label: 'Tujuan pembuatan proyek',
@@ -58,6 +59,7 @@ export const questions = [
       'Memenuhi keperluan perusahaan',
       'Memenuhi keperluan acara, misalnya lomba',
     ],
+    hasCustomInput: true,
   },
   {
     label: 'Deskripsi proyek',
@@ -94,6 +96,7 @@ export const questions = [
       'File Gambar Digital (Photoshop, Ai, Sketch, dsb.)',
       'Design manual di kertas',
     ],
+    hasCustomInput: true,
   },
   {
     label: 'Catatan untuk proyek ini',

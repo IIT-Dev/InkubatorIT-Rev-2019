@@ -14,7 +14,7 @@ import { notices, questions } from '../data/request';
 const Alert = withReactContent(Swal);
 
 const InputField = props => {
-  const { label, id, type, options } = props;
+  const { label, id, type, options, hasCustomInput } = props;
 
   const getField = () => {
     switch (type) {
@@ -50,6 +50,16 @@ const InputField = props => {
             {options.map((option, index) => (
               <button key={index}>{option}</button>
             ))}
+            {hasCustomInput && (
+              <input
+                type="text"
+                className="custom-input"
+                id={id}
+                name={id}
+                placeholder="Jawaban lain..."
+                autoComplete="off"
+              />
+            )}
           </div>
         );
       }

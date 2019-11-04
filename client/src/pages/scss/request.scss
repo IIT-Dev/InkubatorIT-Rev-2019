@@ -56,12 +56,19 @@
       font-size: 30px;
     }
 
-    .options.multiline {
-      display: flex;
-      flex-direction: column;
+    .options {
+      &.multiline {
+        display: flex;
+        flex-direction: column;
 
-      button {
-        width: 100%;
+        button {
+          width: 100%;
+        }
+      }
+
+      .custom-input {
+        margin-top: 25px;
+        font-size: 20px;
       }
     }
 

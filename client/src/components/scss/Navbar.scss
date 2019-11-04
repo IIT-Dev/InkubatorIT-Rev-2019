@@ -163,6 +163,28 @@
   .navbar {
     .buttons {
       display: none;
+
+      &.is-active {
+        position: fixed;
+        // top: 57.5px;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: var(--primary);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        button {
+          font-size: 40px;
+          width: 250px;
+          margin: 25px 0;
+          font-style: italic;
+        }
+      }
     }
 
     .hamburger {

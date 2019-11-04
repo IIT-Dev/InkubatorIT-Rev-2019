@@ -15,7 +15,7 @@ const Navbar = () => {
           <p className="subtitle">your IT-based solution</p>
         </div>
       </Link>
-      <div className="buttons">
+      <div className={`buttons ${isMenuOpen ? 'is-active' : ''}`}>
         <Link to="/">
           <button>Home</button>
         </Link>
@@ -30,7 +30,7 @@ const Navbar = () => {
         </Link>
       </div>
       <button
-        className={`hamburger hamburger--spin ${isMenuOpen && 'is-active'}`}
+        className={`hamburger hamburger--spin ${isMenuOpen ? 'is-active' : ''}`}
         type="button"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >

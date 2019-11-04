@@ -1,16 +1,31 @@
 import React from 'react';
+import { Link } from 'gatsby';
 
 import './scss/portofolio.scss';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import { Link } from 'gatsby';
 import Project from '../components/Project';
 
 const dummyProjects = [
-  { name: 'Aplikasi Web', url: 'https://via.placeholder.com/750x500', type: 'web' },
-  { name: 'Aplikasi Mobile', url: 'https://via.placeholder.com/750x500', type: 'mobile' },
-  { name: 'Aplikasi Desktop', url: 'https://via.placeholder.com/750x500', type: 'desktop' },
+  {
+    name: 'Aplikasi Web',
+    url: 'https://via.placeholder.com/750x500',
+    type: 'web',
+    description: 'Aplikasi ini dapat dijalankan di web',
+  },
+  {
+    name: 'Aplikasi Mobile',
+    url: 'https://via.placeholder.com/750x500',
+    type: 'mobile',
+    description: 'Aplikasi ini dapat dijalankan di mobile',
+  },
+  {
+    name: 'Aplikasi Desktop',
+    url: 'https://via.placeholder.com/750x500',
+    type: 'desktop',
+    description: 'Aplikasi ini dapat dijalankan di desktop',
+  },
 ];
 
 const Portfolio = () => {

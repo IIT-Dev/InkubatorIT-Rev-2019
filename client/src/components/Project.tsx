@@ -3,11 +3,31 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChrome } from '@fortawesome/free-brands-svg-icons';
 import { faDesktop, faMobileAlt, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import ReactTooltip from 'react-tooltip';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 import './scss/Project.scss';
 
+const Alert = withReactContent(Swal);
+
 const Project = props => {
-  const { name, type, url, admin } = props;
+  const { name, type, url, description, admin } = props;
+
+  const actionOpenAlert = () => {
+    Alert.fire({
+      title: <p>{name}</p>,
+      html: (
+        <div className="project-modal">
+          <p>{description}</p>
+          <button>{type.toUpperCase()}</button>
+          <div className="img">
+            <img src={url} alt={name} />
+          </div>
+        </div>
+      ),
+      confirmButtonColor: 'var(--tertiary)',
+    });
+  };
 
   const renderIcon = type => {
     switch (type) {
@@ -38,7 +58,7 @@ const Project = props => {
   };
 
   return (
-    <div className="project">
+    <div className="project" onClick={actionOpenAlert}>
       <div className="title">
         <h3>{name}</h3>
         <div>

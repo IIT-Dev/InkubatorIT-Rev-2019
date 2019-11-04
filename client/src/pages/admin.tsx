@@ -13,6 +13,8 @@ import Footer from '../components/Footer';
 
 import Project from '../components/Project';
 
+import { dummyProjects } from '../data/portofolio';
+
 const Alert = withReactContent(Swal);
 
 const AdminNavbar = props => {
@@ -40,12 +42,6 @@ const AdminNavbar = props => {
 };
 
 const PortofolioManagement = () => {
-  const dummyProjects = [
-    { name: 'Aplikasi Web', url: 'https://via.placeholder.com/750x500', type: 'web' },
-    { name: 'Aplikasi Mobile', url: 'https://via.placeholder.com/750x500', type: 'mobile' },
-    { name: 'Aplikasi Desktop', url: 'https://via.placeholder.com/750x500', type: 'desktop' },
-  ];
-
   const actionOpenAddPortofolioAlert = () => {
     Alert.fire({
       title: <p>Tambah Portofolio</p>,

@@ -1,19 +1,12 @@
 import React from 'react';
+import { Link } from 'gatsby';
 
 import './scss/about.scss';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import { Link } from 'gatsby';
 
-const visi = 'Terbentuknya komunitas IT sebagai wadah aktualisasi keprofesian massa HMIF';
-
-const misi = [
-  'Membentuk dan mengembangkan komunitas berbasis keilmuan informatika',
-  'Menyalurkan dan mengembangkan potensi anggota Inkubator IT melalui pembelajaran dan aktualisasi diri',
-  'Memotivasi minat anggota untuk berinovasi sebagai bentukpengembangan keilmuan informatika',
-  'Mendukung keberjalanan HMIF dengan mendapatkan sumber dana dari pengerjaan proyek',
-];
+import { vision, misions } from '../data/about';
 
 const AboutPage = () => {
   const whatIsIIT = (
@@ -39,13 +32,13 @@ const AboutPage = () => {
       </h1>
       <div className="vision">
         <h2>Visi</h2>
-        <p>{visi}</p>
+        <p>{vision}</p>
       </div>
       <div className="mission">
         <h2>Misi</h2>
         <ul>
-          {misi.map((m, index) => (
-            <li key={index}>{m}</li>
+          {misions.map((mision, index) => (
+            <li key={index}>{mision}</li>
           ))}
         </ul>
       </div>

@@ -3,42 +3,50 @@ export const questions = [
     label: 'Siapa nama Anda?',
     id: 'name',
     type: 'text',
+    defaultValue: '',
   },
   {
     label: 'Dari instansi mana Anda berasal?',
     id: 'instance',
     type: 'text',
+    defaultValue: '',
   },
   {
     label: 'Apa Anda seorang mahasiswa?',
     id: 'isStudent',
     type: 'radio',
     options: ['Ya', 'Tidak'],
+    defaultValue: undefined,
   },
   {
     label: 'Apa jurusan Anda?',
     id: 'major',
     type: 'text',
+    defaultValue: '',
   },
   {
     label: 'Anda angkatan berapa?',
     id: 'classOf',
     type: 'text',
+    defaultValue: '',
   },
   {
     label: 'Apa alamat email Anda?',
     id: 'email',
     type: 'email',
+    defaultValue: '',
   },
   {
     label: 'Apa nomor WhatsApp Anda?',
     id: 'whatsapp',
     type: 'text',
+    defaultValue: '',
   },
   {
     label: 'Apa ID Line Anda?',
     id: 'line',
     type: 'text',
+    defaultValue: '',
   },
   {
     label: 'Jenis Proyek',
@@ -46,6 +54,7 @@ export const questions = [
     type: 'radio',
     options: ['Website', 'Aplikasi Android', 'Aplikasi iOS', 'Game', 'Prototype', 'Mockup'],
     hasCustomInput: true,
+    defaultValue: undefined,
   },
   {
     label: 'Tujuan pembuatan proyek',
@@ -60,21 +69,25 @@ export const questions = [
       'Memenuhi keperluan acara, misalnya lomba',
     ],
     hasCustomInput: true,
+    defaultValue: undefined,
   },
   {
     label: 'Deskripsi proyek',
     id: 'description',
     type: 'textarea',
+    defaultValue: '',
   },
   {
     label: 'Berapa ekspektasi biaya Anda untuk proyek ini?',
     id: 'expectation',
     type: 'text',
+    defaultValue: '',
   },
   {
     label: 'Kapan deadline Anda untuk proyek ini?',
     id: 'deadline',
     type: 'date',
+    defaultValue: '',
   },
   {
     label: 'Apa Anda sudah memiliki desain untuk proyek ini?',
@@ -86,6 +99,7 @@ export const questions = [
       'Belum dan membutuhkan bantuan berunding dengan pihak pembuat proyek',
       'Belum dan dibebaskan kepada pihak pembuat proyek',
     ],
+    defaultValue: undefined,
   },
   {
     label: 'Dalam bentuk apa desain yang Anda miliki?',
@@ -97,16 +111,19 @@ export const questions = [
       'Design manual di kertas',
     ],
     hasCustomInput: true,
+    defaultValue: undefined,
   },
   {
     label: 'Catatan untuk proyek ini',
     id: 'description',
     type: 'textarea',
+    defaultValue: '',
   },
   {
     label: 'Apa Anda memiliki pertanyaan?',
     id: 'question',
     type: 'textarea',
+    defaultValue: '',
   },
 ];
 

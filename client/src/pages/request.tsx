@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import MaskedInput from 'react-text-mask';
 import emailMask from 'text-mask-addons/dist/emailMask';
 import Swal from 'sweetalert2';
@@ -11,17 +11,45 @@ import SEO from '../components/seo';
 
 import { notices, questions } from '../data/request';
 
+import { initialState, reducers } from '../reducers/request';
+
 const Alert = withReactContent(Swal);
 
 const InputField = props => {
   const { label, id, type, options, hasCustomInput } = props;
 
+  const [state, dispatch] = useReducer(reducers, initialState());
+
+  const actionTextInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, id: string) => {
+    dispatch({ id, payload: event.target.value });
+  };
+
   const getField = () => {
     switch (type) {
       case 'text':
-        return <input type="text" id={id} name={id} placeholder="Ketik jawaban disini..." autoComplete="off" />;
+        return (
+          <input
+            type="text"
+            id={id}
+            name={id}
+            placeholder="Ketik jawaban disini..."
+            autoComplete="off"
+            value={state.id}
+            onChange={event => actionTextInputChange(event, id)}
+          />
+        );
       case 'textarea':
-        return <textarea id={id} name={id} placeholder="Ketik jawaban disini..." rows={5} autoComplete="off" />;
+        return (
+          <textarea
+            id={id}
+            name={id}
+            placeholder="Ketik jawaban disini..."
+            rows={5}
+            autoComplete="off"
+            value={state.id}
+            onChange={event => actionTextInputChange(event, id)}
+          />
+        );
       case 'date':
         return (
           <MaskedInput
@@ -31,6 +59,8 @@ const InputField = props => {
             name={id}
             placeholder="dd/mm/yyyy"
             autoComplete="off"
+            value={state.id}
+            onChange={event => actionTextInputChange(event, id)}
           />
         );
       case 'email':
@@ -42,6 +72,8 @@ const InputField = props => {
             name={id}
             placeholder="example@gmail.com"
             autoComplete="off"
+            value={state.id}
+            onChange={event => actionTextInputChange(event, id)}
           />
         );
       case 'radio': {

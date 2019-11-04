@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
 import Select, { Styles } from 'react-select';
 
@@ -29,7 +29,13 @@ const selectStyles: Styles = {
 };
 
 const Portfolio = () => {
-  const [filters, setFilters] = useState();
+  const [filters, setFilters] = useState([]);
+  const [data, setData] = useState(dummyProjects);
+
+  useEffect(() => {
+    if (filters.length === 0) setData(dummyProjects);
+    else setData(dummyProjects.filter(project => filters.map(filter => filter.value).includes(project.type)));
+  }, [filters]);
 
   const title = (
     <h1 className="section">
@@ -46,6 +52,7 @@ const Portfolio = () => {
           onChange={selectedOption => setFilters(selectedOption)}
           options={selectOptions}
           isMulti
+          isSearchable={false}
           className="select"
           styles={selectStyles}
         />
@@ -56,7 +63,7 @@ const Portfolio = () => {
   const projects = () => {
     return (
       <div className="section projects">
-        {dummyProjects.map((project, index) => (
+        {data.map((project, index) => (
           <Project {...project} key={index} />
         ))}
       </div>

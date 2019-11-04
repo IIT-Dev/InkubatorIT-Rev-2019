@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 import MaskedInput from 'react-text-mask';
 import emailMask from 'text-mask-addons/dist/emailMask';
 import Swal from 'sweetalert2';
@@ -11,17 +11,16 @@ import SEO from '../components/seo';
 
 import { notices, questions } from '../data/request';
 
-import { initialState, reducers } from '../reducers/request';
+import { useRequestReducer } from '../reducers/request';
 
 const Alert = withReactContent(Swal);
 
 const InputField = props => {
-  const { label, id, type, options, hasCustomInput } = props;
-
-  const [state, dispatch] = useReducer(reducers, initialState());
+  const { label, id, type, options, hasCustomInput, reducer } = props;
+  const [state, dispatch] = reducer;
 
   const actionTextInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, id: string) => {
-    dispatch({ id, payload: event.target.value });
+    dispatch({ type: id, payload: event.target.value });
   };
 
   const getField = () => {
@@ -80,7 +79,14 @@ const InputField = props => {
         return (
           <div className={`options ${options.length > 2 && 'multiline'}`}>
             {options.map((option, index) => (
-              <button key={index}>{option}</button>
+              <button
+                type="button"
+                key={index}
+                onClick={() => dispatch({ type: id, payload: option })}
+                className={`option ${state[id] === option ? 'selected' : ''}`}
+              >
+                {option}
+              </button>
             ))}
             {hasCustomInput && (
               <input
@@ -90,6 +96,7 @@ const InputField = props => {
                 name={id}
                 placeholder="Jawaban lain..."
                 autoComplete="off"
+                onChange={event => actionTextInputChange(event, id)}
               />
             )}
           </div>
@@ -121,6 +128,8 @@ const InputField = props => {
 };
 
 const Request = () => {
+  const requestReducer = useRequestReducer();
+
   const actionSubmitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -152,7 +161,7 @@ const Request = () => {
           ))}
         </div>
         {questions.map((question, index) => (
-          <InputField key={index} {...question} />
+          <InputField key={index} {...question} reducer={requestReducer} />
         ))}
         <div className="submit-btn">
           <button>SUBMIT</button>

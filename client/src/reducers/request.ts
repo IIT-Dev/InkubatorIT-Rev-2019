@@ -1,11 +1,18 @@
+import { useReducer } from 'react';
+
 import { questions } from '../data/request';
 
-export const reducers = (state, action) => {
-  if (action) {
-    return { ...state, [action.id]: action.payload };
-  }
+interface IAction {
+  type: string;
+  payload: any;
+}
 
-  return state;
+interface IState {
+  [key: string]: any;
+}
+
+export const reducers = (state: IState, action: IAction) => {
+  return { ...state, [action.type]: action.payload };
 };
 
 export const initialState = () => {
@@ -17,3 +24,5 @@ export const initialState = () => {
 
   return state;
 };
+
+export const useRequestReducer = () => useReducer(reducers, initialState());

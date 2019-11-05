@@ -13,11 +13,14 @@
   justify-content: space-between;
   align-items: center;
 
+  & a {
+    text-decoration: none;
+  }
+
   .logo {
     height: 100%;
     padding-left: 25px;
     cursor: pointer;
-    text-decoration: none;
 
     display: flex;
     justify-content: space-between;
@@ -60,6 +63,14 @@
       color: white;
       outline: none;
       transition: all 0.3s;
+
+      &.manage-btn {
+        width: 200px;
+
+        span {
+          margin-left: 10px;
+        }
+      }
 
       &:hover {
         background-color: darken(#f2b531, 25%);
@@ -184,6 +195,24 @@
           margin: auto 0;
           padding: 25px 0;
           font-style: italic;
+
+          &.manage-btn {
+            display: flex;
+            height: unset;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin: 0;
+
+            svg {
+              font-size: 0.75em;
+            }
+
+            span {
+              font-size: 24px;
+            }
+          }
         }
       }
     }

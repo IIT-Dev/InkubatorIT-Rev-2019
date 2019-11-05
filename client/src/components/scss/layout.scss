@@ -11,3 +11,33 @@
   --tertiary: #263238;
   --quartenary: #c70d3a;
 }
+
+.admin {
+  min-height: 100vh;
+  width: 100%;
+  padding-top: 60px;
+
+  h1 {
+    padding: 50px 150px;
+    font-size: 36px;
+    cursor: pointer;
+
+    span {
+      background-image: linear-gradient(
+        0deg,
+        var(--primary) 17.5px,
+        var(--primary) 17.5px,
+        transparent 17.5px,
+        transparent 100%
+      );
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .admin {
+    h1 {
+      padding: 40px 50px 50px;
+    }
+  }
+}

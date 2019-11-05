@@ -8,11 +8,10 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import '../scss/admin/portofolio.scss';
 
 import { SEO } from '../../components/seo';
-import { Footer } from '../../components/Footer';
+import { AdminLayout } from '../../components/layout';
 import { Project } from '../../components/Project';
 
 import { dummyProjects } from '../../data/portofolio';
-import { AdminNavbar } from '../../components/Navbar';
 
 const Alert = withReactContent(Swal);
 
@@ -63,14 +62,10 @@ const PortofolioManagement = () => {
 
 const AdminPage = () => {
   return (
-    <>
+    <AdminLayout>
       <SEO title="Admin" />
-      <section className="admin">
-        <AdminNavbar />
-        <PortofolioManagement />
-      </section>
-      <Footer />
-    </>
+      <PortofolioManagement />
+    </AdminLayout>
   );
 };
 

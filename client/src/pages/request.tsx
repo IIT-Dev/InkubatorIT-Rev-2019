@@ -102,11 +102,64 @@ const InputField = props => {
           </div>
         );
       }
+      case 'checkbox': {
+        const checkboxClicked = option => {
+          let newState;
+
+          if (state[id] && state[id].includes(option)) {
+            newState = state[id].filter(s => s !== option);
+          } else {
+            if (!state[id]) newState = [option];
+            else newState = [...state[id], option];
+          }
+
+          dispatch({ type: id, payload: newState });
+        };
+
+        const checkboxCustomInput = value => {
+          console.log({ state, value });
+
+          if (state[id] && state[id].includes(value.slice(0, value.length - 1))) {
+            const newState = state[id].filter(s => s !== value.slice(0, value.length - 1));
+
+            dispatch({ type: id, payload: [...newState, value] });
+          } else {
+            if (!state[id]) dispatch({ type: id, payload: [value] });
+            else dispatch({ type: id, payload: [...state[id], value] });
+          }
+        };
+
+        return (
+          <div className={`options ${options.length > 2 && 'multiline'}`}>
+            {options.map((option, index) => (
+              <button
+                type="button"
+                key={index}
+                onClick={() => checkboxClicked(option)}
+                className={`option ${state[id] && state[id].includes(option) ? 'selected' : ''}`}
+              >
+                {option}
+              </button>
+            ))}
+            {hasCustomInput && (
+              <input
+                type="text"
+                className="custom-input"
+                id={id}
+                name={id}
+                placeholder="Jawaban lain..."
+                autoComplete="off"
+                onChange={event => checkboxCustomInput(event.target.value)}
+              />
+            )}
+          </div>
+        );
+      }
     }
   };
 
   const getButton = () => {
-    if (type === 'radio') return;
+    if (type === 'radio' || type === 'checkbox') return;
 
     return (
       <div>

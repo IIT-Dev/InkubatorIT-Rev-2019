@@ -57,7 +57,7 @@ export const questions = [
   {
     label: 'Jenis Proyek',
     id: 'type',
-    type: 'radio',
+    type: 'checkbox',
     options: ['Website', 'Aplikasi Android', 'Aplikasi iOS', 'Game', 'Prototype', 'Mockup'],
     hasCustomInput: true,
     defaultValue: undefined,
@@ -110,7 +110,7 @@ export const questions = [
   {
     label: 'Dalam bentuk apa desain yang Anda miliki?',
     id: 'design',
-    type: 'radio',
+    type: 'checkbox',
     options: [
       'Mockup Digital (marvelapp, balsamiq, dsb.)',
       'File Gambar Digital (Photoshop, Ai, Sketch, dsb.)',

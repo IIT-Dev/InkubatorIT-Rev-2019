@@ -4,9 +4,9 @@ import Select, { Styles } from 'react-select';
 
 import './scss/portofolio.scss';
 
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-import Project from '../components/Project';
+import { Layout } from '../components/layout';
+import { SEO } from '../components/seo';
+import { Project } from '../components/Project';
 
 import { selectOptions, dummyProjects } from '../data/portofolio';
 

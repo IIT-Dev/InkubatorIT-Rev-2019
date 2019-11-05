@@ -9,8 +9,8 @@ import 'react-vertical-timeline-component/style.min.css';
 
 import './scss/index.scss';
 
-import Layout from '../components/layout';
-import SEO from '../components/seo';
+import { Layout } from '../components/layout';
+import { SEO } from '../components/seo';
 
 import { timelines } from '../data/home';
 

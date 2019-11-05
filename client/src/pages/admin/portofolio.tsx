@@ -7,9 +7,9 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import '../scss/admin/portofolio.scss';
 
-import SEO from '../../components/seo';
-import Footer from '../../components/Footer';
-import Project from '../../components/Project';
+import { SEO } from '../../components/seo';
+import { Footer } from '../../components/Footer';
+import { Project } from '../../components/Project';
 
 import { dummyProjects } from '../../data/portofolio';
 import { AdminNavbar } from '../../components/Navbar';

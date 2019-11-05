@@ -6,8 +6,8 @@ import withReactContent from 'sweetalert2-react-content';
 
 import './scss/request.scss';
 
-import Layout from '../components/layout';
-import SEO from '../components/seo';
+import { Layout } from '../components/layout';
+import { SEO } from '../components/seo';
 
 import { notices, questions } from '../data/request';
 

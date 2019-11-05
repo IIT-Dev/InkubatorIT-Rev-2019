@@ -2,8 +2,8 @@ import React from 'react';
 
 import '../scss/admin/people.scss';
 
-import SEO from '../../components/seo';
-import Footer from '../../components/Footer';
+import { SEO } from '../../components/seo';
+import { Footer } from '../../components/Footer';
 import { AdminNavbar } from '../../components/Navbar';
 
 const PeopleManagement = () => {

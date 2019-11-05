@@ -5,7 +5,7 @@ import { faTwitter, faInstagram, faLine, faFacebookF } from '@fortawesome/free-b
 
 import './scss/Footer.scss';
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer className="footer">
       <div className="text">
@@ -33,5 +33,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export default Footer;

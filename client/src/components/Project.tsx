@@ -10,7 +10,7 @@ import './scss/Project.scss';
 
 const Alert = withReactContent(Swal);
 
-const Project = props => {
+export const Project = props => {
   const { name, type, url, description, admin } = props;
 
   const actionOpenAlert = () => {
@@ -72,5 +72,3 @@ const Project = props => {
     </div>
   );
 };
-
-export default Project;

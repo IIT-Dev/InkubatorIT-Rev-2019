@@ -20,8 +20,19 @@ const InputField = props => {
   const { label, id, type, options, condition, hasCustomInput, reducer } = props;
   const [state, dispatch] = reducer;
 
-  const actionTextInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, id: string) => {
+  const actionTextInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     dispatch({ type: id, payload: event.target.value });
+  };
+
+  const actionScrollToNextInput = () => {
+    const currentQuestionIndex = questions.findIndex(question => question.id === id);
+    const nextQuestionKey = questions[currentQuestionIndex + 1].id;
+
+    scroller.scrollTo(nextQuestionKey, {
+      duration: 1000,
+      smooth: true,
+      offset: -(window.innerHeight * 0.3),
+    });
   };
 
   const getField = () => {
@@ -35,7 +46,8 @@ const InputField = props => {
             placeholder="Ketik jawaban disini..."
             autoComplete="off"
             value={state.id}
-            onChange={event => actionTextInputChange(event, id)}
+            onChange={event => actionTextInputChange(event)}
+            onKeyDown={event => event.key === 'Enter' && actionScrollToNextInput()}
           />
         );
       case 'textarea':
@@ -47,7 +59,8 @@ const InputField = props => {
             rows={5}
             autoComplete="off"
             value={state.id}
-            onChange={event => actionTextInputChange(event, id)}
+            onChange={event => actionTextInputChange(event)}
+            onKeyDown={event => event.key === 'Enter' && actionScrollToNextInput()}
           />
         );
       case 'date':
@@ -60,7 +73,8 @@ const InputField = props => {
             placeholder="dd/mm/yyyy"
             autoComplete="off"
             value={state.id}
-            onChange={event => actionTextInputChange(event, id)}
+            onChange={event => actionTextInputChange(event)}
+            onKeyDown={event => event.key === 'Enter' && actionScrollToNextInput()}
           />
         );
       case 'email':
@@ -73,7 +87,8 @@ const InputField = props => {
             placeholder="example@gmail.com"
             autoComplete="off"
             value={state.id}
-            onChange={event => actionTextInputChange(event, id)}
+            onChange={event => actionTextInputChange(event)}
+            onKeyDown={event => event.key === 'Enter' && actionScrollToNextInput()}
           />
         );
       case 'radio': {
@@ -98,7 +113,7 @@ const InputField = props => {
                 placeholder="Jawaban lain..."
                 autoComplete="off"
                 value={options.includes(state[id]) ? '' : state[id]}
-                onChange={event => actionTextInputChange(event, id)}
+                onChange={event => actionTextInputChange(event)}
               />
             )}
           </div>
@@ -160,23 +175,12 @@ const InputField = props => {
     }
   };
 
-  const scrollToNextInput = () => {
-    const currentQuestionIndex = questions.findIndex(question => question.id === id);
-    const nextQuestionKey = questions[currentQuestionIndex + 1].id;
-
-    scroller.scrollTo(nextQuestionKey, {
-      duration: 1000,
-      smooth: true,
-      offset: -(window.innerHeight * 0.3),
-    });
-  };
-
   const getButton = () => {
     if (type === 'radio' && hasCustomInput !== true) return;
 
     return (
       <div>
-        <button type="button" onClick={scrollToNextInput}>
+        <button type="button" onClick={actionScrollToNextInput}>
           OK
         </button>
         <span>
@@ -202,9 +206,7 @@ const InputField = props => {
 const Request = () => {
   const requestReducer = useRequestReducer();
 
-  const actionSubmitForm = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
+  const actionSubmitForm = () => {
     const isSuccess = Math.random() > 0.5;
     if (isSuccess) {
       Alert.fire({
@@ -225,7 +227,7 @@ const Request = () => {
   return (
     <Layout>
       <SEO title="Request a Project" />
-      <form className="request" autoComplete="off" autoCorrect="off" onSubmit={actionSubmitForm}>
+      <div className="request">
         <div className="title">
           <span>Formulir Pengajuan Proyek</span>
           {notices.map((notice, index) => (
@@ -236,9 +238,9 @@ const Request = () => {
           <InputField key={index} {...question} reducer={requestReducer} />
         ))}
         <div className="submit-btn">
-          <button>SUBMIT</button>
+          <button onClick={actionSubmitForm}>SUBMIT</button>
         </div>
-      </form>
+      </div>
     </Layout>
   );
 };

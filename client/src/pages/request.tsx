@@ -96,6 +96,7 @@ const InputField = props => {
                 name={id}
                 placeholder="Jawaban lain..."
                 autoComplete="off"
+                value={options.includes(state[id]) ? '' : state[id]}
                 onChange={event => actionTextInputChange(event, id)}
               />
             )}
@@ -159,7 +160,7 @@ const InputField = props => {
   };
 
   const getButton = () => {
-    if (type === 'radio' || type === 'checkbox') return;
+    if (type === 'radio' && hasCustomInput !== true) return;
 
     return (
       <div>

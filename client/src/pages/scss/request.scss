@@ -93,6 +93,11 @@
           color: #fff;
         }
 
+        &:focus {
+          background-color: transparent;
+          color: var(--primary);
+        }
+
         &.selected {
           background-color: var(--primary);
           color: #fff;

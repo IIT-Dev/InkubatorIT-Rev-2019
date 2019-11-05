@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLaptop, faUserTie } from '@fortawesome/free-solid-svg-icons';
 
 import './scss/Navbar.scss';
 
-const Navbar = props => {
+export const Navbar = props => {
   const { children } = props;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -47,4 +49,17 @@ export const VisitorNavbar = () => (
   </Navbar>
 );
 
-export default Navbar;
+export const AdminNavbar = () => {
+  return (
+    <Navbar>
+      <button className="manage-btn">
+        <FontAwesomeIcon icon={faLaptop} />
+        <span>Manage Portofolio</span>
+      </button>
+      <button className="manage-btn">
+        <FontAwesomeIcon icon={faUserTie} />
+        <span>Manage People</span>
+      </button>
+    </Navbar>
+  );
+};

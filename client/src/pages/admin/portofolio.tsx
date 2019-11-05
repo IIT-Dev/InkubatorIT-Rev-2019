@@ -3,7 +3,7 @@ import ReactTooltip from 'react-tooltip';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLaptop, faUserTie, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import '../scss/admin/portofolio.scss';
 
@@ -12,26 +12,9 @@ import Footer from '../../components/Footer';
 import Project from '../../components/Project';
 
 import { dummyProjects } from '../../data/portofolio';
-import Navbar from '../../components/Navbar';
+import { AdminNavbar } from '../../components/Navbar';
 
 const Alert = withReactContent(Swal);
-
-const AdminNavbar = props => {
-  const { setMode } = props;
-
-  return (
-    <Navbar>
-      <button className="manage-btn" onClick={() => setMode('portofolio')}>
-        <FontAwesomeIcon icon={faLaptop} />
-        <span>Manage Portofolio</span>
-      </button>
-      <button className="manage-btn" onClick={() => setMode('people')}>
-        <FontAwesomeIcon icon={faUserTie} />
-        <span>Manage People</span>
-      </button>
-    </Navbar>
-  );
-};
 
 const PortofolioManagement = () => {
   const actionOpenAddPortofolioAlert = () => {

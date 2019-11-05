@@ -1,29 +1,10 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLaptop, faUserTie, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import '../scss/admin/people.scss';
 
 import SEO from '../../components/seo';
 import Footer from '../../components/Footer';
-import Navbar from '../../components/Navbar';
-
-const AdminNavbar = props => {
-  const { setMode } = props;
-
-  return (
-    <Navbar>
-      <button className="manage-btn">
-        <FontAwesomeIcon icon={faLaptop} />
-        <span>Manage Portofolio</span>
-      </button>
-      <button className="manage-btn">
-        <FontAwesomeIcon icon={faUserTie} />
-        <span>Manage People</span>
-      </button>
-    </Navbar>
-  );
-};
+import { AdminNavbar } from '../../components/Navbar';
 
 const PeopleManagement = () => {
   return (

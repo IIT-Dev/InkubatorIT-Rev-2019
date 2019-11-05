@@ -16,7 +16,7 @@ import { useRequestReducer } from '../reducers/request';
 const Alert = withReactContent(Swal);
 
 const InputField = props => {
-  const { label, id, type, options, hasCustomInput, reducer } = props;
+  const { label, id, type, options, condition, hasCustomInput, reducer } = props;
   const [state, dispatch] = reducer;
 
   const actionTextInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, id: string) => {
@@ -117,6 +117,8 @@ const InputField = props => {
       </div>
     );
   };
+
+  if (condition && !Object.entries(condition).every(cond => state[cond[0]] === cond[1])) return <></>;
 
   return (
     <div className="question">

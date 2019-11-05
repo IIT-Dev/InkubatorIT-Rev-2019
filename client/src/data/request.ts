@@ -23,12 +23,18 @@ export const questions = [
     id: 'major',
     type: 'text',
     defaultValue: '',
+    condition: {
+      isStudent: 'Ya',
+    },
   },
   {
     label: 'Anda angkatan berapa?',
     id: 'classOf',
     type: 'text',
     defaultValue: '',
+    condition: {
+      isStudent: 'Ya',
+    },
   },
   {
     label: 'Apa alamat email Anda?',
@@ -112,6 +118,9 @@ export const questions = [
     ],
     hasCustomInput: true,
     defaultValue: undefined,
+    condition: {
+      isDesignExist: 'Sudah',
+    },
   },
   {
     label: 'Catatan untuk proyek ini',

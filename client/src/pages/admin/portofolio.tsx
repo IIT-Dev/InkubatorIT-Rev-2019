@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactTooltip from 'react-tooltip';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLaptop, faUserTie, faPlus } from '@fortawesome/free-solid-svg-icons';
 
-import './scss/admin.scss';
+import '../scss/admin/portofolio.scss';
 
-import SEO from '../components/seo';
-import Footer from '../components/Footer';
-import Project from '../components/Project';
+import SEO from '../../components/seo';
+import Footer from '../../components/Footer';
+import Project from '../../components/Project';
 
-import { dummyProjects } from '../data/portofolio';
-import Navbar from '../components/Navbar';
+import { dummyProjects } from '../../data/portofolio';
+import Navbar from '../../components/Navbar';
 
 const Alert = withReactContent(Swal);
 
@@ -79,14 +79,12 @@ const PortofolioManagement = () => {
 };
 
 const AdminPage = () => {
-  const [mode, setMode] = useState('people');
-
   return (
     <>
       <SEO title="Admin" />
       <section className="admin">
-        <AdminNavbar setMode={setMode} />
-        {mode === 'portofolio' && <PortofolioManagement />}
+        <AdminNavbar />
+        <PortofolioManagement />
       </section>
       <Footer />
     </>

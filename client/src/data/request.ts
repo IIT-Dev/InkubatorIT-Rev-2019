@@ -4,12 +4,14 @@ export const questions = [
     id: 'name',
     type: 'text',
     defaultValue: '',
+    isRequired: true,
   },
   {
     label: 'Dari instansi mana Anda berasal?',
     id: 'instance',
     type: 'text',
     defaultValue: '',
+    isRequired: true,
   },
   {
     label: 'Apa Anda seorang mahasiswa?',
@@ -17,6 +19,7 @@ export const questions = [
     type: 'radio',
     options: ['Ya', 'Tidak'],
     defaultValue: undefined,
+    isRequired: true,
   },
   {
     label: 'Apa jurusan Anda?',
@@ -41,12 +44,14 @@ export const questions = [
     id: 'email',
     type: 'email',
     defaultValue: '',
+    isRequired: true,
   },
   {
     label: 'Apa nomor WhatsApp Anda?',
     id: 'whatsapp',
     type: 'text',
     defaultValue: '',
+    isRequired: true,
   },
   {
     label: 'Apa ID Line Anda?',
@@ -61,6 +66,7 @@ export const questions = [
     options: ['Website', 'Aplikasi Android', 'Aplikasi iOS', 'Game', 'Prototype', 'Mockup'],
     hasCustomInput: true,
     defaultValue: undefined,
+    isRequired: true,
   },
   {
     label: 'Tujuan pembuatan proyek',
@@ -76,12 +82,14 @@ export const questions = [
     ],
     hasCustomInput: true,
     defaultValue: undefined,
+    isRequired: true,
   },
   {
     label: 'Deskripsi proyek',
     id: 'description',
     type: 'textarea',
     defaultValue: '',
+    isRequired: true,
   },
   {
     label: 'Berapa ekspektasi biaya Anda untuk proyek ini?',
@@ -106,6 +114,7 @@ export const questions = [
       'Belum dan dibebaskan kepada pihak pembuat proyek',
     ],
     defaultValue: undefined,
+    isRequired: true,
   },
   {
     label: 'Dalam bentuk apa desain yang Anda miliki?',
@@ -121,6 +130,7 @@ export const questions = [
     condition: {
       isDesignExist: 'Sudah',
     },
+    isRequired: true,
   },
   {
     label: 'Catatan untuk proyek ini',

@@ -3,6 +3,7 @@ import MaskedInput from 'react-text-mask';
 import emailMask from 'text-mask-addons/dist/emailMask';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
 
 import './scss/request.scss';
 
@@ -159,12 +160,25 @@ const InputField = props => {
     }
   };
 
+  const scrollToNextInput = () => {
+    const currentQuestionIndex = questions.findIndex(question => question.id === id);
+    const nextQuestionKey = questions[currentQuestionIndex + 1].id;
+
+    scroller.scrollTo(nextQuestionKey, {
+      duration: 1000,
+      smooth: true,
+      offset: -(window.innerHeight * 0.3),
+    });
+  };
+
   const getButton = () => {
     if (type === 'radio' && hasCustomInput !== true) return;
 
     return (
       <div>
-        <button type="button">OK</button>
+        <button type="button" onClick={scrollToNextInput}>
+          OK
+        </button>
         <span>
           atau tekan <span className="enter">ENTER</span>
         </span>
@@ -175,11 +189,13 @@ const InputField = props => {
   if (condition && !Object.entries(condition).every(cond => state[cond[0]] === cond[1])) return <></>;
 
   return (
-    <div className="question">
-      <label htmlFor={id}>{label}</label>
-      {getField()}
-      {getButton()}
-    </div>
+    <Element name={id}>
+      <div className="question">
+        <label htmlFor={id}>{label}</label>
+        {getField()}
+        {getButton()}
+      </div>
+    </Element>
   );
 };
 

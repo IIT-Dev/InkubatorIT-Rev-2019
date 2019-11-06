@@ -76,6 +76,7 @@ const InputField = props => {
             placeholder="Ketik jawaban disini..."
             autoComplete="off"
             value={state.id}
+            spellCheck={false}
             onChange={event => actionTextInputChange(event)}
             onKeyDown={event => event.key === 'Enter' && actionScrollToNextInput()}
           />
@@ -88,6 +89,7 @@ const InputField = props => {
             placeholder="Ketik jawaban disini..."
             rows={5}
             autoComplete="off"
+            spellCheck={false}
             value={state.id}
             onChange={event => actionTextInputChange(event)}
             onKeyDown={event => {
@@ -107,6 +109,7 @@ const InputField = props => {
             name={id}
             placeholder="dd/mm/yyyy"
             autoComplete="off"
+            spellCheck={false}
             value={state.id}
             onChange={event => actionTextInputChange(event)}
             onKeyDown={event => event.key === 'Enter' && actionScrollToNextInput()}
@@ -121,6 +124,7 @@ const InputField = props => {
             name={id}
             placeholder="example@gmail.com"
             autoComplete="off"
+            spellCheck={false}
             value={state.id}
             onChange={event => actionTextInputChange(event)}
             onKeyDown={event => event.key === 'Enter' && actionScrollToNextInput()}
@@ -151,6 +155,7 @@ const InputField = props => {
                 name={id}
                 placeholder="Jawaban lain..."
                 autoComplete="off"
+                spellCheck={false}
                 value={options.includes(state[id]) ? '' : state[id]}
                 onChange={event => actionTextInputChange(event)}
                 onKeyDown={event => event.key === 'Enter' && actionScrollToNextInput()}
@@ -210,6 +215,7 @@ const InputField = props => {
                 name={id}
                 placeholder="Jawaban lain..."
                 autoComplete="off"
+                spellCheck={false}
                 onChange={event => checkboxCustomInput(event.target.value)}
                 onKeyDown={event => event.key === 'Enter' && actionScrollToNextInput()}
               />

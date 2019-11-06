@@ -14,7 +14,7 @@ export const questions = [
     isRequired: true,
   },
   {
-    label: 'Apa Anda seorang mahasiswa?',
+    label: 'Apa Anda seorang mahasiswa ITB?',
     id: 'isStudent',
     type: 'radio',
     options: ['Ya', 'Tidak'],

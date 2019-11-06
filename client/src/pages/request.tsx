@@ -24,10 +24,16 @@ const InputField = props => {
     dispatch({ type: id, payload: event.target.value });
   };
 
-  const actionScrollToNextInput = () => {
-    const currentQuestionIndex = questions.findIndex(question => question.id === id);
+  const actionScrollToNextInput = (scrollerProps = {}) => {
+    const filteredQuestions = questions.filter(question => {
+      if (!question.condition) return true;
+      if (!Object.entries(question.condition).every(cond => state[cond[0]] === cond[1])) return false;
+      return true;
+    });
 
-    const nextQuestion = questions[currentQuestionIndex + 1];
+    const currentQuestionIndex = filteredQuestions.findIndex(question => question.id === id);
+
+    const nextQuestion = filteredQuestions[currentQuestionIndex + 1];
     let nextQuestionKey;
     let nextQuestionType;
 
@@ -40,13 +46,13 @@ const InputField = props => {
       nextQuestionType = nextQuestion.type;
     }
 
-    console.log({ nextQuestionKey });
     const nextQuestionElement = document.getElementById(nextQuestionKey);
 
     scroller.scrollTo(nextQuestionKey, {
       duration: 1000,
       smooth: true,
       offset: -(window.innerHeight * 0.5 - nextQuestionElement.clientHeight * 0.5),
+      ...scrollerProps,
     });
 
     if (
@@ -114,13 +120,18 @@ const InputField = props => {
           />
         );
       case 'radio': {
+        const actionRadioClicked = option => {
+          dispatch({ type: id, payload: option });
+          actionScrollToNextInput({ delay: 100 });
+        };
+
         return (
           <div className={`options ${options.length > 2 && 'multiline'}`} id={id}>
             {options.map((option, index) => (
               <button
                 type="button"
                 key={index}
-                onClick={() => dispatch({ type: id, payload: option })}
+                onClick={() => actionRadioClicked(option)}
                 className={`option ${state[id] === option ? 'selected' : ''}`}
               >
                 {option}

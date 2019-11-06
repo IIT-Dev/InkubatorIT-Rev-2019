@@ -134,7 +134,7 @@ export const questions = [
   },
   {
     label: 'Catatan untuk proyek ini',
-    id: 'description',
+    id: 'notes',
     type: 'textarea',
     defaultValue: '',
   },

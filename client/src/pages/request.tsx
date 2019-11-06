@@ -26,13 +26,33 @@ const InputField = props => {
 
   const actionScrollToNextInput = () => {
     const currentQuestionIndex = questions.findIndex(question => question.id === id);
-    const nextQuestionKey = questions[currentQuestionIndex + 1].id;
+
+    const nextQuestion = questions[currentQuestionIndex + 1];
+    let nextQuestionKey;
+    let nextQuestionType;
+
+    // It has reached last question
+    if (!nextQuestion) {
+      nextQuestionKey = 'submit-btn';
+      nextQuestionType = 'button';
+    } else {
+      nextQuestionKey = nextQuestion.id;
+      nextQuestionType = nextQuestion.type;
+    }
 
     scroller.scrollTo(nextQuestionKey, {
       duration: 1000,
       smooth: true,
       offset: -(window.innerHeight * 0.3),
     });
+
+    const nextQuestionElement = document.getElementById(nextQuestionKey);
+    if (
+      (nextQuestionElement instanceof HTMLInputElement || nextQuestionElement instanceof HTMLTextAreaElement) &&
+      (nextQuestionType !== 'radio' && nextQuestionType !== 'checkbox')
+    ) {
+      nextQuestionElement.focus();
+    }
   };
 
   const getField = () => {
@@ -237,9 +257,11 @@ const Request = () => {
         {questions.map((question, index) => (
           <InputField key={index} {...question} reducer={requestReducer} />
         ))}
-        <div className="submit-btn">
-          <button onClick={actionSubmitForm}>SUBMIT</button>
-        </div>
+        <Element name="submit-btn">
+          <div className="submit-btn" id="submit-btn">
+            <button onClick={actionSubmitForm}>SUBMIT</button>
+          </div>
+        </Element>
       </div>
     </Layout>
   );

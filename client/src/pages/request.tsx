@@ -17,7 +17,7 @@ import { useRequestReducer } from '../reducers/request';
 const Alert = withReactContent(Swal);
 
 const InputField = props => {
-  const { label, id, type, options, condition, hasCustomInput, reducer } = props;
+  const { label, id, type, options, condition, hasCustomInput, isRequired, reducer } = props;
   const [state, dispatch] = reducer;
 
   const actionTextInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -235,12 +235,18 @@ const InputField = props => {
     );
   };
 
+  const renderIsRequiredStar = () => {
+    return isRequired ? <span className="required-star">*</span> : '';
+  };
+
   if (condition && !Object.entries(condition).every(cond => state[cond[0]] === cond[1])) return <></>;
 
   return (
     <Element name={id}>
       <div className="question">
-        <label htmlFor={id}>{label}</label>
+        <label htmlFor={id}>
+          {label} {renderIsRequiredStar()}
+        </label>
         {renderField()}
         {renderButton()}
       </div>

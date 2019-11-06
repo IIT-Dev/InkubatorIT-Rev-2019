@@ -13,3 +13,7 @@ export const isMobile = function() {
   })(navigator.userAgent || navigator.vendor || (window as any).opera);
   return check;
 };
+
+export const isQuestionConditionNotFulfilled = (condition, state) => {
+  return condition && !Object.entries(condition).every(cond => state[cond[0]] === cond[1]);
+};

@@ -13,7 +13,7 @@ import { SEO } from '../components/seo';
 import { notices, questions } from '../data/request';
 
 import { useRequestReducer } from '../reducers/request';
-import { isMobile } from '../helpers/request';
+import { isMobile, isQuestionConditionNotFulfilled } from '../helpers/request';
 
 const Alert = withReactContent(Swal);
 
@@ -27,8 +27,7 @@ const InputField = props => {
 
   const actionScrollToNextInput = () => {
     const filteredQuestions = questions.filter(question => {
-      if (question.condition && !Object.entries(question.condition).every(cond => state[cond[0]] === cond[1]))
-        return false;
+      if (isQuestionConditionNotFulfilled(question.condition, state)) return false;
       return true;
     });
 
@@ -247,7 +246,7 @@ const InputField = props => {
     return isRequired ? <span className="required-star">*</span> : '';
   };
 
-  if (condition && !Object.entries(condition).every(cond => state[cond[0]] === cond[1])) return <></>;
+  if (isQuestionConditionNotFulfilled(condition, state)) return <></>;
 
   return (
     <Element name={id}>

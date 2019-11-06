@@ -55,7 +55,7 @@ const InputField = props => {
     }
   };
 
-  const getField = () => {
+  const renderField = () => {
     switch (type) {
       case 'text':
         return (
@@ -134,6 +134,7 @@ const InputField = props => {
                 autoComplete="off"
                 value={options.includes(state[id]) ? '' : state[id]}
                 onChange={event => actionTextInputChange(event)}
+                onKeyDown={event => event.key === 'Enter' && actionScrollToNextInput()}
               />
             )}
           </div>
@@ -186,7 +187,9 @@ const InputField = props => {
                 name={id}
                 placeholder="Jawaban lain..."
                 autoComplete="off"
-                onChange={event => checkboxCustomInput(event.target.value)}
+                value={options.includes(state[id]) ? '' : state[id]}
+                onChange={event => actionTextInputChange(event)}
+                onKeyDown={event => event.key === 'Enter' && actionScrollToNextInput()}
               />
             )}
           </div>
@@ -195,7 +198,7 @@ const InputField = props => {
     }
   };
 
-  const getButton = () => {
+  const renderButton = () => {
     if (type === 'radio' && hasCustomInput !== true) return;
 
     return (
@@ -216,8 +219,8 @@ const InputField = props => {
     <Element name={id}>
       <div className="question">
         <label htmlFor={id}>{label}</label>
-        {getField()}
-        {getButton()}
+        {renderField()}
+        {renderButton()}
       </div>
     </Element>
   );

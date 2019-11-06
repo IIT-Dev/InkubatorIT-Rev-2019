@@ -13,6 +13,7 @@ import { SEO } from '../components/seo';
 import { notices, questions } from '../data/request';
 
 import { useRequestReducer } from '../reducers/request';
+import { isMobile } from '../helpers/request';
 
 const Alert = withReactContent(Swal);
 
@@ -59,7 +60,8 @@ const InputField = props => {
 
     if (
       (nextQuestionElement instanceof HTMLInputElement || nextQuestionElement instanceof HTMLTextAreaElement) &&
-      (nextQuestionType !== 'radio' && nextQuestionType !== 'checkbox')
+      (nextQuestionType !== 'radio' && nextQuestionType !== 'checkbox') &&
+      !isMobile()
     ) {
       nextQuestionElement.focus();
     }

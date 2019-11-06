@@ -68,6 +68,14 @@ const InputField = props => {
     }
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement | HTMLButtonElement>) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      event.currentTarget.blur();
+      actionScrollToNextInput();
+    }
+  };
+
   const renderField = () => {
     switch (type) {
       case 'text':
@@ -81,7 +89,7 @@ const InputField = props => {
             value={state.id}
             spellCheck={false}
             onChange={event => actionTextInputChange(event)}
-            onKeyDown={event => event.key === 'Enter' && actionScrollToNextInput()}
+            onKeyDown={handleKeyDown}
           />
         );
       case 'textarea':
@@ -95,12 +103,7 @@ const InputField = props => {
             spellCheck={false}
             value={state.id}
             onChange={event => actionTextInputChange(event)}
-            onKeyDown={event => {
-              if (event.key === 'Enter') {
-                event.preventDefault();
-                actionScrollToNextInput();
-              }
-            }}
+            onKeyDown={handleKeyDown}
           />
         );
       case 'date':
@@ -115,7 +118,7 @@ const InputField = props => {
             spellCheck={false}
             value={state.id}
             onChange={event => actionTextInputChange(event)}
-            onKeyDown={event => event.key === 'Enter' && actionScrollToNextInput()}
+            onKeyDown={handleKeyDown}
           />
         );
       case 'email':
@@ -130,7 +133,7 @@ const InputField = props => {
             spellCheck={false}
             value={state.id}
             onChange={event => actionTextInputChange(event)}
-            onKeyDown={event => event.key === 'Enter' && actionScrollToNextInput()}
+            onKeyDown={handleKeyDown}
           />
         );
       case 'radio': {
@@ -161,7 +164,7 @@ const InputField = props => {
                 spellCheck={false}
                 value={options.includes(state[id]) ? '' : state[id]}
                 onChange={event => actionTextInputChange(event)}
-                onKeyDown={event => event.key === 'Enter' && actionScrollToNextInput()}
+                onKeyDown={handleKeyDown}
               />
             )}
           </div>
@@ -200,13 +203,7 @@ const InputField = props => {
                 key={index}
                 onClick={() => checkboxClicked(option)}
                 className={`option ${state[id] && state[id].includes(option) ? 'selected' : ''}`}
-                onKeyDown={event => {
-                  if (event.key === 'Enter') {
-                    event.preventDefault();
-                    event.currentTarget.blur();
-                    actionScrollToNextInput();
-                  }
-                }}
+                onKeyDown={handleKeyDown}
               >
                 {option}
               </button>
@@ -220,7 +217,7 @@ const InputField = props => {
                 autoComplete="off"
                 spellCheck={false}
                 onChange={event => checkboxCustomInput(event.target.value)}
-                onKeyDown={event => event.key === 'Enter' && actionScrollToNextInput()}
+                onKeyDown={handleKeyDown}
               />
             )}
           </div>

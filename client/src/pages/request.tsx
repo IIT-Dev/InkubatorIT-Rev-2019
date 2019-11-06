@@ -40,13 +40,15 @@ const InputField = props => {
       nextQuestionType = nextQuestion.type;
     }
 
+    console.log({ nextQuestionKey });
+    const nextQuestionElement = document.getElementById(nextQuestionKey);
+
     scroller.scrollTo(nextQuestionKey, {
       duration: 1000,
       smooth: true,
-      offset: -(window.innerHeight * 0.3),
+      offset: -(window.innerHeight * 0.5 - nextQuestionElement.clientHeight * 0.5),
     });
 
-    const nextQuestionElement = document.getElementById(nextQuestionKey);
     if (
       (nextQuestionElement instanceof HTMLInputElement || nextQuestionElement instanceof HTMLTextAreaElement) &&
       (nextQuestionType !== 'radio' && nextQuestionType !== 'checkbox')
@@ -113,7 +115,7 @@ const InputField = props => {
         );
       case 'radio': {
         return (
-          <div className={`options ${options.length > 2 && 'multiline'}`}>
+          <div className={`options ${options.length > 2 && 'multiline'}`} id={id}>
             {options.map((option, index) => (
               <button
                 type="button"
@@ -128,7 +130,6 @@ const InputField = props => {
               <input
                 type="text"
                 className="custom-input"
-                id={id}
                 name={id}
                 placeholder="Jawaban lain..."
                 autoComplete="off"
@@ -155,8 +156,6 @@ const InputField = props => {
         };
 
         const checkboxCustomInput = value => {
-          console.log({ state, value });
-
           if (state[id] && state[id].includes(value.slice(0, value.length - 1))) {
             const newState = state[id].filter(s => s !== value.slice(0, value.length - 1));
 
@@ -168,7 +167,7 @@ const InputField = props => {
         };
 
         return (
-          <div className={`options ${options.length > 2 && 'multiline'}`}>
+          <div className={`options ${options.length > 2 && 'multiline'}`} id={id}>
             {options.map((option, index) => (
               <button
                 type="button"
@@ -183,12 +182,10 @@ const InputField = props => {
               <input
                 type="text"
                 className="custom-input"
-                id={id}
                 name={id}
                 placeholder="Jawaban lain..."
                 autoComplete="off"
-                value={options.includes(state[id]) ? '' : state[id]}
-                onChange={event => actionTextInputChange(event)}
+                onChange={event => checkboxCustomInput(event.target.value)}
                 onKeyDown={event => event.key === 'Enter' && actionScrollToNextInput()}
               />
             )}

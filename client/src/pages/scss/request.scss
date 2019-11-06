@@ -52,6 +52,14 @@
       font-size: 36px;
     }
 
+    .input-btn {
+      transition: all 0.25s ease-in;
+
+      &.hide {
+        opacity: 0;
+      }
+    }
+
     textarea {
       font-size: 30px;
     }

@@ -3,7 +3,7 @@ import MaskedInput from 'react-text-mask';
 import emailMask from 'text-mask-addons/dist/emailMask';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
+import { Element, scroller } from 'react-scroll';
 
 import './scss/request.scss';
 
@@ -202,7 +202,7 @@ const InputField = props => {
     if (type === 'radio' && hasCustomInput !== true) return;
 
     return (
-      <div>
+      <div className={`input-btn ${!state[id] ? 'hide' : ''}`}>
         <button type="button" onClick={actionScrollToNextInput}>
           OK
         </button>

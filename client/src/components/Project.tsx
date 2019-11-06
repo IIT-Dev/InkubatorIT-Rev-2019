@@ -5,6 +5,7 @@ import { faDesktop, faMobileAlt, faEdit, faTrash } from '@fortawesome/free-solid
 import ReactTooltip from 'react-tooltip';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import capitalize from 'lodash/capitalize';
 
 import './scss/Project.scss';
 
@@ -61,9 +62,10 @@ export const Project = props => {
     <div className="project" onClick={actionOpenAlert}>
       <div className="title">
         <h3>{name}</h3>
-        <div>
+        <div data-for="project-platform" data-tip={capitalize(type)}>
           <FontAwesomeIcon icon={renderIcon(type)} size="2x" className="icon" />
         </div>
+        <ReactTooltip place="top" type="dark" effect="solid" id="project-platform" />
       </div>
       <div className="image">
         <img src={url} alt={name} />

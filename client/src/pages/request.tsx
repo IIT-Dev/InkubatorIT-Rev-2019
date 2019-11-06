@@ -24,7 +24,7 @@ const InputField = props => {
     dispatch({ type: id, payload: event.target.value });
   };
 
-  const actionScrollToNextInput = (scrollerProps = {}) => {
+  const actionScrollToNextInput = () => {
     const filteredQuestions = questions.filter(question => {
       if (question.condition && !Object.entries(question.condition).every(cond => state[cond[0]] === cond[1]))
         return false;
@@ -51,8 +51,10 @@ const InputField = props => {
     scroller.scrollTo(nextQuestionKey, {
       duration: 1000,
       smooth: true,
-      offset: -(window.innerHeight * 0.5 - nextQuestionElement.clientHeight * 0.5),
-      ...scrollerProps,
+      offset: Math.max(
+        -(window.innerHeight * 0.5 - nextQuestionElement.clientHeight * 0.5),
+        -(window.innerHeight * 0.25),
+      ),
     });
 
     if (
@@ -192,6 +194,7 @@ const InputField = props => {
                 className={`option ${state[id] && state[id].includes(option) ? 'selected' : ''}`}
                 onKeyDown={event => {
                   if (event.key === 'Enter') {
+                    event.preventDefault();
                     event.currentTarget.blur();
                     actionScrollToNextInput();
                   }

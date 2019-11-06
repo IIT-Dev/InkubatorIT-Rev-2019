@@ -54,11 +54,12 @@
       border: none;
       outline: none;
       margin-top: 15px;
-      padding-bottom: 5px;
+      padding-bottom: 10px;
+      border-bottom: 2.5px solid var(--primary);
     }
 
     input {
-      height: 36px;
+      height: 48px;
       font-size: 36px;
     }
 

@@ -139,7 +139,7 @@ export const questions = [
     defaultValue: '',
   },
   {
-    label: 'Apa Anda memiliki pertanyaan?',
+    label: 'Ada yang ingin Anda tanyakan?',
     id: 'question',
     type: 'textarea',
     defaultValue: '',

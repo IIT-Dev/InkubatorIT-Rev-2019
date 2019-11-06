@@ -34,8 +34,8 @@ const InputField = props => {
     const currentQuestionIndex = filteredQuestions.findIndex(question => question.id === id);
 
     const nextQuestion = filteredQuestions[currentQuestionIndex + 1];
-    let nextQuestionKey;
-    let nextQuestionType;
+    let nextQuestionKey: string;
+    let nextQuestionType: string;
 
     // It has reached last question
     if (!nextQuestion) {
@@ -58,7 +58,9 @@ const InputField = props => {
     });
 
     if (
-      (nextQuestionElement instanceof HTMLInputElement || nextQuestionElement instanceof HTMLTextAreaElement) &&
+      (nextQuestionElement instanceof HTMLInputElement ||
+        nextQuestionElement instanceof HTMLTextAreaElement ||
+        nextQuestionElement.id === 'submit-btn') &&
       (nextQuestionType !== 'radio' && nextQuestionType !== 'checkbox') &&
       !isMobile()
     ) {
@@ -296,8 +298,10 @@ const Request = () => {
           <InputField key={index} {...question} reducer={requestReducer} />
         ))}
         <Element name="submit-btn">
-          <div className="submit-btn" id="submit-btn">
-            <button onClick={actionSubmitForm}>SUBMIT</button>
+          <div className="submit-btn">
+            <button id="submit-btn" onClick={actionSubmitForm}>
+              SUBMIT
+            </button>
           </div>
         </Element>
       </div>

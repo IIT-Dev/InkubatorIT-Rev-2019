@@ -26,8 +26,8 @@ const InputField = props => {
 
   const actionScrollToNextInput = (scrollerProps = {}) => {
     const filteredQuestions = questions.filter(question => {
-      if (!question.condition) return true;
-      if (!Object.entries(question.condition).every(cond => state[cond[0]] === cond[1])) return false;
+      if (question.condition && !Object.entries(question.condition).every(cond => state[cond[0]] === cond[1]))
+        return false;
       return true;
     });
 
@@ -88,7 +88,12 @@ const InputField = props => {
             autoComplete="off"
             value={state.id}
             onChange={event => actionTextInputChange(event)}
-            onKeyDown={event => event.key === 'Enter' && actionScrollToNextInput()}
+            onKeyDown={event => {
+              if (event.key === 'Enter') {
+                event.preventDefault();
+                actionScrollToNextInput();
+              }
+            }}
           />
         );
       case 'date':
@@ -122,7 +127,7 @@ const InputField = props => {
       case 'radio': {
         const actionRadioClicked = option => {
           dispatch({ type: id, payload: option });
-          actionScrollToNextInput({ delay: 100 });
+          actionScrollToNextInput();
         };
 
         return (
@@ -185,6 +190,12 @@ const InputField = props => {
                 key={index}
                 onClick={() => checkboxClicked(option)}
                 className={`option ${state[id] && state[id].includes(option) ? 'selected' : ''}`}
+                onKeyDown={event => {
+                  if (event.key === 'Enter') {
+                    event.currentTarget.blur();
+                    actionScrollToNextInput();
+                  }
+                }}
               >
                 {option}
               </button>

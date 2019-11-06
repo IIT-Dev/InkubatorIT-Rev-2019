@@ -104,6 +104,7 @@ const IndexPage = () => {
             color: '#fff',
             boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.25)',
           };
+          let contentArrowStyle: React.CSSProperties = {};
 
           if (timeline.isHighlighted) {
             contentStyle = {
@@ -117,6 +118,8 @@ const IndexPage = () => {
               color: '#fff',
               boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.25)',
             };
+
+            contentArrowStyle = { borderRight: '7px solid  var(--secondary)' };
           }
 
           return (
@@ -125,6 +128,7 @@ const IndexPage = () => {
               visibilitySensorProps={{ offset: { bottom: 200 } }}
               contentStyle={contentStyle}
               iconStyle={iconStyle}
+              contentArrowStyle={contentArrowStyle}
               icon={<FontAwesomeIcon icon={timeline.icon} style={{ fontSize: timeline.iconSize }} />}
             >
               <h3 className="vertical-timeline-element-title">{timeline.title}</h3>

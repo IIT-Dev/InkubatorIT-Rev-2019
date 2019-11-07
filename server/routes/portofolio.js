@@ -1,80 +1,75 @@
 const express = require("express");
+const mongoose = require("mongoose");
+
 const router = express.Router();
 
-const portofolios = [
-  {
-    id: 1,
-    imageUrl: "",
-    title: "Aplikasi Web",
-    platform: "Web",
-    description: ""
-  },
-  {
-    id: 2,
-    imageUrl: "",
-    title: "Aplikasi Mobile",
-    platform: "Mobile",
-    description: ""
-  },
-  {
-    id: 3,
-    imageUrl: "",
-    title: "Aplikasi Desktop",
-    platform: "Desktop",
-    description: ""
-  }
-];
+const portofolioSchema = new mongoose.Schema({
+  title: String,
+  platform: String,
+  description: String,
+  imageUrl: String
+});
 
-router.get("/", (req, res) => {
+const Portofolio = mongoose.model("Portofolio", portofolioSchema);
+
+router.get("/", async (req, res) => {
+  const portofolios = await Portofolio.find();
   res.send(portofolios);
 });
 
-router.post("/", (req, res) => {
-  const { imageUrl, title, platform, description } = req.body;
+router.post("/", async (req, res) => {
+  const { title, platform, description, imageUrl } = req.body;
 
-  const portofolio = {
-    id: portofolios.length + 1,
-    imageUrl,
+  let portofolio = new Portofolio({
     title,
     platform,
-    description
-  };
+    description,
+    imageUrl
+  });
 
-  portofolios.push(portofolio);
-  res.send(portofolios);
-});
-
-router.get("/:id", (req, res) => {
-  const portofolio = portofolios.find(c => c.id === parseInt(req.params.id));
-  if (!portofolio)
-    return res.status(404).send("The portofolio with given id not found");
-  res.send(portofolio);
-});
-
-router.put("/:id", (req, res) => {
-  const portofolio = portofolios.find(
-    portofolio => portofolio.id === parseInt(req.params.id)
-  );
-  if (!portofolio)
-    return res.status(404).send("The portofolio with given id not found");
-
-  portofolio.title = req.body.title;
-  portofolio.imageUrl = req.body.imageUrl;
-  portofolio.platform = req.body.platform;
-  portofolio.description = req.body.description;
+  portofolio = await portofolio.save();
 
   res.send(portofolio);
 });
 
-router.delete("/:id", (req, res) => {
-  const portofolio = portofolios.find(
-    portofolio => portofolio.id === parseInt(req.params.id)
-  );
+router.get("/:id", async (req, res) => {
+  const portofolio = await Portofolio.findById(req.params.id);
   if (!portofolio)
-    return res.status(404).send("The portofolio with given id not found");
+    return res.status(404).send("The portofolio with given id is not exist");
 
-  const index = portofolios.indexOf(portofolio);
-  portofolios.splice(index, 1);
+  res.send(portofolio);
+});
+
+router.put("/:id", async (req, res) => {
+  let portofolio = await Portofolio.findById(req.params.id);
+  if (!portofolio)
+    return res.status(404).send("The portofolio with given id is not exist");
+
+  const { title, platform, description, imageUrl } = req.body;
+
+  portofolio = await Portofolio.findByIdAndUpdate(
+    req.params.id,
+    {
+      title,
+      platform,
+      description,
+      imageUrl
+    },
+    { new: true }
+  );
+
+  if (!portofolio)
+    return res
+      .status(404)
+      .send("The portofolio with the given ID was not found.");
+
+  res.send(portofolio);
+});
+
+router.delete("/:id", async (req, res) => {
+  const portofolio = await Portofolio.findByIdAndRemove(req.params.id);
+  if (!portofolio)
+    return res.status(404).send("The portofolio with given id is not exist");
 
   res.send(portofolio);
 });

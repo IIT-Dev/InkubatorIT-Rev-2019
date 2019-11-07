@@ -1,4 +1,11 @@
-import { faHandshake, faUserFriends, faUserSecret, faSearch, faCheck } from '@fortawesome/free-solid-svg-icons';
+import {
+  faHandshake,
+  faUserFriends,
+  faUserSecret,
+  faSearch,
+  faCheck,
+  faLaptopCode,
+} from '@fortawesome/free-solid-svg-icons';
 
 export const timelines = [
   {
@@ -28,7 +35,7 @@ export const timelines = [
   {
     title: 'Pengerjaan Proyek',
     description: 'Proyek dikerjakan oleh developer handal dan dikontrol oleh manajer proyek',
-    icon: faHandshake,
+    icon: faLaptopCode,
     iconSize: '1.125em',
   },
   {

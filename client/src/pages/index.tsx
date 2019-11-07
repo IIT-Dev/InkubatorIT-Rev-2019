@@ -71,7 +71,7 @@ const IndexPage = () => {
     /* First element not included in data because we have a component in description */
     const registerElements = (
       <VerticalTimelineElement
-        visibilitySensorProps={{ offset: { bottom: 200 } }}
+        visibilitySensorProps={{ offset: { bottom: 100 } }}
         contentStyle={{
           background: 'var(--secondary)',
           color: '#fff',
@@ -125,7 +125,7 @@ const IndexPage = () => {
           return (
             <VerticalTimelineElement
               key={index}
-              visibilitySensorProps={{ offset: { bottom: 200 } }}
+              visibilitySensorProps={{ offset: { bottom: 100 } }}
               contentStyle={contentStyle}
               iconStyle={iconStyle}
               contentArrowStyle={contentArrowStyle}

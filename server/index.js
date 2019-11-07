@@ -1,10 +1,16 @@
 const express = require("express");
 const cors = require("cors");
+const mongoose = require("mongoose");
 
 const peoples = require("./routes/people");
 const portofolios = require("./routes/portofolio");
 
 const app = express();
+
+mongoose
+  .connect("mongodb://localhost/iit")
+  .then(() => console.log("Connected to MongoDB..."))
+  .catch(err => console.log("Could not connect to MongoDB...", err));
 
 app.use(cors());
 app.use(express.json());

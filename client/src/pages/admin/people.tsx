@@ -50,7 +50,7 @@ const PeopleManagement = () => {
               <button className="btn btn-edit" onClick={() => editSelectedPeople(people)}>
                 Sunting
               </button>
-              <button className="btn btn-remove" onClick={() => deleteSelectedPeople(people)}>
+              <button className="btn btn-remove" onClick={() => deleteSelectedPeople(people._id)}>
                 Hapus
               </button>
             </div>

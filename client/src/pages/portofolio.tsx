@@ -9,8 +9,9 @@ import { SEO } from '../components/seo';
 import { Project } from '../components/Project';
 
 import { selectOptions } from '../data/portofolio';
-import { fetchPortofolios } from '../api';
 import { IPortofolio } from '../interfaces/portofolio';
+
+import { usePortofolios } from '../hooks/usePortofolios';
 
 const selectStyles: Styles = {
   placeholder: base => ({ ...base, color: 'var(--tertiary)' }),
@@ -32,11 +33,11 @@ const selectStyles: Styles = {
 
 const Portfolio = () => {
   const [filters, setFilters] = useState([]);
-  const [portofolios, setPortofolios] = useState<IPortofolio[]>([]);
   const [displayedPortofolios, setDisplayedPortofolios] = useState<IPortofolio[]>([]);
 
+  const { portofolios } = usePortofolios();
+
   useEffect(() => {
-    fetchPortofolios(setPortofolios);
     setDisplayedPortofolios(portofolios);
   }, [portofolios]);
 

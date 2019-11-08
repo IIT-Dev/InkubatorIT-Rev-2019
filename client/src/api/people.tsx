@@ -14,6 +14,6 @@ export const updatePeople = async (updatedPeople: IPeople) => {
   await api.put(`/peoples/${updatedPeople._id}`, updatedPeople);
 };
 
-export const deletePeople = async (people: IPeople) => {
-  await api.delete(`/peoples/${people._id}`);
+export const deletePeople = async (_id: string) => {
+  await api.delete(`/peoples/${_id}`);
 };

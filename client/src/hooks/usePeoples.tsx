@@ -28,9 +28,9 @@ export const usePeoples = () => {
     setNewPeople({ ...newPeople, [event.target.id]: event.target.value });
   };
 
-  const deleteSelectedPeople = (people: IPeople) => {
-    setPeoples(peoples.filter(p => p._id !== people._id));
-    deletePeople(people);
+  const deleteSelectedPeople = (_id: string) => {
+    setPeoples(peoples.filter(people => people._id !== _id));
+    deletePeople(_id);
   };
 
   const editPeopleValue = (event: React.ChangeEvent<HTMLInputElement>, people: IPeople) => {

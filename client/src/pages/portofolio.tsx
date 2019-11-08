@@ -9,6 +9,7 @@ import { SEO } from '../components/seo';
 import { Project } from '../components/Project';
 
 import { selectOptions, dummyProjects } from '../data/portofolio';
+import { fetchPortofolios } from '../api';
 
 const selectStyles: Styles = {
   placeholder: base => ({ ...base, color: 'var(--tertiary)' }),
@@ -30,11 +31,15 @@ const selectStyles: Styles = {
 
 const Portfolio = () => {
   const [filters, setFilters] = useState([]);
-  const [data, setData] = useState(dummyProjects);
+  const [portofolios, setPortofolios] = useState([]);
 
   useEffect(() => {
-    if (!filters || filters.length === 0) setData(dummyProjects);
-    else setData(dummyProjects.filter(project => filters.map(filter => filter.value).includes(project.type)));
+    fetchPortofolios(setPortofolios);
+  }, []);
+
+  useEffect(() => {
+    if (!filters || filters.length === 0) setPortofolios(dummyProjects);
+    else setPortofolios(dummyProjects.filter(project => filters.map(filter => filter.value).includes(project.type)));
   }, [filters]);
 
   const title = (
@@ -63,7 +68,7 @@ const Portfolio = () => {
   const projects = () => {
     return (
       <div className="section projects">
-        {data.map((project, index) => (
+        {portofolios.map((project, index) => (
           <Project {...project} key={index} />
         ))}
       </div>

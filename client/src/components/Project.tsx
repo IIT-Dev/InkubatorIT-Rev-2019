@@ -10,17 +10,17 @@ import './scss/Project.scss';
 const Alert = withReactContent(Swal);
 
 export const Project = props => {
-  const { name, type, url, description, admin } = props;
+  const { title, platform, imageUrl, description, admin } = props;
 
   const actionOpenAlert = () => {
     Alert.fire({
-      title: <p>{name}</p>,
+      title: <p>{title}</p>,
       html: (
         <div className="project-modal">
           <p>{description}</p>
-          <button>{type.toUpperCase()}</button>
+          <button>{platform.toUpperCase()}</button>
           <div className="img">
-            <img src={url} alt={name} />
+            <img src={imageUrl} alt={title} />
           </div>
         </div>
       ),
@@ -57,12 +57,12 @@ export const Project = props => {
   return (
     <div className="project" onClick={actionOpenAlert}>
       <div className="image">
-        <img src={url} alt={name} />
+        <img src={imageUrl} alt={title} />
       </div>
       <div className="title">
-        <h3>{name}</h3>
+        <h3>{title}</h3>
         <div>
-          <FontAwesomeIcon icon={renderIcon(type)} className="icon" />
+          <FontAwesomeIcon icon={renderIcon(platform)} className="icon" />
         </div>
       </div>
       {renderAdminButton()}

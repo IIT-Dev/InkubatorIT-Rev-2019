@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
 
 import './scss/about.scss';
@@ -7,8 +7,15 @@ import { Layout } from '../components/layout';
 import { SEO } from '../components/seo';
 
 import { vision, misions } from '../data/about';
+import { fetchPeoples } from '../api';
 
 const AboutPage = () => {
+  const [peoples, setPeoples] = useState([]);
+
+  useEffect(() => {
+    fetchPeoples(setPeoples);
+  }, []);
+
   const whatIsIIT = (
     <div className="section">
       <h1>
@@ -45,18 +52,22 @@ const AboutPage = () => {
     </div>
   );
 
-  const people = (
-    <div className="section">
-      <h1>
-        <span>Pengurus Inti</span>
-      </h1>
-      <div className="people">
-        <h4>Wildan Dicky Alnatara</h4>
-        <p>Ketua Divisi Marketing</p>
-        <img src="https://via.placeholder.com/750x500" alt="Wildan Dicky Alnatara" />
+  const people = () => {
+    return (
+      <div className="section">
+        <h1>
+          <span>Pengurus Inti</span>
+        </h1>
+        {peoples.map(people => (
+          <div key={people.id} className="people">
+            <h4>{people.name}</h4>
+            <p>{people.role}</p>
+            <img src={people.imageUrl} alt={people.name} />
+          </div>
+        ))}
       </div>
-    </div>
-  );
+    );
+  };
 
   const contact = (
     <div className="section">
@@ -76,7 +87,7 @@ const AboutPage = () => {
         </div>
         <div>
           <p>
-            Untuk permintaan pengerjaan proyek silakan isi di{' '}
+            Untuk mengajukan pengerjaan proyek silakan isi di{' '}
             <Link to="/request" className="link">
               <span>laman ini</span>
             </Link>
@@ -92,7 +103,7 @@ const AboutPage = () => {
       <section className="about">
         {whatIsIIT}
         {visionMission}
-        {people}
+        {people()}
         {contact}
       </section>
     </Layout>

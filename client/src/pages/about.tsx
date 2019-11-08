@@ -8,9 +8,10 @@ import { SEO } from '../components/seo';
 
 import { vision, misions } from '../data/about';
 import { fetchPeoples } from '../api';
+import { IPeople } from '../interfaces/people';
 
 const AboutPage = () => {
-  const [peoples, setPeoples] = useState([]);
+  const [peoples, setPeoples] = useState<IPeople[]>([]);
 
   useEffect(() => {
     fetchPeoples(setPeoples);
@@ -59,7 +60,7 @@ const AboutPage = () => {
           <span>Pengurus Inti</span>
         </h1>
         {peoples.map(people => (
-          <div key={people.id} className="people">
+          <div key={people._id} className="people">
             <h4>{people.name}</h4>
             <p>{people.role}</p>
             <img src={people.imageUrl} alt={people.name} />

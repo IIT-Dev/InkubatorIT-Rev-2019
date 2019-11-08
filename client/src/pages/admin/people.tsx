@@ -6,24 +6,25 @@ import { SEO } from '../../components/seo';
 import { AdminLayout } from '../../components/layout';
 
 import { fetchPeoples, deletePeople, editPeople } from '../../api';
+import { IPeople } from '../../interfaces/people';
 
 const PeopleManagement = () => {
-  const [peoples, setPeoples] = useState([]);
+  const [peoples, setPeoples] = useState<IPeople[]>([]);
 
   useEffect(() => {
     fetchPeoples(setPeoples);
   }, []);
 
-  const actionDeletePeople = people => {
+  const actionDeletePeople = (people: IPeople) => {
     setPeoples(peoples.filter(p => p._id !== people._id));
     deletePeople(people);
   };
 
-  const actionEditPeople = people => {
+  const actionEditPeople = (people: IPeople) => {
     editPeople(people);
   };
 
-  const actionEditField = (event: React.ChangeEvent<HTMLInputElement>, people) => {
+  const actionEditField = (event: React.ChangeEvent<HTMLInputElement>, people: IPeople) => {
     const editedPeople = { ...peoples.find(p => p._id === people._id) };
     editedPeople[event.target.id] = event.target.value;
 

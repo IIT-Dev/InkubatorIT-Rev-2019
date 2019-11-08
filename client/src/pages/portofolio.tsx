@@ -8,8 +8,9 @@ import { Layout } from '../components/layout';
 import { SEO } from '../components/seo';
 import { Project } from '../components/Project';
 
-import { selectOptions, dummyProjects } from '../data/portofolio';
+import { selectOptions } from '../data/portofolio';
 import { fetchPortofolios } from '../api';
+import { IPortofolio } from '../interfaces/portofolio';
 
 const selectStyles: Styles = {
   placeholder: base => ({ ...base, color: 'var(--tertiary)' }),
@@ -31,16 +32,21 @@ const selectStyles: Styles = {
 
 const Portfolio = () => {
   const [filters, setFilters] = useState([]);
-  const [portofolios, setPortofolios] = useState([]);
+  const [portofolios, setPortofolios] = useState<IPortofolio[]>([]);
+  const [displayedPortofolios, setDisplayedPortofolios] = useState<IPortofolio[]>([]);
 
   useEffect(() => {
     fetchPortofolios(setPortofolios);
-  }, []);
+    setDisplayedPortofolios(portofolios);
+  }, [portofolios]);
 
   useEffect(() => {
-    if (!filters || filters.length === 0) setPortofolios(dummyProjects);
-    else setPortofolios(dummyProjects.filter(project => filters.map(filter => filter.value).includes(project.type)));
-  }, [filters]);
+    if (!filters || filters.length === 0) setDisplayedPortofolios(portofolios);
+    else
+      setDisplayedPortofolios(
+        portofolios.filter(portofolio => filters.map(filter => filter.value).includes(portofolio.platform)),
+      );
+  }, [filters, portofolios]);
 
   const title = (
     <h1 className="section">
@@ -68,7 +74,7 @@ const Portfolio = () => {
   const projects = () => {
     return (
       <div className="section projects">
-        {portofolios.map((project, index) => (
+        {displayedPortofolios.map((project, index) => (
           <Project {...project} key={index} />
         ))}
       </div>

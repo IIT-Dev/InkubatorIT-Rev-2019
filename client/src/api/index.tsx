@@ -20,6 +20,6 @@ export const deletePeople = async (people: IPeople) => {
 };
 
 export const fetchPortofolios = async setPortofolios => {
-  const response = await api.get('/peoples');
+  const response = await api.get('/portofolios');
   setPortofolios(response.data);
 };

@@ -1,39 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import '../scss/admin/people.scss';
 
 import { SEO } from '../../components/seo';
 import { AdminLayout } from '../../components/layout';
 
-import { fetchPeoples, deletePeople, editPeople } from '../../api';
-import { IPeople } from '../../interfaces/people';
+import { usePeople } from '../../hooks/usePeople';
 
 const PeopleManagement = () => {
-  const [peoples, setPeoples] = useState<IPeople[]>([]);
-
-  useEffect(() => {
-    fetchPeoples(setPeoples);
-  }, []);
-
-  const actionDeletePeople = (people: IPeople) => {
-    setPeoples(peoples.filter(p => p._id !== people._id));
-    deletePeople(people);
-  };
-
-  const actionEditPeople = (people: IPeople) => {
-    editPeople(people);
-  };
-
-  const actionEditField = (event: React.ChangeEvent<HTMLInputElement>, people: IPeople) => {
-    const editedPeople = { ...peoples.find(p => p._id === people._id) };
-    editedPeople[event.target.id] = event.target.value;
-
-    const updatedPeopleIndex = peoples.findIndex(p => p._id === people._id);
-    const updatedPeoples = [...peoples];
-
-    updatedPeoples[updatedPeopleIndex] = editedPeople;
-    setPeoples(updatedPeoples);
-  };
+  const { peoples, editPeopleValue, editSelectedPeople, deleteSelectedPeople } = usePeople();
 
   return (
     <AdminLayout>
@@ -50,7 +25,7 @@ const PeopleManagement = () => {
               className="people-name"
               placeholder="Nama"
               value={people.name}
-              onChange={event => actionEditField(event, people)}
+              onChange={event => editPeopleValue(event, people)}
             />
             <input
               type="text"
@@ -58,16 +33,16 @@ const PeopleManagement = () => {
               className="people-position"
               placeholder="Jabatan"
               value={people.role}
-              onChange={event => actionEditField(event, people)}
+              onChange={event => editPeopleValue(event, people)}
             />
             <div className="img">
               <img src={people.imageUrl} alt={people.name} />
             </div>
             <div className="btn-group">
-              <button className="btn btn-edit" onClick={() => actionEditPeople(people)}>
+              <button className="btn btn-edit" onClick={() => editSelectedPeople(people)}>
                 Sunting
               </button>
-              <button className="btn btn-remove" onClick={() => actionDeletePeople(people)}>
+              <button className="btn btn-remove" onClick={() => deleteSelectedPeople(people)}>
                 Hapus
               </button>
             </div>

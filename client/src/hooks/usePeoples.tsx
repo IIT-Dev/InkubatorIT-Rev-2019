@@ -3,8 +3,11 @@ import { useState, useEffect } from 'react';
 import { IPeople } from '../interfaces/people';
 import { fetchPeoples, addPeople, updatePeople, deletePeople } from '../api/people';
 
-export const usePeople = () => {
+const initialNewPeople = { name: '', role: '', imageUrl: '' };
+
+export const usePeoples = () => {
   const [peoples, setPeoples] = useState<IPeople[]>([]);
+  const [newPeople, setNewPeople] = useState<IPeople>(initialNewPeople);
 
   useEffect(() => {
     getPeoples();
@@ -15,9 +18,14 @@ export const usePeople = () => {
     setPeoples(peoples);
   };
 
-  const addNewPeople = (newPeople: IPeople) => {
+  const addNewPeople = () => {
     setPeoples(peoples.concat(newPeople));
+    setNewPeople(initialNewPeople);
     addPeople(newPeople);
+  };
+
+  const editNewPeopleValue = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNewPeople({ ...newPeople, [event.target.id]: event.target.value });
   };
 
   const deleteSelectedPeople = (people: IPeople) => {
@@ -40,5 +48,14 @@ export const usePeople = () => {
     updatePeople(people);
   };
 
-  return { peoples, getPeoples, addNewPeople, deleteSelectedPeople, editPeopleValue, editSelectedPeople };
+  return {
+    peoples,
+    getPeoples,
+    newPeople,
+    addNewPeople,
+    editNewPeopleValue,
+    deleteSelectedPeople,
+    editPeopleValue,
+    editSelectedPeople,
+  };
 };

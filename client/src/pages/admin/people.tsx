@@ -5,10 +5,18 @@ import '../scss/admin/people.scss';
 import { SEO } from '../../components/seo';
 import { AdminLayout } from '../../components/layout';
 
-import { usePeople } from '../../hooks/usePeople';
+import { usePeoples } from '../../hooks/usePeoples';
 
 const PeopleManagement = () => {
-  const { peoples, editPeopleValue, editSelectedPeople, deleteSelectedPeople } = usePeople();
+  const {
+    peoples,
+    newPeople,
+    editNewPeopleValue,
+    addNewPeople,
+    editPeopleValue,
+    editSelectedPeople,
+    deleteSelectedPeople,
+  } = usePeoples();
 
   return (
     <AdminLayout>
@@ -48,6 +56,32 @@ const PeopleManagement = () => {
             </div>
           </div>
         ))}
+        <div className="people" key={newPeople._id}>
+          <input
+            type="text"
+            id="name"
+            className="people-name"
+            placeholder="Nama"
+            value={newPeople.name}
+            onChange={editNewPeopleValue}
+          />
+          <input
+            type="text"
+            id="role"
+            className="people-position"
+            placeholder="Jabatan"
+            value={newPeople.role}
+            onChange={editNewPeopleValue}
+          />
+          <div className="img">
+            <img src={newPeople.imageUrl} alt={newPeople.name} />
+          </div>
+          <div className="btn-group">
+            <button className="btn btn-edit" onClick={() => addNewPeople()}>
+              Tambah
+            </button>
+          </div>
+        </div>
       </div>
     </AdminLayout>
   );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'gatsby';
 
 import './scss/about.scss';
@@ -7,15 +7,10 @@ import { Layout } from '../components/layout';
 import { SEO } from '../components/seo';
 
 import { vision, misions } from '../data/about';
-import { fetchPeoples } from '../api';
-import { IPeople } from '../interfaces/people';
+import { usePeoples } from '../hooks/usePeoples';
 
 const AboutPage = () => {
-  const [peoples, setPeoples] = useState<IPeople[]>([]);
-
-  useEffect(() => {
-    fetchPeoples(setPeoples);
-  }, []);
+  const { peoples } = usePeoples();
 
   const whatIsIIT = (
     <div className="section">

@@ -6,11 +6,17 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
 import './scss/Project.scss';
+import { IPortofolio } from '../interfaces/portofolio';
 
 const Alert = withReactContent(Swal);
 
-export const Project = props => {
-  const { title, platform, imageUrl, description, admin } = props;
+interface IProjectProps extends IPortofolio {
+  admin?: boolean;
+  removePortofolio?: (string) => void;
+}
+
+export const Project: React.FC<IProjectProps> = props => {
+  const { _id, title, platform, imageUrl, description, removePortofolio, admin } = props;
 
   const actionOpenAlert = () => {
     Alert.fire({
@@ -28,8 +34,8 @@ export const Project = props => {
     });
   };
 
-  const renderIcon = type => {
-    switch (type) {
+  const renderIcon = () => {
+    switch (platform) {
       case 'web':
         return faChrome;
       case 'desktop':
@@ -47,7 +53,7 @@ export const Project = props => {
         <button className="btn edit-btn">
           <FontAwesomeIcon icon={faEdit} color="var(--secondary)" />
         </button>
-        <button className="btn remove-btn">
+        <button className="btn remove-btn" onClick={() => removePortofolio(_id)}>
           <FontAwesomeIcon icon={faTrash} color="var(--quartenary)" />
         </button>
       </div>
@@ -62,7 +68,7 @@ export const Project = props => {
       <div className="title">
         <h3>{title}</h3>
         <div>
-          <FontAwesomeIcon icon={renderIcon(platform)} className="icon" />
+          <FontAwesomeIcon icon={renderIcon()} className="icon" />
         </div>
       </div>
       {renderAdminButton()}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactTooltip from 'react-tooltip';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
@@ -11,11 +11,23 @@ import { SEO } from '../../components/seo';
 import { AdminLayout } from '../../components/layout';
 import { Project } from '../../components/Project';
 
-import { dummyProjects } from '../../data/portofolio';
+import { IPortofolio } from '../../interfaces/portofolio';
+import { fetchPortofolios, deletePortofolio } from '../../api';
 
 const Alert = withReactContent(Swal);
 
 const PortofolioManagement = () => {
+  const [portofolios, setPortofolios] = useState<IPortofolio[]>([]);
+
+  useEffect(() => {
+    fetchPortofolios(setPortofolios);
+  }, []);
+
+  const actionRemovePortofolio = (_id: string) => {
+    setPortofolios(portofolios.filter(portofolio => portofolio._id !== _id));
+    deletePortofolio(_id);
+  };
+
   const actionOpenAddPortofolioAlert = () => {
     Alert.fire({
       title: <p>Tambah Portofolio</p>,
@@ -43,8 +55,8 @@ const PortofolioManagement = () => {
         <span>Portofolio</span>
       </h1>
       <div className="projects">
-        {dummyProjects.map((project, index) => (
-          <Project {...project} key={index} admin />
+        {portofolios.map((portofolio, index) => (
+          <Project {...portofolio} key={index} removePortofolio={(_id: string) => actionRemovePortofolio(_id)} admin />
         ))}
         <button
           className="add-portofolio-btn"

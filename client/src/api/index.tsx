@@ -9,6 +9,14 @@ export const fetchPeoples = async setPeoples => {
   setPeoples(response.data);
 };
 
+export const editPeople = async updatedPeople => {
+  await api.put(`/peoples/${updatedPeople._id}`, updatedPeople);
+};
+
+export const deletePeople = async people => {
+  await api.delete(`/peoples/${people._id}`);
+};
+
 export const fetchPortofolios = async setPortofolios => {
   const response = await api.get('/peoples');
   setPortofolios(response.data);

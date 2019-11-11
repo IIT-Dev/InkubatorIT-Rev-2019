@@ -3,7 +3,12 @@ import { useState, useEffect } from 'react';
 import { fetchPortofolios, addPortofolio, updatePortofolio, deletePortofolio } from '../api/portofolio';
 import { IPortofolio } from '../interfaces/portofolio';
 
-const initialNewPortofolio: IPortofolio = { title: '', platform: '', imageUrl: '', description: '' };
+const initialNewPortofolio: IPortofolio = {
+  title: '',
+  platform: '',
+  imageUrl: 'https://via.placeholder.com/750x500',
+  description: '',
+};
 
 export const usePortofolios = () => {
   const [portofolios, setPortofolios] = useState<IPortofolio[]>([]);
@@ -18,10 +23,10 @@ export const usePortofolios = () => {
     setPortofolios(portofolios);
   };
 
-  const addNewPortofolio = () => {
+  const addNewPortofolio = async () => {
+    await addPortofolio(newPortofolio);
     setPortofolios(portofolios.concat(newPortofolio));
     setNewPortofolio(initialNewPortofolio);
-    addPortofolio(newPortofolio);
   };
 
   const editNewPortofolioValue = (event: React.ChangeEvent<HTMLInputElement>) => {

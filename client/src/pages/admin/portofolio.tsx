@@ -58,20 +58,24 @@ export const PortofolioForm = () => {
 };
 
 const PortofolioManagement = () => {
-  const { portofolios, deleteSelectedPortofolio } = usePortofolios();
+  const { portofolios, newPortofolio, addNewPortofolio, deleteSelectedPortofolio } = usePortofolios();
 
-  const actionOpenAddPortofolioAlert = () => {
-    Alert.fire({
-      title: <p>Tambah Portofolio</p>,
+  const actionOpenAddPortofolioAlert = async () => {
+    const alert = await Alert.fire({
+      title: 'Tambah Portofolio',
       html: <PortofolioForm />,
       showCancelButton: true,
       confirmButtonColor: 'var(--tertiary)',
       confirmButtonText: 'Tambahkan',
-    }).then(result => {
-      if (result.value) {
-        Alert.fire('Sukses!', 'Portofolio berhasil ditambahkan', 'success');
-      }
+      preConfirm: data => {
+        console.log('pre confirm', { data, newPortofolio });
+      },
     });
+
+    if (alert.value) {
+      await addNewPortofolio();
+      await Alert.fire('Sukses!', 'Portofolio berhasil ditambahkan', 'success');
+    }
   };
 
   return (

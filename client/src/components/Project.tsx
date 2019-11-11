@@ -53,7 +53,13 @@ export const Project: React.FC<IProjectProps> = props => {
         <button className="btn edit-btn">
           <FontAwesomeIcon icon={faEdit} color="var(--secondary)" />
         </button>
-        <button className="btn remove-btn" onClick={() => removePortofolio(_id)}>
+        <button
+          className="btn remove-btn"
+          onClick={event => {
+            event.stopPropagation();
+            removePortofolio(_id);
+          }}
+        >
           <FontAwesomeIcon icon={faTrash} color="var(--quartenary)" />
         </button>
       </div>

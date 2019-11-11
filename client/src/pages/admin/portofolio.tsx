@@ -16,40 +16,15 @@ import { usePortofolios } from '../../hooks/usePortofolios';
 const Alert = withReactContent(Swal);
 
 export const PortofolioForm = () => {
-  const { newPortofolio, setNewPortofolio, editNewPortofolioValue } = usePortofolios();
-
-  const renderTypeButton = (platform: string) => {
-    let backgroundColor = 'var(--primary)';
-    if (newPortofolio.platform.toLowerCase() === platform.toLowerCase()) backgroundColor = 'var(--secondary)';
-
-    return (
-      <button style={{ backgroundColor }} onClick={() => setNewPortofolio({ ...newPortofolio, platform })}>
-        {platform}
-      </button>
-    );
-  };
-
   return (
     <div className="add-portofolio-form">
-      <input
-        type="text"
-        id="title"
-        placeholder="Nama proyek"
-        value={newPortofolio.title}
-        onChange={editNewPortofolioValue}
-      />
-      <input
-        type="text"
-        id="description"
-        placeholder="Deskripsi Singkat"
-        value={newPortofolio.description}
-        onChange={editNewPortofolioValue}
-      />
-      <div className="types">
-        {renderTypeButton('Web')}
-        {renderTypeButton('Mobile')}
-        {renderTypeButton('Desktop')}
-      </div>
+      <input type="text" id="title" placeholder="Nama proyek" />
+      <input type="text" id="description" placeholder="Deskripsi Singkat" />
+      <select name="platform" id="platform">
+        <option value="web">Web</option>
+        <option value="mobile">Mobile</option>
+        <option value="desktop">Desktop</option>
+      </select>
       <div className="img">
         <img src="https://via.placeholder.com/750x500" alt="Nama proyek" />
       </div>
@@ -58,7 +33,7 @@ export const PortofolioForm = () => {
 };
 
 const PortofolioManagement = () => {
-  const { portofolios, newPortofolio, addNewPortofolio, deleteSelectedPortofolio } = usePortofolios();
+  const { portofolios, addNewPortofolio, deleteSelectedPortofolio } = usePortofolios();
 
   const actionOpenAddPortofolioAlert = async () => {
     const alert = await Alert.fire({
@@ -67,13 +42,22 @@ const PortofolioManagement = () => {
       showCancelButton: true,
       confirmButtonColor: 'var(--tertiary)',
       confirmButtonText: 'Tambahkan',
-      preConfirm: data => {
-        console.log('pre confirm', { data, newPortofolio });
+      preConfirm: () => {
+        const titleInput = document.getElementById('title') as HTMLInputElement;
+        const descriptionInput = document.getElementById('description') as HTMLInputElement;
+        const platformInput = document.getElementById('platform') as HTMLSelectElement;
+
+        return {
+          title: titleInput.value,
+          description: descriptionInput.value,
+          platform: platformInput.value,
+          imageUrl: 'https://via.placeholder.com/750x500',
+        };
       },
     });
 
     if (alert.value) {
-      await addNewPortofolio();
+      await addNewPortofolio(alert.value);
       await Alert.fire('Sukses!', 'Portofolio berhasil ditambahkan', 'success');
     }
   };

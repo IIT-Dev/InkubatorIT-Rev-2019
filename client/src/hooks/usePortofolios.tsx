@@ -3,16 +3,8 @@ import { useState, useEffect } from 'react';
 import { fetchPortofolios, addPortofolio, updatePortofolio, deletePortofolio } from '../api/portofolio';
 import { IPortofolio } from '../interfaces/portofolio';
 
-const initialNewPortofolio: IPortofolio = {
-  title: '',
-  platform: '',
-  imageUrl: 'https://via.placeholder.com/750x500',
-  description: '',
-};
-
 export const usePortofolios = () => {
   const [portofolios, setPortofolios] = useState<IPortofolio[]>([]);
-  const [newPortofolio, setNewPortofolio] = useState<IPortofolio>(initialNewPortofolio);
 
   useEffect(() => {
     getPortofolios();
@@ -23,14 +15,9 @@ export const usePortofolios = () => {
     setPortofolios(portofolios);
   };
 
-  const addNewPortofolio = async () => {
+  const addNewPortofolio = async (newPortofolio: IPortofolio) => {
     await addPortofolio(newPortofolio);
     setPortofolios(portofolios.concat(newPortofolio));
-    setNewPortofolio(initialNewPortofolio);
-  };
-
-  const editNewPortofolioValue = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNewPortofolio({ ...newPortofolio, [event.target.id]: event.target.value });
   };
 
   const deleteSelectedPortofolio = (_id: string) => {
@@ -56,10 +43,7 @@ export const usePortofolios = () => {
   return {
     portofolios,
     getPortofolios,
-    newPortofolio,
     addNewPortofolio,
-    setNewPortofolio,
-    editNewPortofolioValue,
     deleteSelectedPortofolio,
     editPortofolioValue,
     editSelectedPortofolio,

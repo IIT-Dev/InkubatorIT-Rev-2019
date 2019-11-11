@@ -12,11 +12,12 @@ const Alert = withReactContent(Swal);
 
 interface IProjectProps extends IPortofolio {
   admin?: boolean;
-  removePortofolio?: (string) => void;
+  editPortofolio?: () => void;
+  removePortofolio?: (id: string) => void;
 }
 
 export const Project: React.FC<IProjectProps> = props => {
-  const { _id, title, platform, imageUrl, description, removePortofolio, admin } = props;
+  const { _id, title, platform, imageUrl, description, editPortofolio, removePortofolio, admin } = props;
 
   const actionOpenAlert = () => {
     Alert.fire({
@@ -50,7 +51,13 @@ export const Project: React.FC<IProjectProps> = props => {
 
     return (
       <div className="buttons">
-        <button className="btn edit-btn">
+        <button
+          className="btn edit-btn"
+          onClick={event => {
+            event.stopPropagation();
+            editPortofolio();
+          }}
+        >
           <FontAwesomeIcon icon={faEdit} color="var(--secondary)" />
         </button>
         <button

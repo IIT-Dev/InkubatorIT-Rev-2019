@@ -36,8 +36,14 @@ export const usePortofolios = () => {
     setPortofolios(updatedPortofolios);
   };
 
-  const editSelectedPortofolio = (portofolio: IPortofolio) => {
-    updatePortofolio(portofolio);
+  const editSelectedPortofolio = async (portofolio: IPortofolio) => {
+    await updatePortofolio(portofolio);
+
+    const copiedPortofolios = [...portofolios];
+    const updatedPortofolioIndex = copiedPortofolios.findIndex(p => p._id === portofolio._id);
+
+    copiedPortofolios[updatedPortofolioIndex] = portofolio;
+    setPortofolios(copiedPortofolios);
   };
 
   return {

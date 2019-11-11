@@ -15,27 +15,62 @@ import { usePortofolios } from '../../hooks/usePortofolios';
 
 const Alert = withReactContent(Swal);
 
+export const PortofolioForm = () => {
+  const { newPortofolio, setNewPortofolio, editNewPortofolioValue } = usePortofolios();
+
+  const renderTypeButton = (platform: string) => {
+    let backgroundColor = 'var(--primary)';
+    if (newPortofolio.platform.toLowerCase() === platform.toLowerCase()) backgroundColor = 'var(--secondary)';
+
+    return (
+      <button style={{ backgroundColor }} onClick={() => setNewPortofolio({ ...newPortofolio, platform })}>
+        {platform}
+      </button>
+    );
+  };
+
+  return (
+    <div className="add-portofolio-form">
+      <input
+        type="text"
+        id="title"
+        placeholder="Nama proyek"
+        value={newPortofolio.title}
+        onChange={editNewPortofolioValue}
+      />
+      <input
+        type="text"
+        id="description"
+        placeholder="Deskripsi Singkat"
+        value={newPortofolio.description}
+        onChange={editNewPortofolioValue}
+      />
+      <div className="types">
+        {renderTypeButton('Web')}
+        {renderTypeButton('Mobile')}
+        {renderTypeButton('Desktop')}
+      </div>
+      <div className="img">
+        <img src="https://via.placeholder.com/750x500" alt="Nama proyek" />
+      </div>
+    </div>
+  );
+};
+
 const PortofolioManagement = () => {
   const { portofolios, deleteSelectedPortofolio } = usePortofolios();
 
   const actionOpenAddPortofolioAlert = () => {
     Alert.fire({
       title: <p>Tambah Portofolio</p>,
-      html: (
-        <div className="add-portofolio-form">
-          <input type="text" placeholder="Nama proyek" />
-          <input type="text" placeholder="Deskripsi Singkat" />
-          <div className="types">
-            <button>Web</button>
-            <button>Mobile</button>
-            <button>Desktop</button>
-          </div>
-          <div className="img">
-            <img src="https://via.placeholder.com/750x500" alt="Nama proyek" />
-          </div>
-        </div>
-      ),
+      html: <PortofolioForm />,
+      showCancelButton: true,
       confirmButtonColor: 'var(--tertiary)',
+      confirmButtonText: 'Tambahkan',
+    }).then(result => {
+      if (result.value) {
+        Alert.fire('Sukses!', 'Portofolio berhasil ditambahkan', 'success');
+      }
     });
   };
 

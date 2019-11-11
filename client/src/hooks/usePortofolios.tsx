@@ -53,6 +53,7 @@ export const usePortofolios = () => {
     getPortofolios,
     newPortofolio,
     addNewPortofolio,
+    setNewPortofolio,
     editNewPortofolioValue,
     deleteSelectedPortofolio,
     editPortofolioValue,

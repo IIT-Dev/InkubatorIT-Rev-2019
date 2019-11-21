@@ -23,6 +23,7 @@ export const PortofolioForm = props => {
     title: (portofolio && portofolio.title) || '',
     description: (portofolio && portofolio.description) || '',
     platform: (portofolio && portofolio.platform) || '',
+    imageUrl: (portofolio && portofolio.imageUrl) || null,
   };
 
   const actionSelectPortofolioImage = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,6 +41,22 @@ export const PortofolioForm = props => {
     reader.readAsDataURL(file);
   };
 
+  const renderImage = () => {
+    let imgSrc;
+
+    if (defaultValue.imageUrl) {
+      if (image) {
+        imgSrc = image;
+      } else {
+        imgSrc = defaultValue.imageUrl;
+      }
+    } else {
+      imgSrc = image;
+    }
+
+    return <div className="img">{imgSrc && <img id="image" src={imgSrc} alt="Nama proyek" />}</div>;
+  };
+
   return (
     <div className="add-portofolio-form">
       <input type="text" id="title" placeholder="Nama proyek" defaultValue={defaultValue.title} />
@@ -49,7 +66,7 @@ export const PortofolioForm = props => {
         <option value="mobile">Mobile</option>
         <option value="desktop">Desktop</option>
       </select>
-      <div className="img">{image && <img id="image" src={image} alt="Nama proyek" />}</div>
+      {renderImage()}
       <div className="upload-img">
         <label htmlFor="new-portofolio-image">
           <img src={require('../../images/upload-photo.png')} alt="Upload photo" />
@@ -108,12 +125,13 @@ const PortofolioManagement = () => {
         const titleInput = document.getElementById('title') as HTMLInputElement;
         const descriptionInput = document.getElementById('description') as HTMLInputElement;
         const platformInput = document.getElementById('platform') as HTMLSelectElement;
+        const imageInput = document.getElementById('image') as HTMLImageElement;
 
         return {
           title: titleInput.value,
           description: descriptionInput.value,
           platform: platformInput.value,
-          imageUrl: 'https://via.placeholder.com/750x500',
+          imageUrl: imageInput.src,
         };
       },
     });

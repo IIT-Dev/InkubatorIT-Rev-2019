@@ -55,6 +55,7 @@ export const usePeoples = () => {
 
   return {
     peoples,
+    setPeoples,
     getPeoples,
     newPeople,
     setNewPeople,

@@ -1,6 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
+const withAuth = require("../helpers/withAuth");
+
 const router = express.Router();
 
 const peopleSchema = new mongoose.Schema({
@@ -17,7 +19,7 @@ router.get("/", async (req, res) => {
   res.send(peoples);
 });
 
-router.post("/", async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
   console.log(req.body);
 
   const { imageUrl, name, role } = req.body;
@@ -41,7 +43,7 @@ router.get("/:id", async (req, res) => {
   res.send(people);
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", withAuth, async (req, res) => {
   let people = await People.findById(req.params.id);
   if (!people)
     return res.status(404).send("The people with given id is not exist");
@@ -64,7 +66,7 @@ router.put("/:id", async (req, res) => {
   res.send(people);
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", withAuth, async (req, res) => {
   const people = await People.findByIdAndRemove(req.params.id);
   if (!people)
     return res.status(404).send("The people with given id is not exist");

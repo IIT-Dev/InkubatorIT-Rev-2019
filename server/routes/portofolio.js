@@ -1,6 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
+const withAuth = require("../helpers/withAuth");
+
 const router = express.Router();
 
 const portofolioSchema = new mongoose.Schema({
@@ -17,7 +19,7 @@ router.get("/", async (req, res) => {
   res.send(portofolios);
 });
 
-router.post("/", async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
   const { title, platform, description, imageUrl } = req.body;
 
   let portofolio = new Portofolio({
@@ -40,7 +42,7 @@ router.get("/:id", async (req, res) => {
   res.send(portofolio);
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", withAuth, async (req, res) => {
   let portofolio = await Portofolio.findById(req.params.id);
   if (!portofolio)
     return res.status(404).send("The portofolio with given id is not exist");
@@ -66,7 +68,7 @@ router.put("/:id", async (req, res) => {
   res.send(portofolio);
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", withAuth, async (req, res) => {
   const portofolio = await Portofolio.findByIdAndRemove(req.params.id);
   if (!portofolio)
     return res.status(404).send("The portofolio with given id is not exist");

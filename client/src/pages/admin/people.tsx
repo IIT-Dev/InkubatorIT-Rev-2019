@@ -125,7 +125,7 @@ const PeopleManagement = () => {
             value={newPeople.role}
             onChange={editNewPeopleValue}
           />
-          <div className="img">
+          <div className="img possibly-blank">
             <img src={newPeople.imageUrl} alt={newPeople.name} />
           </div>
           <div className="upload-img">

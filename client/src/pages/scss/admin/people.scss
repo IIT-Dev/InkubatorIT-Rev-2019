@@ -110,7 +110,7 @@
       margin: 25px 50px 100px;
       height: auto;
 
-      input {
+      input[type='text'] {
         position: static;
         width: 100%;
 
@@ -123,12 +123,26 @@
         }
       }
 
+      .upload-img {
+        right: 10px;
+        bottom: 10px;
+
+        label {
+          height: 40px;
+          width: 40px;
+        }
+      }
+
       .img {
         width: 100%;
         margin-top: 25px;
 
         img {
           width: 100%;
+        }
+
+        &.possibly-blank {
+          margin-top: 50px;
         }
       }
 

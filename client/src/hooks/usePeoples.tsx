@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 
-import { IPeople } from '../interfaces/people';
+import { IPeople, INewPeople } from '../interfaces/people';
 import { fetchPeoples, addPeople, updatePeople, deletePeople } from '../api/people';
 
-const initialNewPeople = { name: '', role: '', imageUrl: '' };
+const initialNewPeople = { name: '', role: '', image: null };
 
 export const usePeoples = () => {
   const [peoples, setPeoples] = useState<IPeople[]>([]);
-  const [newPeople, setNewPeople] = useState<IPeople>(initialNewPeople);
+  const [newPeople, setNewPeople] = useState<INewPeople>(initialNewPeople);
 
   useEffect(() => {
     getPeoples();
@@ -19,9 +19,17 @@ export const usePeoples = () => {
   };
 
   const addNewPeople = () => {
-    setPeoples(peoples.concat(newPeople));
-    setNewPeople(initialNewPeople);
-    addPeople(newPeople);
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      if (typeof reader.result !== 'string') return;
+
+      setPeoples(peoples.concat({ ...newPeople, imageUrl: reader.result }));
+      setNewPeople(initialNewPeople);
+      addPeople(newPeople);
+    };
+
+    reader.readAsDataURL(newPeople.image);
   };
 
   const editNewPeopleValue = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,6 +60,7 @@ export const usePeoples = () => {
     peoples,
     getPeoples,
     newPeople,
+    setNewPeople,
     addNewPeople,
     editNewPeopleValue,
     deleteSelectedPeople,

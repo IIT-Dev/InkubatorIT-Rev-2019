@@ -1,4 +1,4 @@
-import { IPeople } from '../interfaces/people';
+import { IPeople, INewPeople } from '../interfaces/people';
 import { api } from '.';
 
 export const fetchPeoples = async () => {
@@ -6,7 +6,7 @@ export const fetchPeoples = async () => {
   return response.data;
 };
 
-export const addPeople = async (newPeople: IPeople) => {
+export const addPeople = async (newPeople: INewPeople) => {
   await api.post('/peoples', newPeople);
 };
 

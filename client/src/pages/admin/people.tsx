@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import '../scss/admin/people.scss';
 
@@ -10,6 +10,7 @@ import { usePeoples } from '../../hooks/usePeoples';
 const PeopleManagement = () => {
   const {
     peoples,
+    setNewPeople,
     newPeople,
     editNewPeopleValue,
     addNewPeople,
@@ -17,6 +18,25 @@ const PeopleManagement = () => {
     editSelectedPeople,
     deleteSelectedPeople,
   } = usePeoples();
+
+  const [imageUrl, setImageUrl] = useState();
+
+  const actionSelectFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { files } = event.target;
+    const reader = new FileReader();
+
+    if (!files) return;
+    const file = files[0];
+
+    setNewPeople({ ...newPeople, image: file });
+
+    reader.onloadend = () => {
+      if (typeof reader.result !== 'string') return;
+      setImageUrl(reader.result);
+    };
+
+    reader.readAsDataURL(file);
+  };
 
   return (
     <AdminLayout>
@@ -46,6 +66,19 @@ const PeopleManagement = () => {
             <div className="img">
               <img src={people.imageUrl} alt={people.name} />
             </div>
+            <div className="upload-img">
+              <label htmlFor="image">
+                <img src={require('../../images/upload-photo.png')} alt="Upload photo" />
+              </label>
+              <input
+                type="file"
+                name="image"
+                id="image"
+                style={{ display: 'none' }}
+                accept="image/*"
+                onChange={actionSelectFile}
+              />
+            </div>
             <div className="btn-group">
               <button className="btn btn-edit" onClick={() => editSelectedPeople(people)}>
                 Sunting
@@ -56,7 +89,7 @@ const PeopleManagement = () => {
             </div>
           </div>
         ))}
-        <div className="people" key={newPeople._id}>
+        <div className="people">
           <input
             type="text"
             id="name"
@@ -74,10 +107,29 @@ const PeopleManagement = () => {
             onChange={editNewPeopleValue}
           />
           <div className="img">
-            <img src={newPeople.imageUrl} alt={newPeople.name} />
+            <img src={imageUrl} alt={newPeople.name} />
+          </div>
+          <div className="upload-img">
+            <label htmlFor="image">
+              <img src={require('../../images/upload-photo.png')} alt="Upload photo" />
+            </label>
+            <input
+              type="file"
+              name="image"
+              id="image"
+              style={{ display: 'none' }}
+              accept="image/*"
+              onChange={actionSelectFile}
+            />
           </div>
           <div className="btn-group">
-            <button className="btn btn-edit" onClick={() => addNewPeople()}>
+            <button
+              className="btn btn-edit"
+              onClick={() => {
+                setImageUrl('');
+                addNewPeople();
+              }}
+            >
               Tambah
             </button>
           </div>

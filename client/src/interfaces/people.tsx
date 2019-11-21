@@ -4,3 +4,9 @@ export interface IPeople {
   role: string;
   imageUrl: string;
 }
+
+export interface INewPeople {
+  name: string;
+  role: string;
+  image: File;
+}

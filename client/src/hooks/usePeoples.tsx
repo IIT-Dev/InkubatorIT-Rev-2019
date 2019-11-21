@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { IPeople, INewPeople } from '../interfaces/people';
 import { fetchPeoples, addPeople, updatePeople, deletePeople } from '../api/people';
 
-const initialNewPeople = { name: '', role: '', image: null };
+const initialNewPeople = { name: '', role: '', imageUrl: null };
 
 export const usePeoples = () => {
   const [peoples, setPeoples] = useState<IPeople[]>([]);
@@ -19,17 +19,14 @@ export const usePeoples = () => {
   };
 
   const addNewPeople = () => {
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
-      if (typeof reader.result !== 'string') return;
-
-      setPeoples(peoples.concat({ ...newPeople, imageUrl: reader.result }));
-      setNewPeople(initialNewPeople);
-      addPeople(newPeople);
-    };
-
-    reader.readAsDataURL(newPeople.image);
+    setPeoples(
+      peoples.concat({
+        _id: (peoples.length + 1).toString(),
+        ...newPeople,
+      }),
+    );
+    setNewPeople(initialNewPeople);
+    addPeople(newPeople);
   };
 
   const editNewPeopleValue = (event: React.ChangeEvent<HTMLInputElement>) => {

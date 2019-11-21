@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 
 const peoples = require("./routes/people");
 const portofolios = require("./routes/portofolio");
@@ -13,7 +14,8 @@ mongoose
   .catch(err => console.log("Could not connect to MongoDB...", err));
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: "5mb" }));
+app.use(express.urlencoded({ limit: "5mb" }));
 
 app.use("/peoples", peoples);
 app.use("/portofolios", portofolios);

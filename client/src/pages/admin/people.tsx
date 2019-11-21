@@ -28,10 +28,9 @@ const PeopleManagement = () => {
     if (!files) return;
     const file = files[0];
 
-    setNewPeople({ ...newPeople, image: file });
-
     reader.onloadend = () => {
       if (typeof reader.result !== 'string') return;
+      setNewPeople({ ...newPeople, imageUrl: reader.result });
       setImageUrl(reader.result);
     };
 

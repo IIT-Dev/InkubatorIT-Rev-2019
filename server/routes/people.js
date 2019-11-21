@@ -18,6 +18,8 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
+  console.log(req.body);
+
   const { imageUrl, name, role } = req.body;
 
   let people = new People({

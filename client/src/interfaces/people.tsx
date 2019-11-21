@@ -1,5 +1,5 @@
 export interface IPeople {
-  _id?: string;
+  _id: string;
   name: string;
   role: string;
   imageUrl: string;
@@ -8,5 +8,5 @@ export interface IPeople {
 export interface INewPeople {
   name: string;
   role: string;
-  image: File;
+  imageUrl: string;
 }

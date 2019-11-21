@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactTooltip from 'react-tooltip';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
@@ -17,11 +17,27 @@ const Alert = withReactContent(Swal);
 
 export const PortofolioForm = props => {
   const { portofolio } = props;
+  const [image, setImage] = useState(null);
 
   const defaultValue = {
     title: (portofolio && portofolio.title) || '',
     description: (portofolio && portofolio.description) || '',
     platform: (portofolio && portofolio.platform) || '',
+  };
+
+  const actionSelectPortofolioImage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { files } = event.target;
+    const reader = new FileReader();
+
+    if (!files) return;
+    const file = files[0];
+
+    reader.onloadend = () => {
+      if (typeof reader.result !== 'string') return;
+      setImage(reader.result);
+    };
+
+    reader.readAsDataURL(file);
   };
 
   return (
@@ -33,8 +49,18 @@ export const PortofolioForm = props => {
         <option value="mobile">Mobile</option>
         <option value="desktop">Desktop</option>
       </select>
-      <div className="img">
-        <img src="https://via.placeholder.com/750x500" alt="Nama proyek" />
+      <div className="img">{image && <img id="image" src={image} alt="Nama proyek" />}</div>
+      <div className="upload-img">
+        <label htmlFor="new-portofolio-image">
+          <img src={require('../../images/upload-photo.png')} alt="Upload photo" />
+        </label>
+        <input
+          type="file"
+          name="image"
+          id="new-portofolio-image"
+          accept="image/*"
+          onChange={actionSelectPortofolioImage}
+        />
       </div>
     </div>
   );
@@ -54,12 +80,13 @@ const PortofolioManagement = () => {
         const titleInput = document.getElementById('title') as HTMLInputElement;
         const descriptionInput = document.getElementById('description') as HTMLInputElement;
         const platformInput = document.getElementById('platform') as HTMLSelectElement;
+        const imageInput = document.getElementById('image') as HTMLImageElement;
 
         return {
           title: titleInput.value,
           description: descriptionInput.value,
           platform: platformInput.value,
-          imageUrl: 'https://via.placeholder.com/750x500',
+          imageUrl: imageInput.src,
         };
       },
     });

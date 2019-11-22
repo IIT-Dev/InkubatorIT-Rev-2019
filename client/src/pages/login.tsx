@@ -19,7 +19,10 @@ const Login = () => {
 
     try {
       const response = await api.post('/user/login', loginData);
-      if (response) navigate('/admin');
+      if (response) {
+        localStorage.setItem('iit:authenticated', 'true');
+        navigate('/admin');
+      }
     } catch (e) {
       alert(e);
     }

@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactTooltip from 'react-tooltip';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { navigate } from 'gatsby';
 
 import '../scss/admin/portofolio.scss';
 
@@ -12,6 +13,7 @@ import { AdminLayout } from '../../components/layout';
 import { Project } from '../../components/Project';
 
 import { usePortofolios } from '../../hooks/usePortofolios';
+import { isAuthenticated } from '../../helpers/auth';
 
 const Alert = withReactContent(Swal);
 
@@ -172,10 +174,20 @@ const PortofolioManagement = () => {
 };
 
 const AdminPage = () => {
+  const [authenticated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    if (!isAuthenticated()) {
+      navigate('/');
+      return;
+    }
+    setAuthenticated(true);
+  }, []);
+
   return (
     <AdminLayout>
       <SEO title="Admin" />
-      <PortofolioManagement />
+      {authenticated && <PortofolioManagement />}
     </AdminLayout>
   );
 };

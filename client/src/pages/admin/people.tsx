@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { navigate } from 'gatsby';
 
 import '../scss/admin/people.scss';
 
@@ -7,6 +8,7 @@ import { AdminLayout } from '../../components/layout';
 
 import { usePeoples } from '../../hooks/usePeoples';
 import { IPeople } from '../../interfaces/people';
+import { isAuthenticated } from '../../helpers/auth';
 
 const PeopleManagement = () => {
   const {
@@ -20,6 +22,16 @@ const PeopleManagement = () => {
     editSelectedPeople,
     deleteSelectedPeople,
   } = usePeoples();
+
+  const [authenticated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    if (!isAuthenticated()) {
+      navigate('/');
+      return;
+    }
+    setAuthenticated(true);
+  }, []);
 
   const actionSelectPeopleImage = (event: React.ChangeEvent<HTMLInputElement>, people: IPeople) => {
     const { files } = event.target;
@@ -61,92 +73,94 @@ const PeopleManagement = () => {
   return (
     <AdminLayout>
       <SEO title="Admin" />
-      <div className="people-management">
-        <h1>
-          <span>Pengurus</span>
-        </h1>
-        {peoples.map(people => (
-          <div className="people" key={people._id}>
+      {authenticated && (
+        <div className="people-management">
+          <h1>
+            <span>Pengurus</span>
+          </h1>
+          {peoples.map(people => (
+            <div className="people" key={people._id}>
+              <input
+                type="text"
+                id="name"
+                className="people-name"
+                placeholder="Nama"
+                value={people.name}
+                onChange={event => editPeopleValue(event, people)}
+              />
+              <input
+                type="text"
+                id="role"
+                className="people-position"
+                placeholder="Jabatan"
+                value={people.role}
+                onChange={event => editPeopleValue(event, people)}
+              />
+              <div className="img">
+                <img src={people.imageUrl} alt={people.name} />
+              </div>
+              <div className="upload-img">
+                <label htmlFor={`image-${people._id}`}>
+                  <img src={require('../../images/upload-photo.png')} alt="Upload photo" />
+                </label>
+                <input
+                  type="file"
+                  name="image"
+                  id={`image-${people._id}`}
+                  accept="image/*"
+                  onChange={event => actionSelectPeopleImage(event, people)}
+                />
+              </div>
+              <div className="btn-group">
+                <button className="btn btn-edit" onClick={() => editSelectedPeople(people)}>
+                  Sunting
+                </button>
+                <button className="btn btn-remove" onClick={() => deleteSelectedPeople(people._id)}>
+                  Hapus
+                </button>
+              </div>
+            </div>
+          ))}
+          <div className="people">
             <input
               type="text"
               id="name"
               className="people-name"
               placeholder="Nama"
-              value={people.name}
-              onChange={event => editPeopleValue(event, people)}
+              value={newPeople.name}
+              onChange={editNewPeopleValue}
             />
             <input
               type="text"
               id="role"
               className="people-position"
               placeholder="Jabatan"
-              value={people.role}
-              onChange={event => editPeopleValue(event, people)}
+              value={newPeople.role}
+              onChange={editNewPeopleValue}
             />
-            <div className="img">
-              <img src={people.imageUrl} alt={people.name} />
+            <div className="img possibly-blank">
+              <img src={newPeople.imageUrl} alt={newPeople.name} />
             </div>
             <div className="upload-img">
-              <label htmlFor={`image-${people._id}`}>
+              <label htmlFor="new-people-image">
                 <img src={require('../../images/upload-photo.png')} alt="Upload photo" />
               </label>
               <input
                 type="file"
                 name="image"
-                id={`image-${people._id}`}
+                id="new-people-image"
                 accept="image/*"
-                onChange={event => actionSelectPeopleImage(event, people)}
+                onChange={actionSelectNewPeopleImage}
               />
             </div>
             <div className="btn-group">
-              <button className="btn btn-edit" onClick={() => editSelectedPeople(people)}>
-                Sunting
-              </button>
-              <button className="btn btn-remove" onClick={() => deleteSelectedPeople(people._id)}>
-                Hapus
+              <button className="btn btn-edit" onClick={() => addNewPeople()}>
+                Tambah
               </button>
             </div>
           </div>
-        ))}
-        <div className="people">
-          <input
-            type="text"
-            id="name"
-            className="people-name"
-            placeholder="Nama"
-            value={newPeople.name}
-            onChange={editNewPeopleValue}
-          />
-          <input
-            type="text"
-            id="role"
-            className="people-position"
-            placeholder="Jabatan"
-            value={newPeople.role}
-            onChange={editNewPeopleValue}
-          />
-          <div className="img possibly-blank">
-            <img src={newPeople.imageUrl} alt={newPeople.name} />
-          </div>
-          <div className="upload-img">
-            <label htmlFor="new-people-image">
-              <img src={require('../../images/upload-photo.png')} alt="Upload photo" />
-            </label>
-            <input
-              type="file"
-              name="image"
-              id="new-people-image"
-              accept="image/*"
-              onChange={actionSelectNewPeopleImage}
-            />
-          </div>
-          <div className="btn-group">
-            <button className="btn btn-edit" onClick={() => addNewPeople()}>
-              Tambah
-            </button>
-          </div>
         </div>
-      </div>
+      )}
     </AdminLayout>
   );
 };

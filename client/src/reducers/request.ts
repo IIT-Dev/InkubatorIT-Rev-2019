@@ -19,7 +19,7 @@ export const initialState = () => {
   const state = {};
 
   questions.forEach(question => {
-    state[question.id] = undefined;
+    state[question.id] = null;
   });
 
   return state;

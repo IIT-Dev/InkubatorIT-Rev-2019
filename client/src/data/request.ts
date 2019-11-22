@@ -93,7 +93,7 @@ export const questions = [
   },
   {
     label: 'Berapa ekspektasi biaya Anda untuk proyek ini?',
-    id: 'expectation',
+    id: 'fee',
     type: 'text',
     defaultValue: '',
   },

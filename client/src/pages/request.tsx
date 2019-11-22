@@ -4,6 +4,7 @@ import emailMask from 'text-mask-addons/dist/emailMask';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { Element, scroller } from 'react-scroll';
+import axios from 'axios';
 
 import './scss/request.scss';
 
@@ -263,16 +264,27 @@ const InputField = props => {
 const Request = () => {
   const requestReducer = useRequestReducer();
 
-  const actionSubmitForm = () => {
-    const isSuccess = Math.random() > 0.5;
-    if (isSuccess) {
-      Alert.fire({
-        type: 'success',
-        title: 'Sip!',
-        text: `Proyek berhasil disubmit`,
-        footer: 'Tunggu kabar selanjutnya dari kami ya!',
+  const actionSubmitForm = async () => {
+    try {
+      const url = 'https://script.google.com/macros/s/AKfycbz9IQLkW8i7l3wrCR_TCNx1sFKCSdTxyFh--dXRST8kCMO_Rg/exec';
+
+      const response = await axios({
+        method: 'GET',
+        url,
+        params: requestReducer[0],
       });
-    } else {
+
+      if (response) {
+        Alert.fire({
+          type: 'success',
+          title: 'Sip!',
+          text: `Proyek berhasil disubmit`,
+          footer: 'Tunggu kabar selanjutnya dari kami ya!',
+        });
+      } else {
+        throw new Error('failed');
+      }
+    } catch {
       Alert.fire({
         type: 'error',
         title: 'Oops...',

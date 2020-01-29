@@ -1,3 +1,0 @@
-# INKUBATOR IT HMIF ITB WEBSITE - 2019 Version
-
-## Client Side

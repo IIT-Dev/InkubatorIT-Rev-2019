@@ -13,8 +13,11 @@ import { Layout } from '../components/layout';
 import { SEO } from '../components/seo';
 
 import { timelines } from '../data/home';
+import { useClients } from '../hooks/useClients';
 
 const IndexPage = () => {
+  const { clients } = useClients();
+
   const header = (
     <div className="header">
       <div className="header_wrapper">
@@ -140,14 +143,29 @@ const IndexPage = () => {
     );
   };
 
-  const timeline = (
+  const renderTimeline = () => (
     <div className="timeline">
       <h2>Bagaimana cara kerjanya?</h2>
       <VerticalTimeline>{renderTimeLineElements()}</VerticalTimeline>
     </div>
   );
 
-  const offer = (
+  const renderClient = () => {
+    if (!clients || clients.length === 0) return null;
+
+    return (
+      <div className="client">
+        <h2>Klien Kami</h2>
+        <div>
+          {clients.map(({ _id, name, imageUrl }) => (
+            <img key={_id} src={imageUrl} alt={name} />
+          ))}
+        </div>
+      </div>
+    );
+  };
+
+  const renderOffer = () => (
     <div className="offer">
       <h2>Tertarik menggunakan jasa kami?</h2>
       <Link to="/request">
@@ -162,8 +180,9 @@ const IndexPage = () => {
       <section className="home">
         {header}
         {promotes}
-        {timeline}
-        {offer}
+        {renderTimeline()}
+        {renderClient()}
+        {renderOffer()}
       </section>
     </Layout>
   );

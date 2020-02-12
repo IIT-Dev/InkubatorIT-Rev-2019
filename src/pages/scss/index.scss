@@ -152,8 +152,30 @@
     }
   }
 
+  .client {
+    padding-top: 20vh;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 24px;
+    text-align: center;
+
+    h2 {
+      margin-bottom: 50px;
+    }
+
+    img {
+      height: 120px;
+      margin: 0 25px;
+    }
+  }
+
   .offer {
-    height: 100vh;
+    height: 90vh;
     margin: 0 auto;
 
     display: flex;
@@ -247,6 +269,24 @@
 
       .vertical-timeline {
         width: 100%;
+      }
+    }
+
+    .client {
+      max-width: 75%;
+      align-items: flex-start;
+      font-size: 20px;
+      text-align: left;
+
+      button {
+        font-size: 20px;
+      }
+
+      img {
+        max-width: 100%;
+        height: unset;
+        max-height: 100px;
+        margin: 0;
       }
     }
 

@@ -12,7 +12,7 @@ import { usePeoples } from '../hooks/usePeoples';
 const AboutPage = () => {
   const { peoples } = usePeoples();
 
-  const whatIsIIT = (
+  const renderWhatIsIIT = () => (
     <div className="section">
       <h1>
         <span>Apa itu Inkubator IT?</span>
@@ -28,7 +28,7 @@ const AboutPage = () => {
     </div>
   );
 
-  const visionMission = (
+  const renderVisionMission = () => (
     <div className="section">
       <h1>
         <span>Visi dan Misi</span>
@@ -48,13 +48,14 @@ const AboutPage = () => {
     </div>
   );
 
-  const people = () => {
+  const renderPeople = () => {
+    if (!peoples || peoples.length === 0) return null;
+
     return (
       <div className="section">
         <h1>
           <span>Pengurus Inti</span>
         </h1>
-        {peoples.length === 0 && <p>Belum ada pengurus inti yang dapat ditampilkan</p>}
         {peoples.map(people => (
           <div key={people._id} className="people">
             <h4>{people.name}</h4>
@@ -66,7 +67,7 @@ const AboutPage = () => {
     );
   };
 
-  const contact = (
+  const renderContact = () => (
     <div className="section">
       <h1>
         <span>Hubungi Kami</span>
@@ -98,10 +99,10 @@ const AboutPage = () => {
     <Layout>
       <SEO title="About Us" />
       <section className="about">
-        {whatIsIIT}
-        {visionMission}
-        {people()}
-        {contact}
+        {renderWhatIsIIT()}
+        {renderVisionMission()}
+        {renderPeople()}
+        {renderContact()}
       </section>
     </Layout>
   );

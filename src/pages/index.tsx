@@ -18,7 +18,7 @@ import { useClients } from '../hooks/useClients';
 const IndexPage = () => {
   const { clients } = useClients();
 
-  const header = (
+  const renderHeader = () => (
     <div className="header">
       <div className="header_wrapper">
         <p className="p_welcome">Selamat Datang di</p>
@@ -47,7 +47,7 @@ const IndexPage = () => {
     return () => typed.destroy();
   });
 
-  const promotes = (
+  const renderPromotes = () => (
     <div className="promotes">
       <div className="promotes-wrapper left">
         <h1>Kami Melayani Pembuatan</h1>
@@ -178,8 +178,8 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Home" />
       <section className="home">
-        {header}
-        {promotes}
+        {renderHeader()}
+        {renderPromotes()}
         {renderTimeline()}
         {renderClient()}
         {renderOffer()}

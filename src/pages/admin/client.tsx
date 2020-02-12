@@ -129,6 +129,7 @@ const ClientManagement = () => {
         <span>Client</span>
       </h1>
       <div className="projects">
+        {clients.length === 0 && <p>Kamu belum nambahin klien</p>}
         {clients.map((client, index) => (
           <Client
             {...client}

@@ -150,6 +150,7 @@ const PortofolioManagement = () => {
         <span>Portofolio</span>
       </h1>
       <div className="projects">
+        {portofolios.length === 0 && <p>Kamu belum nambahin portofolio</p>}
         {portofolios.map((portofolio, index) => (
           <Project
             {...portofolio}

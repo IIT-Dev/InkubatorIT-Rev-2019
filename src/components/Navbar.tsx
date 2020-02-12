@@ -52,16 +52,16 @@ export const VisitorNavbar = () => (
 export const AdminNavbar = () => {
   return (
     <Navbar>
-      <Link to="/admin/portofolio">
-        <button className="manage-btn">
-          <FontAwesomeIcon icon={faLaptop} />
-          <span>Manage Portofolio</span>
-        </button>
-      </Link>
       <Link to="/admin/people">
         <button className="manage-btn">
           <FontAwesomeIcon icon={faUserTie} />
           <span>Manage People</span>
+        </button>
+      </Link>
+      <Link to="/admin/portofolio">
+        <button className="manage-btn">
+          <FontAwesomeIcon icon={faLaptop} />
+          <span>Manage Portofolio</span>
         </button>
       </Link>
       <Link to="/admin/client">

@@ -54,6 +54,7 @@ const AboutPage = () => {
         <h1>
           <span>Pengurus Inti</span>
         </h1>
+        {peoples.length === 0 && <p>Belum ada pengurus inti yang dapat ditampilkan</p>}
         {peoples.map(people => (
           <div key={people._id} className="people">
             <h4>{people.name}</h4>

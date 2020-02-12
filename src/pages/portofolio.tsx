@@ -75,6 +75,7 @@ const Portfolio = () => {
   const projects = () => {
     return (
       <div className="section projects">
+        {displayedPortofolios.length === 0 && <p>Tidak ada portofolio yang dapat ditampilkan</p>}
         {displayedPortofolios.map((project, index) => (
           <Project {...project} key={index} />
         ))}

@@ -87,7 +87,7 @@ const InputField = props => {
             name={id}
             placeholder="Ketik jawaban disini..."
             autoComplete="off"
-            value={state.id}
+            value={state[id]}
             spellCheck={false}
             onChange={event => actionTextInputChange(event)}
             onKeyDown={handleKeyDown}
@@ -102,7 +102,7 @@ const InputField = props => {
             rows={5}
             autoComplete="off"
             spellCheck={false}
-            value={state.id}
+            value={state[id]}
             onChange={event => actionTextInputChange(event)}
             onKeyDown={handleKeyDown}
           />
@@ -117,7 +117,7 @@ const InputField = props => {
             placeholder="dd/mm/yyyy"
             autoComplete="off"
             spellCheck={false}
-            value={state.id}
+            value={state[id]}
             onChange={event => actionTextInputChange(event)}
             onKeyDown={handleKeyDown}
           />
@@ -132,7 +132,7 @@ const InputField = props => {
             placeholder="example@gmail.com"
             autoComplete="off"
             spellCheck={false}
-            value={state.id}
+            value={state[id]}
             onChange={event => actionTextInputChange(event)}
             onKeyDown={handleKeyDown}
           />
@@ -262,7 +262,7 @@ const InputField = props => {
 };
 
 const Request = () => {
-  const requestReducer = useRequestReducer();
+  const [state, dispatch] = useRequestReducer();
 
   const actionSubmitForm = async () => {
     try {
@@ -271,10 +271,11 @@ const Request = () => {
       const response = await axios({
         method: 'GET',
         url,
-        params: requestReducer[0],
+        params: state,
       });
 
       if (response) {
+        dispatch({ type: 'RESET' });
         Alert.fire({
           type: 'success',
           title: 'Terima kasih',
@@ -309,7 +310,7 @@ const Request = () => {
           ))}
         </div>
         {questions.map((question, index) => (
-          <InputField key={index} {...question} reducer={requestReducer} />
+          <InputField key={index} {...question} reducer={[state, dispatch]} />
         ))}
         <Element name="submit-btn">
           <div className="submit-btn">

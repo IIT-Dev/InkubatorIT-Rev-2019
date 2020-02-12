@@ -4,7 +4,7 @@ import { questions } from '../data/request';
 
 interface IAction {
   type: string;
-  payload: any;
+  payload?: any;
 }
 
 interface IState {
@@ -12,6 +12,7 @@ interface IState {
 }
 
 export const reducers = (state: IState, action: IAction) => {
+  if (action.type === 'RESET') return initialState();
   return { ...state, [action.type]: action.payload };
 };
 

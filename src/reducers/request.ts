@@ -19,7 +19,7 @@ export const initialState = () => {
   const state = {};
 
   questions.forEach(question => {
-    state[question.id] = null;
+    state[question.id] = question.defaultValue;
   });
 
   return state;

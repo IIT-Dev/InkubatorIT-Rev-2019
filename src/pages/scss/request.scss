@@ -161,7 +161,7 @@
     justify-content: flex-start;
     max-width: 50%;
     margin: auto;
-    margin-bottom: 25vh;
+    margin-bottom: 5vh;
 
     button {
       width: 200px;
@@ -180,6 +180,23 @@
       &:hover {
         background-color: var(--secondary);
         color: #fff;
+      }
+    }
+  }
+
+  .contact {
+    padding: 50px 150px;
+    margin-bottom: 10vh;
+
+    h3 {
+      font-size: 20px;
+      margin: 10px 0 0;
+      font-weight: 300;
+      letter-spacing: 1.25px;
+      line-height: 1.25;
+
+      &:first-of-type {
+        margin: 25px 0 0;
       }
     }
   }

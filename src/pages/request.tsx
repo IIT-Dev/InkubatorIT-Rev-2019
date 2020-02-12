@@ -11,7 +11,7 @@ import './scss/request.scss';
 import { Layout } from '../components/layout';
 import { SEO } from '../components/seo';
 
-import { notices, questions } from '../data/request';
+import { notices, questions, contacts } from '../data/request';
 
 import { useRequestReducer } from '../reducers/request';
 import { isMobile, isQuestionConditionNotFulfilled } from '../helpers/request';
@@ -277,9 +277,14 @@ const Request = () => {
       if (response) {
         Alert.fire({
           type: 'success',
-          title: 'Sip!',
-          text: `Proyek berhasil disubmit`,
-          footer: 'Tunggu kabar selanjutnya dari kami ya!',
+          title: 'Terima kasih',
+          html: (
+            <div style={{ lineHeight: 1.75 }}>
+              <p>Kami akan mereview aplikasi proyek terlebih dahulu</p>
+              <p>Kemudian project manager kami akan segera mengontak Anda untuk memberitahukan tahap selanjutnya</p>
+            </div>
+          ),
+          footer: <p style={{ lineHeight: 1.5 }}>Hubungi kontak dibawah formulir jika Anda memiliki pertanyaan</p>,
         });
       } else {
         throw new Error('failed');
@@ -313,6 +318,14 @@ const Request = () => {
             </button>
           </div>
         </Element>
+        <div className="contact">
+          <h3>Hubungi kami jika Anda memiliki pertanyaan atau kebutuhan segera :</h3>
+          {contacts.map((contact, index) => (
+            <h3 key={index}>
+              {index + 1}. {contact}
+            </h3>
+          ))}
+        </div>
       </div>
     </Layout>
   );

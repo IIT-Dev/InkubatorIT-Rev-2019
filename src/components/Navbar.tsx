@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLaptop, faUserTie } from '@fortawesome/free-solid-svg-icons';
+import { faLaptop, faUserTie, faBriefcase } from '@fortawesome/free-solid-svg-icons';
 
 import './scss/Navbar.scss';
 
@@ -62,6 +62,12 @@ export const AdminNavbar = () => {
         <button className="manage-btn">
           <FontAwesomeIcon icon={faUserTie} />
           <span>Manage People</span>
+        </button>
+      </Link>
+      <Link to="/admin/client">
+        <button className="manage-btn">
+          <FontAwesomeIcon icon={faBriefcase} />
+          <span>Manage Client</span>
         </button>
       </Link>
     </Navbar>

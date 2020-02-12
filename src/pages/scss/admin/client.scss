@@ -1,0 +1,122 @@
+.client-management {
+  .projects {
+    padding: 50px 150px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .add-client-btn {
+      height: 50px;
+      width: 50px;
+
+      position: fixed;
+      bottom: 50px;
+      right: 50px;
+
+      border-radius: 50%;
+      border: none;
+      font-size: 1.25em;
+      background-color: var(--primary);
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+
+      color: white;
+      cursor: pointer;
+      outline: none;
+    }
+  }
+}
+
+.add-client-form {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  input {
+    border: none;
+    border-bottom: 2.5px solid var(--primary);
+    outline: none;
+    margin-top: 15px;
+    padding-bottom: 10px;
+    height: 50px;
+    font-size: 20px;
+  }
+
+  input[type='file'] {
+    display: none;
+  }
+
+  select {
+    background: white;
+    border: none;
+    border-bottom: 2.5px solid var(--primary);
+    font-size: 20px;
+    margin-top: 15px;
+    padding-bottom: 10px;
+    outline: none;
+    height: 50px;
+  }
+
+  .upload-img {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+
+    label {
+      height: 60px;
+      width: 60px;
+      background-color: white;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 60%;
+      }
+    }
+  }
+
+  .img {
+    margin-top: 25px;
+    height: 175px;
+    width: 100%;
+
+    img {
+      max-width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .client-management {
+    .projects {
+      padding: 0 50px 50px;
+
+      .add-client-btn {
+        width: 100%;
+
+        position: static;
+        border-radius: 2.5px;
+      }
+    }
+  }
+
+  .add-client-form {
+    .upload-img {
+      right: 10px;
+      bottom: 10px;
+
+      label {
+        height: 40px;
+        width: 40px;
+      }
+    }
+  }
+}

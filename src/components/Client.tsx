@@ -4,7 +4,7 @@ import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
-import './scss/Project.scss';
+import './scss/Client.scss';
 import { IClient } from '../interfaces/client';
 
 const Alert = withReactContent(Swal);
@@ -22,7 +22,7 @@ export const Client: React.FC<IProjectProps> = props => {
     Alert.fire({
       title: <p>{name}</p>,
       html: (
-        <div className="project-modal">
+        <div className="client-modal">
           <div className="img">
             <img src={imageUrl} alt={name} />
           </div>
@@ -60,7 +60,7 @@ export const Client: React.FC<IProjectProps> = props => {
   };
 
   return (
-    <div className="project" onClick={actionOpenAlert}>
+    <div className="client" onClick={actionOpenAlert}>
       <div className="image">
         <img src={imageUrl} alt={name} />
       </div>

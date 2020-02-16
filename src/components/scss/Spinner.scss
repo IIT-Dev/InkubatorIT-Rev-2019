@@ -1,0 +1,12 @@
+.spinner {
+  z-index: 1;
+  position: fixed;
+  display: flex;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba($color: black, $alpha: 0.75);
+}

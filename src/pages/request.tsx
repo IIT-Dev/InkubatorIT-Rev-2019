@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MaskedInput from 'react-text-mask';
 import emailMask from 'text-mask-addons/dist/emailMask';
 import Swal from 'sweetalert2';
@@ -15,6 +15,7 @@ import { notices, questions, contacts } from '../data/request';
 
 import { useRequestReducer } from '../reducers/request';
 import { isMobile, isQuestionConditionNotFulfilled } from '../helpers/request';
+import Spinner from '../components/Spinner';
 
 const Alert = withReactContent(Swal);
 
@@ -263,17 +264,20 @@ const InputField = props => {
 
 const Request = () => {
   const [state, dispatch] = useRequestReducer();
+  const [loading, setLoading] = useState(false);
 
   const actionSubmitForm = async () => {
     try {
       const url = 'https://script.google.com/macros/s/AKfycbz9IQLkW8i7l3wrCR_TCNx1sFKCSdTxyFh--dXRST8kCMO_Rg/exec';
 
+      setLoading(true);
       const response = await axios({
         method: 'GET',
         url,
         params: state,
       });
 
+      setLoading(false);
       if (response) {
         dispatch({ type: 'RESET' });
         Alert.fire({
@@ -291,6 +295,7 @@ const Request = () => {
         throw new Error('failed');
       }
     } catch {
+      setLoading(false);
       Alert.fire({
         type: 'error',
         title: 'Oops...',
@@ -328,6 +333,7 @@ const Request = () => {
           ))}
         </div>
       </div>
+      {loading && <Spinner />}
     </Layout>
   );
 };

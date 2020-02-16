@@ -11,6 +11,7 @@ import '../scss/admin/client.scss';
 import { SEO } from '../../components/seo';
 import { AdminLayout } from '../../components/layout';
 import { Client } from '../../components/Client';
+import Spinner from '../../components/Spinner';
 
 import { useClients } from '../../hooks/useClients';
 import { isAuthenticated } from '../../helpers/auth';
@@ -74,6 +75,7 @@ export const ClientForm: React.FC<{ client?: IClient }> = props => {
 
 const ClientManagement = () => {
   const { clients, addNewClient, editSelectedClient, deleteSelectedClient } = useClients();
+  const [loading, setLoading] = useState(false);
 
   const actionOpenAddClientAlert = async () => {
     const alert = await Alert.fire({
@@ -94,7 +96,9 @@ const ClientManagement = () => {
     });
 
     if (alert.value) {
+      setLoading(true);
       await addNewClient(alert.value);
+      setLoading(false);
       await Alert.fire('Sukses!', 'Client berhasil ditambahkan', 'success');
     }
   };
@@ -118,9 +122,35 @@ const ClientManagement = () => {
     });
 
     if (alert.value) {
+      setLoading(true);
       await editSelectedClient({ ...clients[index], ...alert.value });
+      setLoading(false);
       await Alert.fire('Sukses!', 'Client berhasil diubah', 'success');
     }
+  };
+
+  const actionDeleteClient = async (_id: string) => {
+    setLoading(true);
+    await deleteSelectedClient(_id);
+    setLoading(false);
+  };
+
+  const renderContent = () => {
+    if (clients === null) {
+      return <Spinner />;
+    }
+    if (clients.length === 0) {
+      return <p>Kamu belum nambahin klien</p>;
+    }
+    return clients.map((client, index) => (
+      <Client
+        {...client}
+        admin
+        key={index}
+        editClient={() => actionOpenEditClientAlert(index)}
+        removeClient={(_id: string) => actionDeleteClient(_id)}
+      />
+    ));
   };
 
   return (
@@ -129,16 +159,7 @@ const ClientManagement = () => {
         <span>Client</span>
       </h1>
       <div className="projects">
-        {clients.length === 0 && <p>Kamu belum nambahin klien</p>}
-        {clients.map((client, index) => (
-          <Client
-            {...client}
-            admin
-            key={index}
-            editClient={() => actionOpenEditClientAlert(index)}
-            removeClient={(_id: string) => deleteSelectedClient(_id)}
-          />
-        ))}
+        {renderContent()}
         <button
           className="add-client-btn"
           data-tip="Tambah client"
@@ -149,6 +170,7 @@ const ClientManagement = () => {
         </button>
         <ReactTooltip place="left" type="dark" effect="solid" id="client-add" />
       </div>
+      {loading && <Spinner />}
     </div>
   );
 };

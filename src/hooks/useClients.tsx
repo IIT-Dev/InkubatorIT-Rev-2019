@@ -4,7 +4,7 @@ import { fetchClients, addClient, updateClient, deleteClient } from '../api/clie
 import { IClient } from '../interfaces/client';
 
 export const useClients = () => {
-  const [clients, setClients] = useState<IClient[]>([]);
+  const [clients, setClients] = useState<IClient[]>(null);
 
   useEffect(() => {
     getClients();
@@ -20,9 +20,9 @@ export const useClients = () => {
     setClients(clients.concat(newClient));
   };
 
-  const deleteSelectedClient = (_id: string) => {
+  const deleteSelectedClient = async (_id: string) => {
+    await deleteClient(_id);
     setClients(clients.filter(people => people._id !== _id));
-    deleteClient(_id);
   };
 
   const editClientValue = (event: React.ChangeEvent<HTMLInputElement>, client: IClient) => {

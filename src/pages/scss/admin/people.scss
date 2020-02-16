@@ -1,5 +1,9 @@
 .people-management {
-  padding-bottom: 15vh;
+  padding-bottom: 2.5vh;
+
+  .notice {
+    padding: 0 150px;
+  }
 
   .people {
     margin: 25px 150px 150px;
@@ -105,6 +109,10 @@
 @media (min-width: 320px) and (max-width: 480px) {
   .people-management {
     padding-bottom: 100px;
+
+    .notice {
+      padding: 0 50px;
+    }
 
     .people {
       margin: 25px 50px 100px;

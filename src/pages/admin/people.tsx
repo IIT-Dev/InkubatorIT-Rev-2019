@@ -5,6 +5,7 @@ import '../scss/admin/people.scss';
 
 import { SEO } from '../../components/seo';
 import { AdminLayout } from '../../components/layout';
+import Spinner from '../../components/Spinner';
 
 import { usePeoples } from '../../hooks/usePeoples';
 import { IPeople } from '../../interfaces/people';
@@ -70,57 +71,68 @@ const PeopleManagement = () => {
     reader.readAsDataURL(file);
   };
 
+  const renderContent = () => {
+    if (peoples === null) return <Spinner />;
+    if (peoples.length === 0) return <p className="notice">Kamu belum menambahkan pengurus</p>;
+
+    return peoples.map(people => (
+      <div className="people" key={people._id}>
+        <input
+          type="text"
+          id="name"
+          className="people-name"
+          placeholder="Nama"
+          value={people.name}
+          onChange={event => editPeopleValue(event, people)}
+        />
+        <input
+          type="text"
+          id="role"
+          className="people-position"
+          placeholder="Jabatan"
+          value={people.role}
+          onChange={event => editPeopleValue(event, people)}
+        />
+        <div className="img">
+          <img src={people.imageUrl} alt={people.name} />
+        </div>
+        <div className="upload-img">
+          <label htmlFor={`image-${people._id}`}>
+            <img src={require('../../images/upload-photo.png')} alt="Update people" />
+          </label>
+          <input
+            type="file"
+            name="image"
+            id={`image-${people._id}`}
+            accept="image/*"
+            onChange={event => actionSelectPeopleImage(event, people)}
+          />
+        </div>
+        <div className="btn-group">
+          <button className="btn btn-edit" onClick={() => editSelectedPeople(people)}>
+            Sunting
+          </button>
+          <button className="btn btn-remove" onClick={() => deleteSelectedPeople(people._id)}>
+            Hapus
+          </button>
+        </div>
+      </div>
+    ));
+  };
+
+  if (!authenticated) return null;
   return (
     <AdminLayout>
       <SEO title="Admin" />
-      {authenticated && (
-        <div className="people-management">
+      <div className="people-management">
+        <h1>
+          <span>Pengurus</span>
+        </h1>
+        {renderContent()}
+        <div>
           <h1>
-            <span>Pengurus</span>
+            <span>Tambah Pengurus</span>
           </h1>
-          {peoples.map(people => (
-            <div className="people" key={people._id}>
-              <input
-                type="text"
-                id="name"
-                className="people-name"
-                placeholder="Nama"
-                value={people.name}
-                onChange={event => editPeopleValue(event, people)}
-              />
-              <input
-                type="text"
-                id="role"
-                className="people-position"
-                placeholder="Jabatan"
-                value={people.role}
-                onChange={event => editPeopleValue(event, people)}
-              />
-              <div className="img">
-                <img src={people.imageUrl} alt={people.name} />
-              </div>
-              <div className="upload-img">
-                <label htmlFor={`image-${people._id}`}>
-                  <img src={require('../../images/upload-photo.png')} alt="Upload photo" />
-                </label>
-                <input
-                  type="file"
-                  name="image"
-                  id={`image-${people._id}`}
-                  accept="image/*"
-                  onChange={event => actionSelectPeopleImage(event, people)}
-                />
-              </div>
-              <div className="btn-group">
-                <button className="btn btn-edit" onClick={() => editSelectedPeople(people)}>
-                  Sunting
-                </button>
-                <button className="btn btn-remove" onClick={() => deleteSelectedPeople(people._id)}>
-                  Hapus
-                </button>
-              </div>
-            </div>
-          ))}
           <div className="people">
             <input
               type="text"
@@ -143,7 +155,7 @@ const PeopleManagement = () => {
             </div>
             <div className="upload-img">
               <label htmlFor="new-people-image">
-                <img src={require('../../images/upload-photo.png')} alt="Upload photo" />
+                <img src={require('../../images/upload-photo.png')} alt="Select people" />
               </label>
               <input
                 type="file"
@@ -160,7 +172,7 @@ const PeopleManagement = () => {
             </div>
           </div>
         </div>
-      )}
+      </div>
     </AdminLayout>
   );
 };

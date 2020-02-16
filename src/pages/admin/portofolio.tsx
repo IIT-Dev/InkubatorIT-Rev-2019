@@ -161,7 +161,7 @@ const PortofolioManagement = () => {
       return <Spinner />;
     }
     if (portofolios.length === 0) {
-      return <p>Kamu belum nambahin portofolio</p>;
+      return <p className="notice">Kamu belum nambahin portofolio</p>;
     }
     return portofolios.map((portofolio, index) => (
       <Project

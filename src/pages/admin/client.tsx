@@ -140,7 +140,7 @@ const ClientManagement = () => {
       return <Spinner />;
     }
     if (clients.length === 0) {
-      return <p>Kamu belum nambahin klien</p>;
+      return <p className="notice">Kamu belum nambahin klien</p>;
     }
     return clients.map((client, index) => (
       <Client

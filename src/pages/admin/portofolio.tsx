@@ -11,6 +11,7 @@ import '../scss/admin/portofolio.scss';
 import { SEO } from '../../components/seo';
 import { AdminLayout } from '../../components/layout';
 import { Project } from '../../components/Project';
+import Spinner from '../../components/Spinner';
 
 import { usePortofolios } from '../../hooks/usePortofolios';
 import { isAuthenticated } from '../../helpers/auth';
@@ -44,7 +45,7 @@ export const PortofolioForm = props => {
   };
 
   const renderImage = () => {
-    let imgSrc;
+    let imgSrc: string;
 
     if (defaultValue.imageUrl) {
       if (image) {
@@ -71,7 +72,7 @@ export const PortofolioForm = props => {
       {renderImage()}
       <div className="upload-img">
         <label htmlFor="new-portofolio-image">
-          <img src={require('../../images/upload-photo.png')} alt="Upload photo" />
+          <img src={require('../../images/upload-photo.png')} alt="Upload portofolio" />
         </label>
         <input
           type="file"
@@ -87,6 +88,7 @@ export const PortofolioForm = props => {
 
 const PortofolioManagement = () => {
   const { portofolios, addNewPortofolio, editSelectedPortofolio, deleteSelectedPortofolio } = usePortofolios();
+  const [loading, setLoading] = useState(false);
 
   const actionOpenAddPortofolioAlert = async () => {
     const alert = await Alert.fire({
@@ -111,7 +113,9 @@ const PortofolioManagement = () => {
     });
 
     if (alert.value) {
+      setLoading(true);
       await addNewPortofolio(alert.value);
+      setLoading(false);
       await Alert.fire('Sukses!', 'Portofolio berhasil ditambahkan', 'success');
     }
   };
@@ -139,9 +143,35 @@ const PortofolioManagement = () => {
     });
 
     if (alert.value) {
+      setLoading(true);
       await editSelectedPortofolio({ ...portofolios[index], ...alert.value });
+      setLoading(false);
       await Alert.fire('Sukses!', 'Portofolio berhasil diubah', 'success');
     }
+  };
+
+  const actionDeletePortofolio = async (_id: string) => {
+    setLoading(true);
+    await deleteSelectedPortofolio(_id);
+    setLoading(false);
+  };
+
+  const renderContent = () => {
+    if (portofolios === null) {
+      return <Spinner />;
+    }
+    if (portofolios.length === 0) {
+      return <p>Kamu belum nambahin portofolio</p>;
+    }
+    return portofolios.map((portofolio, index) => (
+      <Project
+        {...portofolio}
+        admin
+        key={index}
+        editPortofolio={() => actionOpenEditPortofolioAlert(index)}
+        removePortofolio={(_id: string) => actionDeletePortofolio(_id)}
+      />
+    ));
   };
 
   return (
@@ -150,16 +180,7 @@ const PortofolioManagement = () => {
         <span>Portofolio</span>
       </h1>
       <div className="projects">
-        {portofolios.length === 0 && <p>Kamu belum nambahin portofolio</p>}
-        {portofolios.map((portofolio, index) => (
-          <Project
-            {...portofolio}
-            admin
-            key={index}
-            editPortofolio={() => actionOpenEditPortofolioAlert(index)}
-            removePortofolio={(_id: string) => deleteSelectedPortofolio(_id)}
-          />
-        ))}
+        {renderContent()}
         <button
           className="add-portofolio-btn"
           data-tip="Tambah portofolio"
@@ -170,6 +191,7 @@ const PortofolioManagement = () => {
         </button>
         <ReactTooltip place="left" type="dark" effect="solid" id="portofolio-add" />
       </div>
+      {loading && <Spinner />}
     </div>
   );
 };

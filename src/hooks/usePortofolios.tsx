@@ -4,7 +4,7 @@ import { fetchPortofolios, addPortofolio, updatePortofolio, deletePortofolio } f
 import { IPortofolio } from '../interfaces/portofolio';
 
 export const usePortofolios = () => {
-  const [portofolios, setPortofolios] = useState<IPortofolio[]>([]);
+  const [portofolios, setPortofolios] = useState<IPortofolio[]>(null);
 
   useEffect(() => {
     getPortofolios();
@@ -20,9 +20,9 @@ export const usePortofolios = () => {
     setPortofolios(portofolios.concat(newPortofolio));
   };
 
-  const deleteSelectedPortofolio = (_id: string) => {
+  const deleteSelectedPortofolio = async (_id: string) => {
+    await deletePortofolio(_id);
     setPortofolios(portofolios.filter(people => people._id !== _id));
-    deletePortofolio(_id);
   };
 
   const editPortofolioValue = (event: React.ChangeEvent<HTMLInputElement>, portofolio: IPortofolio) => {

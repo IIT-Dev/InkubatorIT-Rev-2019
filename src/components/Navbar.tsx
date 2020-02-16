@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLaptop, faUserTie, faBriefcase } from '@fortawesome/free-solid-svg-icons';
+import { faLaptop, faUserTie, faBriefcase, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 import './scss/Navbar.scss';
+import { logOut } from '../helpers/auth';
 
 export const Navbar = props => {
   const { children } = props;
@@ -70,6 +71,10 @@ export const AdminNavbar = () => {
           <span>Manage Client</span>
         </button>
       </Link>
+      <button className="manage-btn" onClick={logOut}>
+        <FontAwesomeIcon icon={faSignOutAlt} />
+        <span>Log Out</span>
+      </button>
     </Navbar>
   );
 };

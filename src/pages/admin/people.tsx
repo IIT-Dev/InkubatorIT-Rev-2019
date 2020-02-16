@@ -25,6 +25,7 @@ const PeopleManagement = () => {
   } = usePeoples();
 
   const [authenticated, setAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!isAuthenticated()) {
@@ -71,6 +72,24 @@ const PeopleManagement = () => {
     reader.readAsDataURL(file);
   };
 
+  const actionAddNewPeople = async () => {
+    setLoading(true);
+    await addNewPeople();
+    setLoading(false);
+  };
+
+  const actionEditPeople = async (people: IPeople) => {
+    setLoading(true);
+    await editSelectedPeople(people);
+    setLoading(false);
+  };
+
+  const actionDeletePeople = async (_id: string) => {
+    setLoading(true);
+    await deleteSelectedPeople(_id);
+    setLoading(false);
+  };
+
   const renderContent = () => {
     if (peoples === null) return <Spinner />;
     if (peoples.length === 0) return <p className="notice">Kamu belum menambahkan pengurus</p>;
@@ -109,10 +128,10 @@ const PeopleManagement = () => {
           />
         </div>
         <div className="btn-group">
-          <button className="btn btn-edit" onClick={() => editSelectedPeople(people)}>
+          <button className="btn btn-edit" onClick={() => actionEditPeople(people)}>
             Sunting
           </button>
-          <button className="btn btn-remove" onClick={() => deleteSelectedPeople(people._id)}>
+          <button className="btn btn-remove" onClick={() => actionDeletePeople(people._id)}>
             Hapus
           </button>
         </div>
@@ -124,6 +143,7 @@ const PeopleManagement = () => {
   return (
     <AdminLayout>
       <SEO title="Admin" />
+      {loading && <Spinner />}
       <div className="people-management">
         <h1>
           <span>Pengurus</span>
@@ -166,7 +186,7 @@ const PeopleManagement = () => {
               />
             </div>
             <div className="btn-group">
-              <button className="btn btn-edit" onClick={() => addNewPeople()}>
+              <button className="btn btn-edit" onClick={actionAddNewPeople}>
                 Tambah
               </button>
             </div>

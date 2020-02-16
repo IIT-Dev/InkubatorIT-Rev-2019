@@ -6,7 +6,7 @@ import { fetchPeoples, addPeople, updatePeople, deletePeople } from '../api/peop
 const initialNewPeople = { name: '', role: '', imageUrl: null };
 
 export const usePeoples = () => {
-  const [peoples, setPeoples] = useState<IPeople[]>([]);
+  const [peoples, setPeoples] = useState<IPeople[]>(null);
   const [newPeople, setNewPeople] = useState<INewPeople>(initialNewPeople);
 
   useEffect(() => {
@@ -18,7 +18,8 @@ export const usePeoples = () => {
     setPeoples(peoples);
   };
 
-  const addNewPeople = () => {
+  const addNewPeople = async () => {
+    await addPeople(newPeople);
     setPeoples(
       peoples.concat({
         _id: (peoples.length + 1).toString(),
@@ -26,16 +27,15 @@ export const usePeoples = () => {
       }),
     );
     setNewPeople(initialNewPeople);
-    addPeople(newPeople);
   };
 
   const editNewPeopleValue = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewPeople({ ...newPeople, [event.target.id]: event.target.value });
   };
 
-  const deleteSelectedPeople = (_id: string) => {
+  const deleteSelectedPeople = async (_id: string) => {
+    await deletePeople(_id);
     setPeoples(peoples.filter(people => people._id !== _id));
-    deletePeople(_id);
   };
 
   const editPeopleValue = (event: React.ChangeEvent<HTMLInputElement>, people: IPeople) => {
@@ -49,8 +49,8 @@ export const usePeoples = () => {
     setPeoples(updatedPeoples);
   };
 
-  const editSelectedPeople = (people: IPeople) => {
-    updatePeople(people);
+  const editSelectedPeople = async (people: IPeople) => {
+    await updatePeople(people);
   };
 
   return {

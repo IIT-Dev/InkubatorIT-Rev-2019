@@ -12,6 +12,7 @@ import { selectOptions } from '../data/portofolio';
 import { IPortofolio } from '../interfaces/portofolio';
 
 import { usePortofolios } from '../hooks/usePortofolios';
+import Spinner from '../components/Spinner';
 
 const selectStyles: Styles = {
   placeholder: base => ({ ...base, color: 'var(--tertiary)' }),
@@ -49,13 +50,13 @@ const Portfolio = () => {
       );
   }, [filters, portofolios]);
 
-  const title = (
+  const renderTitle = () => (
     <h1 className="section">
       <span>Karya Kami</span>
     </h1>
   );
 
-  const filter = () => {
+  const renderFilter = () => {
     return (
       <div className="section filters">
         <h4>Platform: </h4>
@@ -72,18 +73,21 @@ const Portfolio = () => {
     );
   };
 
-  const projects = () => {
-    return (
-      <div className="section projects">
-        {displayedPortofolios.length === 0 && <p>Tidak ada portofolio yang dapat ditampilkan</p>}
-        {displayedPortofolios.map((project, index) => (
-          <Project {...project} key={index} />
-        ))}
-      </div>
-    );
+  const renderProjects = () => {
+    const renderContent = () => {
+      if (displayedPortofolios === null) {
+        return <Spinner />;
+      }
+      if (displayedPortofolios.length === 0) {
+        return <p>Tidak ada portofolio yang dapat ditampilkan</p>;
+      }
+      return displayedPortofolios.map((project, index) => <Project {...project} key={index} />);
+    };
+
+    return <div className="section projects">{renderContent()}</div>;
   };
 
-  const offer = (
+  const renderOffer = () => (
     <div className="section offer">
       <h2>Ingin ide kamu direalisasikan juga?</h2>
       <Link to="/request">
@@ -96,10 +100,10 @@ const Portfolio = () => {
     <Layout>
       <SEO title="Portofolio" />
       <section className="portofolio">
-        {title}
-        {filter()}
-        {projects()}
-        {offer}
+        {renderTitle()}
+        {renderFilter()}
+        {renderProjects()}
+        {renderOffer()}
       </section>
     </Layout>
   );

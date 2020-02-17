@@ -282,7 +282,7 @@ const Request = () => {
         dispatch({ type: 'RESET' });
         Alert.fire({
           type: 'success',
-          title: 'Terima kasih',
+          title: 'Sukses Disubmit',
           html: (
             <div style={{ lineHeight: 1.75 }}>
               <p>Kami akan mereview aplikasi proyek terlebih dahulu</p>
@@ -304,6 +304,15 @@ const Request = () => {
     }
   };
 
+  const allowedToSubmit = () => {
+    return questions.every(question => {
+      if (question.isRequired) {
+        return !!state[question.id];
+      }
+      return true;
+    });
+  };
+
   return (
     <Layout>
       <SEO title="Request a Project" />
@@ -319,7 +328,7 @@ const Request = () => {
         ))}
         <Element name="submit-btn">
           <div className="submit-btn">
-            <button id="submit-btn" onClick={actionSubmitForm}>
+            <button id="submit-btn" disabled={!allowedToSubmit()} onClick={actionSubmitForm}>
               SUBMIT
             </button>
           </div>

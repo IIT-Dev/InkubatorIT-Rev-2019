@@ -330,8 +330,9 @@ const Request = () => {
       if (question.isRequired) {
         if (question.condition) {
           if (isQuestionConditionNotFulfilled(question.condition, state)) return true;
-          return false;
         }
+
+        if (Array.isArray(state[question.id])) return state[question.id].length;
         return !!state[question.id];
       }
       return true;

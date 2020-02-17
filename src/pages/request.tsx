@@ -270,11 +270,25 @@ const Request = () => {
     try {
       const url = 'https://script.google.com/macros/s/AKfycbz9IQLkW8i7l3wrCR_TCNx1sFKCSdTxyFh--dXRST8kCMO_Rg/exec';
 
+      const getParams = () => {
+        const params = {};
+
+        for (let key in state) {
+          if (Array.isArray(state[key])) {
+            params[key] = state[key].join(', ');
+          } else {
+            params[key] = state[key];
+          }
+        }
+
+        return params;
+      };
+
       setLoading(true);
       const response = await axios({
         method: 'GET',
         url,
-        params: state,
+        params: getParams(),
       });
 
       setLoading(false);

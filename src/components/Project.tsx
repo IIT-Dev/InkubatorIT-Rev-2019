@@ -21,15 +21,14 @@ export const Project: React.FC<IProjectProps> = props => {
 
   const actionOpenAlert = () => {
     Alert.fire({
-      title: <p>{title}</p>,
+      title,
       html: (
         <div className="project-modal">
           <p>{description}</p>
-          <button>{platform.toUpperCase()}</button>
         </div>
       ),
-      confirmButtonColor: 'var(--tertiary)',
       showConfirmButton: false,
+      showCloseButton: true,
     });
   };
 

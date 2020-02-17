@@ -281,6 +281,8 @@ const Request = () => {
 
           if (Array.isArray(state[key])) {
             params[key] = state[key].join(', ');
+          } else if (state[key].startsWith('0')) {
+            params[key] = `'${state[key]}`;
           } else {
             params[key] = state[key];
           }

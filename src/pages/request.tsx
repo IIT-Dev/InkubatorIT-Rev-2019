@@ -272,9 +272,13 @@ const Request = () => {
       const url = 'https://script.google.com/macros/s/AKfycbz9IQLkW8i7l3wrCR_TCNx1sFKCSdTxyFh--dXRST8kCMO_Rg/exec';
 
       const getParams = () => {
-        const params = { timestamp: dayjs().format('M/D/YYYY hh:mm:ss') };
+        const params = { MANPRO: '', timestamp: dayjs().format('M/D/YYYY hh:mm:ss') };
 
         for (let key in state) {
+          const questionIndex = questions.findIndex(question => question.id === key);
+          const question = questions[questionIndex];
+          if (question.shouldRecorded === false) continue;
+
           if (Array.isArray(state[key])) {
             params[key] = state[key].join(', ');
           } else {

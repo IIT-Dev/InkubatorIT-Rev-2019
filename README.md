@@ -22,5 +22,6 @@
 | defaultValue   |                         string                         |                                   initial value when input first rendered |
 | isRequired     |                        boolean                         |                                User can't submit if this input not filled |
 | condition      |                    { [id]: string }                    |                            Only displayed when all condition is fulfilled |
+| shouldRecorded |                        boolean                         |                              If false that mean will not be send to Sheet |
 | options        |                       string[ ]                        |               For radio and checkbox, list of option that user can select |
 | hasCustomInput |                        boolean                         |               For radio and checkbox, if user want to input a custom text |

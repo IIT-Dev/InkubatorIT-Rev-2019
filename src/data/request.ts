@@ -20,6 +20,7 @@ export const questions = [
     options: ['Ya', 'Tidak'],
     defaultValue: '',
     isRequired: true,
+    shouldRecorded: false,
   },
   {
     label: 'Apa jurusan Anda?',

@@ -6,6 +6,9 @@
   width: 40%;
   margin-bottom: 50px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   .title {
     display: flex;
@@ -28,6 +31,7 @@
 
   .image {
     display: flex;
+    max-height: 300px;
 
     img {
       width: 100%;
@@ -112,6 +116,10 @@
           font-size: 1.5em;
         }
       }
+    }
+
+    .image {
+      height: unset;
     }
 
     .btn {

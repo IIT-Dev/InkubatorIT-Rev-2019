@@ -9,7 +9,19 @@
 2. Add new commit
 3. Deploy with `git push heroku master`
 
-## Add or Edit Question
+## Request Page
+
+## Add or Edit Contact
+
+1. Open `\src\data\request.ts`
+2. Update `contacts` array
+
+## Add or Edit Notice
+
+1. Open `\src\data\request.ts`
+2. Update `notices` array
+
+### Add or Edit Question
 
 1. Open `\src\data\request.ts`
 2. Update `questions` array

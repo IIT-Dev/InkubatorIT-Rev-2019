@@ -17,16 +17,21 @@ export const Footer = () => {
         </p>
       </div>
       <div className="icons">
-        <a href="https://twitter.com/inkubatorIT" target="_blank" rel="noopener">
+        <a href="https://twitter.com/inkubatorIT" target="_blank" rel="noopener noreferrer" aria-label="twitter">
           <FontAwesomeIcon icon={faTwitter} className="icon" />
         </a>
-        <a href="https://www.instagram.com/inkubatorit/" target="_blank" rel="noopener">
+        <a
+          href="https://www.instagram.com/inkubatorit/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="instagram"
+        >
           <FontAwesomeIcon icon={faInstagram} className="icon" />
         </a>
-        <a href="https://line.me/ti/p/~@coq4661e" target="_blank" rel="noopener">
+        <a href="https://line.me/ti/p/~@coq4661e" target="_blank" rel="noopener noreferrer" aria-label="line">
           <FontAwesomeIcon icon={faLine} className="icon" />
         </a>
-        <a href="https://facebook.com/inkubatorithmif/" target="_blank" rel="noopener">
+        <a href="https://facebook.com/inkubatorithmif/" target="_blank" rel="noopener noreferrer" aria-label="facebook">
           <FontAwesomeIcon icon={faFacebookF} className="icon" />
         </a>
       </div>

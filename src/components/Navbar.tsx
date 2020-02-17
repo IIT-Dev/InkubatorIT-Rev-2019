@@ -24,6 +24,7 @@ export const Navbar = props => {
         type="button"
         className={`hamburger hamburger--spin ${isMenuOpen ? 'is-active' : ''}`}
         onClick={() => setIsMenuOpen(!isMenuOpen)}
+        aria-label="hamburger-menu"
       >
         <span className="hamburger-box">
           <span className="hamburger-inner"></span>

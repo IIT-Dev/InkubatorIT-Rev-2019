@@ -2,6 +2,7 @@ export const questions = [
   {
     label: 'Siapa nama Anda?',
     id: 'name',
+    column: 'Nama',
     type: 'text',
     defaultValue: '',
     isRequired: true,
@@ -9,6 +10,7 @@ export const questions = [
   {
     label: 'Dari instansi mana Anda berasal?',
     id: 'instance',
+    column: 'Asal Instansi',
     type: 'text',
     defaultValue: '',
     isRequired: true,
@@ -25,6 +27,7 @@ export const questions = [
   {
     label: 'Apa jurusan Anda?',
     id: 'major',
+    column: 'Jurusan (jika mahasiswa)',
     type: 'text',
     defaultValue: '',
     condition: {
@@ -34,6 +37,7 @@ export const questions = [
   {
     label: 'Anda angkatan berapa?',
     id: 'classOf',
+    column: 'Angkatan (jika mahasiswa)',
     type: 'text',
     defaultValue: '',
     condition: {
@@ -43,6 +47,7 @@ export const questions = [
   {
     label: 'Apa alamat email Anda?',
     id: 'email',
+    column: 'Email',
     type: 'email',
     defaultValue: '',
     isRequired: true,
@@ -50,6 +55,7 @@ export const questions = [
   {
     label: 'Apa nomor WhatsApp Anda?',
     id: 'whatsapp',
+    column: 'Whatsapp',
     type: 'text',
     defaultValue: '',
     isRequired: true,
@@ -57,12 +63,14 @@ export const questions = [
   {
     label: 'Apa ID Line Anda?',
     id: 'line',
+    column: 'ID Line',
     type: 'text',
     defaultValue: '',
   },
   {
     label: 'Jenis Proyek',
     id: 'type',
+    column: 'Jenis Proyek',
     type: 'checkbox',
     options: ['Website', 'Aplikasi Android', 'Aplikasi iOS', 'Game', 'Prototype', 'Mockup'],
     hasCustomInput: true,
@@ -72,6 +80,7 @@ export const questions = [
   {
     label: 'Tujuan pembuatan proyek',
     id: 'motive',
+    column: 'Tujuan Pembuatan Proyek',
     type: 'radio',
     options: [
       'Menyelesaikan Tugas Kuliah',
@@ -88,6 +97,7 @@ export const questions = [
   {
     label: 'Deskripsi proyek',
     id: 'description',
+    column: 'Deskripsi Proyek (semakin detail semakin baik)',
     type: 'textarea',
     defaultValue: '',
     isRequired: true,
@@ -95,18 +105,21 @@ export const questions = [
   {
     label: 'Berapa ekspektasi biaya Anda untuk proyek ini?',
     id: 'fee',
+    column: 'Ekspektasi Biaya (Rp.)',
     type: 'text',
     defaultValue: '',
   },
   {
     label: 'Kapan deadline Anda untuk proyek ini?',
     id: 'deadline',
+    column: 'Deadline',
     type: 'date',
     defaultValue: '',
   },
   {
     label: 'Apa Anda sudah memiliki desain untuk proyek ini?',
     id: 'isDesignExist',
+    column: 'Apakah sudah memiliki rancangan tampilan dan desain?',
     type: 'radio',
     options: [
       'Sudah',
@@ -120,6 +133,7 @@ export const questions = [
   {
     label: 'Dalam bentuk apa desain yang Anda miliki?',
     id: 'design',
+    column: 'Bentuk rancangan tampilan / desain jika sudah memiliki',
     type: 'checkbox',
     options: [
       'Mockup Digital (marvelapp, balsamiq, dsb.)',
@@ -136,12 +150,14 @@ export const questions = [
   {
     label: 'Catatan untuk proyek ini',
     id: 'notes',
+    column: 'Catatan Tambahan',
     type: 'textarea',
     defaultValue: '',
   },
   {
     label: 'Ada yang ingin Anda tanyakan?',
     id: 'question',
+    column: 'Pertanyaan',
     type: 'textarea',
     defaultValue: '',
   },

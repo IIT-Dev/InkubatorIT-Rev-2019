@@ -14,14 +14,15 @@
 1. Open `\src\data\request.ts`
 2. Update `questions` array
 
-| key            |                          type                          |                                                               description |
-| -------------- | :----------------------------------------------------: | ------------------------------------------------------------------------: |
-| label          |                         string                         |                       Question text that will be showed above input field |
-| id             |                         string                         | id of question, must unique and matched with respective Sheet column name |
-| type           | text \| email \| date \| textarea \| radio \| checkbox |                                                             type of input |
-| defaultValue   |                         string                         |                                   initial value when input first rendered |
-| isRequired     |                        boolean                         |                                User can't submit if this input not filled |
-| condition      |                    { [id]: string }                    |                            Only displayed when all condition is fulfilled |
-| shouldRecorded |                        boolean                         |                              If false that mean will not be send to Sheet |
-| options        |                       string[ ]                        |               For radio and checkbox, list of option that user can select |
-| hasCustomInput |                        boolean                         |               For radio and checkbox, if user want to input a custom text |
+| key            |                          type                          |                                                 description |
+| -------------- | :----------------------------------------------------: | ----------------------------------------------------------: |
+| label          |                         string                         |         Question text that will be showed above input field |
+| id             |                         string                         |                                 id of question, must unique |
+| column         |                         string                         |                   matched with respective Sheet column name |
+| type           | text \| email \| date \| textarea \| radio \| checkbox |                                               type of input |
+| defaultValue   |                         string                         |                     initial value when input first rendered |
+| isRequired     |                        boolean                         |                  User can't submit if this input not filled |
+| condition      |                    { [id]: string }                    |              Only displayed when all condition is fulfilled |
+| shouldRecorded |                        boolean                         |                If false that mean will not be send to Sheet |
+| options        |                       string[ ]                        | For radio and checkbox, list of option that user can select |
+| hasCustomInput |                        boolean                         | For radio and checkbox, if user want to input a custom text |

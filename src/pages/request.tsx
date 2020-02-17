@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { Element, scroller } from 'react-scroll';
 import axios from 'axios';
+import dayjs from 'dayjs';
 
 import './scss/request.scss';
 
@@ -271,7 +272,7 @@ const Request = () => {
       const url = 'https://script.google.com/macros/s/AKfycbz9IQLkW8i7l3wrCR_TCNx1sFKCSdTxyFh--dXRST8kCMO_Rg/exec';
 
       const getParams = () => {
-        const params = {};
+        const params = { timestamp: dayjs().format('M/D/YYYY hh:mm:ss') };
 
         for (let key in state) {
           if (Array.isArray(state[key])) {

@@ -4,6 +4,7 @@ import Typed from 'typed.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileAlt } from '@fortawesome/free-solid-svg-icons';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
+import dayjs from 'dayjs';
 
 import 'react-vertical-timeline-component/style.min.css';
 
@@ -18,21 +19,27 @@ import { useClients } from '../hooks/useClients';
 const IndexPage = () => {
   const { clients } = useClients();
 
-  const renderHeader = () => (
-    <div className="header">
-      <div className="header_wrapper">
-        <p className="p_welcome">Selamat Datang di</p>
-        <h1>Inkubator IT</h1>
-        <p className="p_short-desc">
-          Badan usaha khusus dibawah naungan <span>HMIF ITB</span> yang melayani pembuatan berbagai produk berbasis IT
-          dan telah melayani puluhan klien selama 7 tahun lebih.
-        </p>
-        <Link to="/request">
-          <button>Request Proyek</button>
-        </Link>
+  const renderHeader = () => {
+    const year = dayjs()
+      .subtract(2012, 'year')
+      .year();
+
+    return (
+      <div className="header">
+        <div className="header_wrapper">
+          <p className="p_welcome">Selamat Datang di</p>
+          <h1>Inkubator IT</h1>
+          <p className="p_short-desc">
+            Badan usaha khusus dibawah naungan <span>HMIF ITB</span> yang melayani pembuatan berbagai produk berbasis IT
+            dan telah melayani puluhan klien selama {year} tahun lebih.
+          </p>
+          <Link to="/request">
+            <button>Request Proyek</button>
+          </Link>
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   useEffect(() => {
     const typed = new Typed('.projects', {

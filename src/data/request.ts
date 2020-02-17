@@ -18,7 +18,7 @@ export const questions = [
     id: 'isStudent',
     type: 'radio',
     options: ['Ya', 'Tidak'],
-    defaultValue: undefined,
+    defaultValue: '',
     isRequired: true,
   },
   {
@@ -65,7 +65,7 @@ export const questions = [
     type: 'checkbox',
     options: ['Website', 'Aplikasi Android', 'Aplikasi iOS', 'Game', 'Prototype', 'Mockup'],
     hasCustomInput: true,
-    defaultValue: undefined,
+    defaultValue: '',
     isRequired: true,
   },
   {
@@ -81,7 +81,7 @@ export const questions = [
       'Memenuhi keperluan acara, misalnya lomba',
     ],
     hasCustomInput: true,
-    defaultValue: undefined,
+    defaultValue: '',
     isRequired: true,
   },
   {
@@ -113,7 +113,7 @@ export const questions = [
       'Belum dan membutuhkan bantuan berunding dengan pihak pembuat proyek',
       'Belum dan dibebaskan kepada pihak pembuat proyek',
     ],
-    defaultValue: undefined,
+    defaultValue: '',
     isRequired: true,
   },
   {
@@ -126,7 +126,7 @@ export const questions = [
       'Design manual di kertas',
     ],
     hasCustomInput: true,
-    defaultValue: undefined,
+    defaultValue: '',
     condition: {
       isDesignExist: 'Sudah',
     },

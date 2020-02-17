@@ -307,6 +307,10 @@ const Request = () => {
   const allowedToSubmit = () => {
     return questions.every(question => {
       if (question.isRequired) {
+        if (question.condition) {
+          if (isQuestionConditionNotFulfilled(question.condition, state)) return true;
+          return false;
+        }
         return !!state[question.id];
       }
       return true;

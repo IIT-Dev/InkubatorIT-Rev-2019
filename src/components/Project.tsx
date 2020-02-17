@@ -26,12 +26,10 @@ export const Project: React.FC<IProjectProps> = props => {
         <div className="project-modal">
           <p>{description}</p>
           <button>{platform.toUpperCase()}</button>
-          <div className="img">
-            <img src={imageUrl} alt={title} />
-          </div>
         </div>
       ),
       confirmButtonColor: 'var(--tertiary)',
+      showConfirmButton: false,
     });
   };
 

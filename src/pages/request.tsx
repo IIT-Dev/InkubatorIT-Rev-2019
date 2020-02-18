@@ -274,7 +274,11 @@ const Request = () => {
     if (state.email !== '' && !validateEmail(state.email)) {
       setWarning(previousWarning => ({ ...previousWarning, email: '* email is invalid' }));
     } else {
-      setWarning(previousWarning => ({ ...previousWarning, email: undefined }));
+      setWarning(previousWarning => {
+        const newWarning = { ...previousWarning };
+        delete newWarning.email;
+        return newWarning;
+      });
     }
   }, [state]);
 
@@ -350,13 +354,20 @@ const Request = () => {
     });
   };
 
+  const isWarningExist = () => {
+    return Object.entries(warning).length > 0;
+  };
+
+  const ableToSubmit = () => {
+    return allRequireFilled() && !isWarningExist();
+  };
+
   const renderWarning = () => {
-    const warnings = Object.entries(warning);
-    if (warnings.length === 0) return;
+    if (!isWarningExist()) return;
 
     return (
       <div className="warning">
-        {warnings.map(([id, text], index) => (
+        {Object.entries(warning).map(([id, text], index) => (
           <p key={id}>{text}</p>
         ))}
       </div>
@@ -379,7 +390,7 @@ const Request = () => {
         ))}
         <Element name="submit-btn">
           <div className="submit-btn">
-            <button id="submit-btn" disabled={!allRequireFilled()} onClick={actionSubmitForm}>
+            <button id="submit-btn" disabled={!ableToSubmit()} onClick={actionSubmitForm}>
               SUBMIT
             </button>
           </div>

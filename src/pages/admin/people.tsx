@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import { navigate } from 'gatsby';
 
 import '../scss/admin/people.scss';
@@ -10,6 +12,8 @@ import Spinner from '../../components/Spinner';
 import { usePeoples } from '../../hooks/usePeoples';
 import { IPeople } from '../../interfaces/people';
 import { isAuthenticated } from '../../helpers/auth';
+
+const Alert = withReactContent(Swal);
 
 const PeopleManagement = () => {
   const {
@@ -74,20 +78,35 @@ const PeopleManagement = () => {
 
   const actionAddNewPeople = async () => {
     setLoading(true);
-    await addNewPeople();
-    setLoading(false);
+    try {
+      await addNewPeople();
+      setLoading(false);
+    } catch (e) {
+      setLoading(false);
+      Alert.fire('Ada kesalahan', e.message, 'error');
+    }
   };
 
   const actionEditPeople = async (people: IPeople) => {
     setLoading(true);
-    await editSelectedPeople(people);
-    setLoading(false);
+    try {
+      await editSelectedPeople(people);
+      setLoading(false);
+    } catch (e) {
+      setLoading(false);
+      Alert.fire('Ada kesalahan', e.message, 'error');
+    }
   };
 
   const actionDeletePeople = async (_id: string) => {
     setLoading(true);
-    await deleteSelectedPeople(_id);
-    setLoading(false);
+    try {
+      await deleteSelectedPeople(_id);
+      setLoading(false);
+    } catch (e) {
+      setLoading(false);
+      Alert.fire('Ada kesalahan', e.message, 'error');
+    }
   };
 
   const renderContent = () => {

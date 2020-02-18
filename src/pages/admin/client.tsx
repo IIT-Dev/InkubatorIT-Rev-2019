@@ -97,9 +97,14 @@ const ClientManagement = () => {
 
     if (alert.value) {
       setLoading(true);
-      await addNewClient(alert.value);
-      setLoading(false);
-      await Alert.fire('Sukses!', 'Client berhasil ditambahkan', 'success');
+      try {
+        await addNewClient(alert.value);
+        setLoading(false);
+        Alert.fire('Sukses!', 'Client berhasil ditambahkan', 'success');
+      } catch (e) {
+        setLoading(false);
+        Alert.fire('Ada kesalahan', e.message, 'error');
+      }
     }
   };
 
@@ -123,16 +128,26 @@ const ClientManagement = () => {
 
     if (alert.value) {
       setLoading(true);
-      await editSelectedClient({ ...clients[index], ...alert.value });
-      setLoading(false);
-      await Alert.fire('Sukses!', 'Client berhasil diubah', 'success');
+      try {
+        await editSelectedClient({ ...clients[index], ...alert.value });
+        setLoading(false);
+        Alert.fire('Sukses!', 'Client berhasil diubah', 'success');
+      } catch (e) {
+        setLoading(false);
+        Alert.fire('Ada kesalahan', e.message, 'error');
+      }
     }
   };
 
   const actionDeleteClient = async (_id: string) => {
     setLoading(true);
-    await deleteSelectedClient(_id);
-    setLoading(false);
+    try {
+      await deleteSelectedClient(_id);
+      setLoading(false);
+    } catch (e) {
+      setLoading(false);
+      Alert.fire('Ada kesalahan', e.message, 'error');
+    }
   };
 
   const renderContent = () => {

@@ -9,19 +9,7 @@
 2. Add new commit
 3. Deploy with `git push heroku master`
 
-## Request Page
-
-## Add or Edit Contact
-
-1. Open `\src\data\request.ts`
-2. Update `contacts` array
-
-## Add or Edit Notice
-
-1. Open `\src\data\request.ts`
-2. Update `notices` array
-
-### Add or Edit Question
+## Add or Edit Question
 
 1. Open `\src\data\request.ts`
 2. Update `questions` array
@@ -38,3 +26,9 @@
 | shouldRecorded |                        boolean                         |                If false that mean will not be send to Sheet |
 | options        |                       string[ ]                        | For radio and checkbox, list of option that user can select |
 | hasCustomInput |                        boolean                         | For radio and checkbox, if user want to input a custom text |
+
+## FAQ
+
+Already optimized, so you can focus to make content instead
+
+![lighthouse result](https://i.ibb.co/Xs5JLBq/Annotation-2020-02-19-004052.png)

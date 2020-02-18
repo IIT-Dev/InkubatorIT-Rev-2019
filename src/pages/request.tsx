@@ -64,7 +64,8 @@ const InputField = props => {
       (nextQuestionElement instanceof HTMLInputElement ||
         nextQuestionElement instanceof HTMLTextAreaElement ||
         nextQuestionElement.id === 'submit-btn') &&
-      (nextQuestionType !== 'radio' && nextQuestionType !== 'checkbox') &&
+      nextQuestionType !== 'radio' &&
+      nextQuestionType !== 'checkbox' &&
       !isMobile()
     ) {
       nextQuestionElement.focus();
@@ -302,7 +303,7 @@ const Request = () => {
       if (response) {
         dispatch({ type: 'RESET' });
         Alert.fire({
-          type: 'success',
+          icon: 'success',
           title: 'Sukses Disubmit',
           html: (
             <div style={{ lineHeight: 1.75 }}>
@@ -318,7 +319,7 @@ const Request = () => {
     } catch {
       setLoading(false);
       Alert.fire({
-        type: 'error',
+        icon: 'error',
         title: 'Oops...',
         text: 'Terjadi kesalahan!',
       });

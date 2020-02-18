@@ -114,9 +114,14 @@ const PortofolioManagement = () => {
 
     if (alert.value) {
       setLoading(true);
-      await addNewPortofolio(alert.value);
-      setLoading(false);
-      await Alert.fire('Sukses!', 'Portofolio berhasil ditambahkan', 'success');
+      try {
+        await addNewPortofolio(alert.value);
+        setLoading(false);
+        Alert.fire('Sukses!', 'Portofolio berhasil ditambahkan', 'success');
+      } catch (e) {
+        setLoading(false);
+        Alert.fire('Ada kesalahan', e.message, 'error');
+      }
     }
   };
 
@@ -144,16 +149,26 @@ const PortofolioManagement = () => {
 
     if (alert.value) {
       setLoading(true);
-      await editSelectedPortofolio({ ...portofolios[index], ...alert.value });
-      setLoading(false);
-      await Alert.fire('Sukses!', 'Portofolio berhasil diubah', 'success');
+      try {
+        await editSelectedPortofolio({ ...portofolios[index], ...alert.value });
+        setLoading(false);
+        Alert.fire('Sukses!', 'Portofolio berhasil diubah', 'success');
+      } catch (e) {
+        setLoading(false);
+        Alert.fire('Ada kesalahan', e.message, 'error');
+      }
     }
   };
 
   const actionDeletePortofolio = async (_id: string) => {
     setLoading(true);
-    await deleteSelectedPortofolio(_id);
-    setLoading(false);
+    try {
+      await deleteSelectedPortofolio(_id);
+      setLoading(false);
+    } catch (e) {
+      setLoading(false);
+      Alert.fire('Ada kesalahan', e.message, 'error');
+    }
   };
 
   const renderContent = () => {

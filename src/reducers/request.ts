@@ -16,7 +16,7 @@ export const reducers = (state: IState, action: IAction) => {
   return { ...state, [action.type]: action.payload };
 };
 
-export const initialState = () => {
+export const initialState = (): IState => {
   const state = {};
 
   questions.forEach(question => {

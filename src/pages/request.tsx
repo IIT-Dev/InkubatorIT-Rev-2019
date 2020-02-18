@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MaskedInput from 'react-text-mask';
 import emailMask from 'text-mask-addons/dist/emailMask';
 import Swal from 'sweetalert2';
@@ -11,17 +11,18 @@ import './scss/request.scss';
 
 import { Layout } from '../components/layout';
 import { SEO } from '../components/seo';
+import Spinner from '../components/Spinner';
 
 import { notices, questions, contacts } from '../data/request';
 
 import { useRequestReducer } from '../reducers/request';
 import { isMobile, isQuestionConditionNotFulfilled } from '../helpers/request';
-import Spinner from '../components/Spinner';
+import { validateEmail } from '../helpers/email';
 
 const Alert = withReactContent(Swal);
 
 const InputField = props => {
-  const { label, id, type, options, condition, hasCustomInput, isRequired, reducer } = props;
+  const { label, id, type, options, condition, hasCustomInput, isRequired, reducer, setWarning } = props;
   const [state, dispatch] = reducer;
 
   const actionTextInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -267,6 +268,15 @@ const InputField = props => {
 const Request = () => {
   const [state, dispatch] = useRequestReducer();
   const [loading, setLoading] = useState(false);
+  const [warning, setWarning] = useState<{ [id: string]: string }>({});
+
+  useEffect(() => {
+    if (state.email !== '' && !validateEmail(state.email)) {
+      setWarning(previousWarning => ({ ...previousWarning, email: '* email is invalid' }));
+    } else {
+      setWarning(previousWarning => ({ ...previousWarning, email: undefined }));
+    }
+  }, [state]);
 
   const actionSubmitForm = async () => {
     try {
@@ -326,7 +336,7 @@ const Request = () => {
     }
   };
 
-  const allowedToSubmit = () => {
+  const allRequireFilled = () => {
     return questions.every(question => {
       if (question.isRequired) {
         if (question.condition) {
@@ -340,9 +350,23 @@ const Request = () => {
     });
   };
 
+  const renderWarning = () => {
+    const warnings = Object.entries(warning);
+    if (warnings.length === 0) return;
+
+    return (
+      <div className="warning">
+        {warnings.map(([id, text], index) => (
+          <p key={id}>{text}</p>
+        ))}
+      </div>
+    );
+  };
+
   return (
     <Layout>
       <SEO title="Request a Project" />
+      {loading && <Spinner />}
       <div className="request">
         <div className="title">
           <span>Formulir Pengajuan Proyek</span>
@@ -351,15 +375,16 @@ const Request = () => {
           ))}
         </div>
         {questions.map((question, index) => (
-          <InputField key={index} {...question} reducer={[state, dispatch]} />
+          <InputField key={index} {...question} reducer={[state, dispatch]} setWarning={setWarning} />
         ))}
         <Element name="submit-btn">
           <div className="submit-btn">
-            <button id="submit-btn" disabled={!allowedToSubmit()} onClick={actionSubmitForm}>
+            <button id="submit-btn" disabled={!allRequireFilled()} onClick={actionSubmitForm}>
               SUBMIT
             </button>
           </div>
         </Element>
+        {renderWarning()}
         <div className="contact">
           <h3>Hubungi kami jika Anda memiliki pertanyaan atau kebutuhan segera :</h3>
           {contacts.map((contact, index) => (
@@ -369,7 +394,6 @@ const Request = () => {
           ))}
         </div>
       </div>
-      {loading && <Spinner />}
     </Layout>
   );
 };

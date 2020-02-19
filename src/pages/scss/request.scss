@@ -197,6 +197,10 @@
     max-width: 50%;
     margin: auto;
     color: var(--quartenary);
+
+    p {
+      margin-bottom: 5px;
+    }
   }
 
   .contact {
@@ -248,8 +252,7 @@
 
     .warning {
       max-width: 80%;
-      margin: auto;
-      color: var(--quartenary);
+      font-size: 12px;
     }
 
     .contact {
@@ -259,7 +262,7 @@
       margin-bottom: 5vh;
 
       h3 {
-        font-size: 20px;
+        font-size: 16px;
         margin: 10px 0 0;
         font-weight: 300;
         letter-spacing: 1.25px;

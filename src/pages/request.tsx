@@ -17,7 +17,7 @@ import { notices, questions, contacts } from '../data/request';
 
 import { useRequestReducer } from '../reducers/request';
 import { isMobile, isQuestionConditionNotFulfilled } from '../helpers/request';
-import { validateEmail } from '../helpers/email';
+import { validateEmail, validatePhoneNumber } from '../helpers/validation';
 
 const Alert = withReactContent(Swal);
 
@@ -280,6 +280,16 @@ const Request = () => {
         return newWarning;
       });
     }
+
+    if (state.whatsapp !== '' && !validatePhoneNumber(state.whatsapp)) {
+      setWarning(previousWarning => ({ ...previousWarning, whatsapp: '* phone number is invalid' }));
+    } else {
+      setWarning(previousWarning => {
+        const newWarning = { ...previousWarning };
+        delete newWarning.whatsapp;
+        return newWarning;
+      });
+    }
   }, [state]);
 
   const actionSubmitForm = async () => {
@@ -374,6 +384,19 @@ const Request = () => {
     );
   };
 
+  const renderContact = () => {
+    return (
+      <div className="contact">
+        <h3>Hubungi kami jika Anda memiliki pertanyaan atau kebutuhan segera:</h3>
+        {contacts.map((contact, index) => (
+          <h3 key={index}>
+            {index + 1}. {contact}
+          </h3>
+        ))}
+      </div>
+    );
+  };
+
   return (
     <Layout>
       <SEO title="Request a Project" />
@@ -396,14 +419,7 @@ const Request = () => {
           </div>
         </Element>
         {renderWarning()}
-        <div className="contact">
-          <h3>Hubungi kami jika Anda memiliki pertanyaan atau kebutuhan segera :</h3>
-          {contacts.map((contact, index) => (
-            <h3 key={index}>
-              {index + 1}. {contact}
-            </h3>
-          ))}
-        </div>
+        {renderContact()}
       </div>
     </Layout>
   );

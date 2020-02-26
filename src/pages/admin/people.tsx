@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
 import { navigate } from 'gatsby';
 
 import '../scss/admin/people.scss';
@@ -8,12 +6,11 @@ import '../scss/admin/people.scss';
 import { SEO } from '../../components/seo';
 import { AdminLayout } from '../../components/layout';
 import Spinner from '../../components/Spinner';
+import { Alert } from '../../components/Alert';
 
 import { usePeoples } from '../../hooks/usePeoples';
 import { IPeople } from '../../interfaces/people';
 import { isAuthenticated } from '../../helpers/auth';
-
-const Alert = withReactContent(Swal);
 
 const PeopleManagement = () => {
   const {

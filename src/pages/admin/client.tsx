@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import ReactTooltip from 'react-tooltip';
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { navigate } from 'gatsby';
@@ -12,12 +10,11 @@ import { SEO } from '../../components/seo';
 import { AdminLayout } from '../../components/layout';
 import { Client } from '../../components/Client';
 import Spinner from '../../components/Spinner';
+import { Alert } from '../../components/Alert';
 
 import { useClients } from '../../hooks/useClients';
 import { isAuthenticated } from '../../helpers/auth';
 import { IClient } from '../../interfaces/client';
-
-const Alert = withReactContent(Swal);
 
 export const ClientForm: React.FC<{ client?: IClient }> = props => {
   const { client } = props;

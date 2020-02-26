@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MaskedInput from 'react-text-mask';
 import emailMask from 'text-mask-addons/dist/emailMask';
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
 import { Element, scroller } from 'react-scroll';
 import axios from 'axios';
 import dayjs from 'dayjs';
@@ -12,14 +10,13 @@ import './scss/request.scss';
 import { Layout } from '../components/layout';
 import { SEO } from '../components/seo';
 import Spinner from '../components/Spinner';
+import { Alert } from '../components/Alert';
 
 import { notices, questions, contacts } from '../data/request';
 
 import { useRequestReducer } from '../reducers/request';
 import { isMobile, isQuestionConditionNotFulfilled } from '../helpers/request';
 import { validateEmail, validatePhoneNumber } from '../helpers/validation';
-
-const Alert = withReactContent(Swal);
 
 const InputField = props => {
   const { label, id, type, options, condition, hasCustomInput, isRequired, reducer, setWarning } = props;

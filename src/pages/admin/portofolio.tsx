@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import ReactTooltip from 'react-tooltip';
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { navigate } from 'gatsby';
@@ -12,11 +10,10 @@ import { SEO } from '../../components/seo';
 import { AdminLayout } from '../../components/layout';
 import { Project } from '../../components/Project';
 import Spinner from '../../components/Spinner';
+import { Alert } from '../../components/Alert';
 
 import { usePortofolios } from '../../hooks/usePortofolios';
 import { isAuthenticated } from '../../helpers/auth';
-
-const Alert = withReactContent(Swal);
 
 export const PortofolioForm = props => {
   const { portofolio } = props;

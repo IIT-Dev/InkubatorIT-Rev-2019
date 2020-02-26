@@ -1,13 +1,10 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
 
 import './scss/Client.scss';
 import { IClient } from '../interfaces/client';
-
-const Alert = withReactContent(Swal);
+import { Alert } from './Alert';
 
 interface IProjectProps extends IClient {
   admin?: boolean;

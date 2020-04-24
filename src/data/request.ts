@@ -169,8 +169,4 @@ export const notices = [
   'Proyek yang sudah memiliki rancangan tampilan & desain akan dapat diproses dengan lebih cepat.',
 ];
 
-export const contacts = [
-  'Wildan - Head of Incubator IT (line : Gonano | Whatsapp : 081572558786 )',
-  'Albert - Head of Marketing (line : albertsahala | Whatsapp : 081381179559)',
-  'Cornelius - Head of Project Management (line : corneliusyan | Whatsapp : 089654108308)',
-];
+export const contacts = ['Gardahadi (082218837789)'];

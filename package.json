@@ -101,7 +101,7 @@
   "lint-staged": {
     "*.{tsx,ts,js,scss,md,json}": [
       "npm run fix",
-      "git add"
+      "git add ."
     ]
   },
   "repository": {

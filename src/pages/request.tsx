@@ -313,12 +313,27 @@ const Request = () => {
         return params;
       };
 
+      const notifyLineBot = async data => {
+        try {
+          await axios({
+            method: 'POST',
+            url: 'https://botmanpro.inkubatorit.com/api/project_request/',
+            data: state,
+          });
+        } catch (error) {
+          // catch and ignore error if linebot is down as long as data received in sheet
+        }
+      };
+
       setLoading(true);
-      const response = await axios({
-        method: 'GET',
-        url,
-        params: getParams(),
-      });
+      const [response] = await Promise.all([
+        axios({
+          method: 'GET',
+          url,
+          params: getParams(),
+        }),
+        notifyLineBot(state),
+      ]);
 
       setLoading(false);
       if (response) {

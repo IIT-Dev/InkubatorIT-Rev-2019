@@ -169,4 +169,4 @@ export const notices = [
   'Proyek yang sudah memiliki rancangan tampilan & desain akan dapat diproses dengan lebih cepat.',
 ];
 
-export const contacts = ['Gardahadi (082218837789)'];
+export const contacts = ['Patrick (081808848228)'];

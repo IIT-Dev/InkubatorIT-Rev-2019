@@ -4,11 +4,7 @@ export const validateEmail = (email: string) => {
 };
 
 export const validatePhoneNumber = (phoneNumber: string) => {
-  if (
-    /^\+{0,1}\d+$/.test(phoneNumber) &&
-    ((phoneNumber.startsWith('+62') && phoneNumber.length === 14) ||
-      (phoneNumber.startsWith('0') && phoneNumber.length === 12))
-  ) {
+  if (/^\+{0,1}\d+$/.test(phoneNumber) && (phoneNumber.startsWith('+62') || phoneNumber.startsWith('0'))) {
     return true;
   }
   return false;

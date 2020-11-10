@@ -74,7 +74,7 @@ export const questions = [
     type: 'checkbox',
     options: ['Website', 'Aplikasi Android', 'Aplikasi iOS', 'Game', 'Prototype', 'Mockup'],
     hasCustomInput: true,
-    defaultValue: '',
+    defaultValue: [],
     isRequired: true,
   },
   {
@@ -141,7 +141,7 @@ export const questions = [
       'Design manual di kertas',
     ],
     hasCustomInput: true,
-    defaultValue: '',
+    defaultValue: [],
     condition: {
       isDesignExist: 'Sudah',
     },

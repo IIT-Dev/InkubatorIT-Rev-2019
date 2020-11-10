@@ -187,14 +187,14 @@ const InputField = props => {
         };
 
         const checkboxCustomInput = value => {
-          if (state[id] && state[id].includes(value.slice(0, value.length - 1))) {
-            const newState = state[id].filter(s => s !== value.slice(0, value.length - 1));
+          // Remove custom value so it won't duplicate as user types new value
+          let stateWithPredefinedOnly = state[id].filter(choosenValue => options.includes(choosenValue));
 
-            dispatch({ type: id, payload: [...newState, value] });
-          } else {
-            if (!state[id]) dispatch({ type: id, payload: [value] });
-            else dispatch({ type: id, payload: [...state[id], value] });
+          if (value) {
+            return dispatch({ type: id, payload: [...stateWithPredefinedOnly, value] });
           }
+          //   Remove custom value if the input value is blank
+          dispatch({ type: id, payload: stateWithPredefinedOnly });
         };
 
         return (

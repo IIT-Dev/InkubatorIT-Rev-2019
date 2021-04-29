@@ -29,15 +29,25 @@ module.exports = {
     },
     `gatsby-plugin-typescript`,
     `gatsby-plugin-sass`,
+    // {
+    //   resolve: `gatsby-plugin-prefetch-google-fonts`,
+    //   options: {
+    //     fonts: [
+    //       {
+    //         family: `Roboto`,
+    //         variants: [`300`, `400`],
+    //       },
+    //     ],
+    //   },
+    // },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          {
-            family: `Roboto`,
-            variants: [`300`, `400`],
-          },
+          `limelight`,
+          `source sans pro\:300,400,400i,700`, // you can also specify font weights and styles
         ],
+        display: 'swap',
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

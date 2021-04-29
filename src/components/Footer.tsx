@@ -13,7 +13,7 @@ export const Footer = () => {
       <div className="text">
         <p>
           <span>
-            <FontAwesomeIcon icon={faCopyright} color="white" size="1x" /> &nbsp;Inkubator IT HMIF 2020.
+            <FontAwesomeIcon icon={faCopyright} color="white" size="1x" /> &nbsp;Inkubator IT HMIF 2021.
           </span>
           <span> All rights reserved.</span>
         </p>

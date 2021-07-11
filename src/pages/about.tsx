@@ -74,8 +74,8 @@ const AboutPage = () => {
       </h1>
       <div className="contact">
         <div>
-          <p className="title">Email: </p>
-          <p>admin@inkubatorit.com</p>
+          <p className="title">Nomor Telepon:</p>
+          <p>081250581370</p>
         </div>
         <div>
           <p className="title">Lokasi:</p>
